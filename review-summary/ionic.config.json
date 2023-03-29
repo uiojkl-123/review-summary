@@ -1,0 +1,7 @@
+{
+  "name": "review-summary",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
