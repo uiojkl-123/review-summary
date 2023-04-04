@@ -9,8 +9,8 @@ interface SelectCategoryProps {
 export const SelectCategory: React.FC<SelectCategoryProps> = (props) => {
 
     return (
-        <IonPage className="SelectCategory">
-            SelectCategory
+        <IonPage className="selectCategory">
+            
         </IonPage>
     );
 }
