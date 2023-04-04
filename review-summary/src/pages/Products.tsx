@@ -9,7 +9,7 @@ interface ProductsProps {
 export const Products: React.FC<ProductsProps> = (props) => {
 
     return (
-        <IonPage className="Products">
+        <IonPage className="products">
             Products
         </IonPage>
     );
