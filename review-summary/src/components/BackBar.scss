@@ -1,4 +1,13 @@
 .backBar{
     width: 100%;
     height: 60px;
+    .backButton{
+        height: 100%;
+        width: fit-content;
+        cursor: pointer;
+        img{
+            height: 100%;
+            width: auto;
+        }
+    }
 }

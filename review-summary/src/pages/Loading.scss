@@ -1,4 +1,4 @@
-.selectCategory {
+.loading {
     .wrapper {
         padding: 0px 24px;
         height: 100%;
@@ -10,14 +10,11 @@
             gap: 60px;
             align-items: flex-start;
 
-            .title {}
-
-            .categoryList {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                width: 100%;
+            .title {
+                line-height: 38px;
             }
+
+            .loadingImage {}
         }
 
 

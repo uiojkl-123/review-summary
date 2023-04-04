@@ -26,13 +26,15 @@ import './theme/variables.css';
 import { Products } from './pages/Products';
 
 import './App.scss'
+import { Loading } from './pages/Loading';
+import { Navbar } from './components/Navbar';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      {/* <Navbar /> */}
+      <Navbar />
 
       <IonRouterOutlet>
         <Route exact path="/home">
@@ -44,6 +46,9 @@ const App: React.FC = () => (
 
         <Route exact path="/selectCategory">
           <SelectCategory />
+        </Route>
+        <Route exact path="/loading">
+          <Loading />
         </Route>
 
         <Route exact path="/products">

@@ -20,6 +20,11 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -44,8 +49,19 @@ table {
 	border-spacing: 0;
 }
 
+
+
 .ion-page {
     background: #25262B;
+	max-width: 480px;
+	margin: auto;
+	top: 96px;
+}
+
+ion-app{
+	max-width: unset !important;
+	background: #868686 !important;
+	top: 0px !important;
 }
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable.css");
