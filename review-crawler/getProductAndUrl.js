@@ -4,7 +4,7 @@ async function main() {
     const browser = await puppeteer.launch(); // ❶ 헤드리스 브라우저 실행
     const page = await browser.newPage();     // ❷ 브라우저에 새 페이지 생성
 
-    const pageUrl = '카테고리_URL';
+    const pageUrl = 'https://search.shopping.naver.com/search/all?query=%EC%95%A0%ED%94%8C%EC%9B%8C%EC%B9%98%20%EC%8A%A4%ED%8A%B8%EB%9E%A9';
     await page.goto(pageUrl, {
         // ❸ 모든 네트워크 연결이 500ms 이상 유휴 상태가 될 때까지 기다림
         waitUntil: 'networkidle0',
@@ -36,7 +36,6 @@ async function main() {
     );
 
     
-
     console.log(content.join('\n'));
 
     await browser.close(); // ➐ 작업이 완료되면 브라우저 종료
