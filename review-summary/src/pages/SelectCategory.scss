@@ -1,0 +1,23 @@
+.selectCategory{
+    padding: 0px 24px;
+    .contentContainer{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        align-items: flex-start;
+        .title{}
+        .categoryList{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+        }
+    }
+
+    .footer{
+        position: absolute;
+        bottom: 40px;
+        width: auto;
+    }
+}

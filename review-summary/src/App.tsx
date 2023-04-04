@@ -25,6 +25,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { Products } from './pages/Products';
 
+import './App.scss'
+
 setupIonicReact();
 
 const App: React.FC = () => (
