@@ -28,8 +28,9 @@ const ProductInfo = styled.div`
 const Name = styled.h2`
   font-size: 18px;
   font-weight: bold;
-  margin: 0;
-  margin-bottom: 8px;
+  margin: 10px;
+  margin-top: 5px;
+  margin-bottom: 0px;
   max-height: 48px;
   line-height: 1.4;
   overflow: hidden;
@@ -38,34 +39,49 @@ const Name = styled.h2`
 const Price = styled.div`
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin: 10px;
+  margin-bottom: 0px;
 `;
 
 const PosNeg = styled.div`
-  display: flex;
-  justify-content: space-between;
   font-size: 14px;
-  margin-bottom: 8px;
+  margin: 10px;
+  margin-bottom: 0px;
 `;
 
 const Rating = styled.div`
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin: 10px;
+  margin-bottom: 0px;
+`;
+
+const Keyword = styled.div`
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 4px;
+  font-size: 14px;
+  font-weight: bold;
 `;
 
 const ReviewKeywords = styled.p`
-  font-size: 14px;
-  font-weight: bold;
+  margin: 10px;
   margin-bottom: 8px;
 `;
 
 const ReviewSummary = styled.p`
   font-size: 14px;
+  margin: 10px;
   margin-bottom: 8px;
 `;
 
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+  const keywordList = product.keywords.split(', ').map((keyword, index) => (
+    <Keyword key={index}>{keyword}</Keyword>
+  ));
+
   return (
     <ItemWrapper>
       <div style={{ display: 'flex' }}>
@@ -73,14 +89,21 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         <ProductInfo>
           <Name>{product.name}</Name>
           <Price>{product.price}원</Price>
-          <PosNeg>
-            <div>긍정 지수: {product.positive}</div>
-            <div>부정 지수: {product.negative}</div>
-          </PosNeg>
           <Rating>평균 평점: ★{product.score}/5.0</Rating>
+					<ReviewKeywords>{keywordList}</ReviewKeywords>
         </ProductInfo>
       </div>
-      <ReviewKeywords>리뷰 키워드: {product.keywords}</ReviewKeywords>
+			<PosNeg>
+				<div>
+					<div><b>긍정적인 평가</b></div>
+					{product.positive}
+				</div>
+				<br />
+				<div>
+					<div><b>부정적인 평가</b></div>
+					{product.negative}
+				</div>
+			</PosNeg>
       <ReviewSummary>리뷰 요약: {product.summary}</ReviewSummary>
     </ItemWrapper>
   );
