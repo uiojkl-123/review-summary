@@ -15,7 +15,9 @@ export const Loading: React.FC<LoadingProps> = (props) => {
 
 	const state = useLocation().state as any;
 
-	const category = state.category;
+	const category = state?.category;
+
+	console.log(category);	
 
 	return (
 		<IonPage className="loading">

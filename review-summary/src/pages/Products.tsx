@@ -37,20 +37,18 @@ const tmpTitle = "tmp_title_name";
 
 export const Products: React.FC<ProductsProps> = (props) => {
 
-	const category = useParams<{ category: string }>()?.category;
-
 	const [products, setProducts] = useState<Product[]>([]);
+
+	const param = useParams<any>()
+	const category = param.category
 
 	useEffect(() => {
 		(async () => {
 			const response = await getProductsByCategory(category);
 			setProducts(response);
 			console.log(response);
-			
 		})();
 	}, [category]);
-
-
 
 	return (
 		<IonPage className="products">
