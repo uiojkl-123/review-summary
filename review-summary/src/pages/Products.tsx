@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import styled from "@emotion/styled";
+
 import { IonPage } from '@ionic/react';
 import { Container } from '../theme/theme';
-import styled from "@emotion/styled";
-import { useParams } from 'react-router';
 import { Product } from '../models/model';
-import { getProductsByCategory } from '../services/products.service';
+import { ProductItem } from '../components/products/productItem';
+import { getProductsByCategory } from "../services/products.service"
 
 interface ProductsProps {
 }
@@ -12,13 +14,14 @@ interface ProductsProps {
 const TitleContainer = styled.div`
 width: 100%;
 height: 40px;
-background-color: black;
+background-color: rgba(0,0,0,0.7);
 display: flex;
 align-items: center;
 `;
 
 const CancelButtonBox = styled.div`
-height: 100%;
+height: 40px;
+width: 40px;
 display: flex;
 align-items: center;
 margin-left: 15px;
@@ -30,15 +33,11 @@ width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
-margin-left: -15px;
+margin-left: -40px;
 `;
 
-const tmpTitle = "tmp_title_name";
-
 export const Products: React.FC<ProductsProps> = (props) => {
-
 	const [products, setProducts] = useState<Product[]>([]);
-
 	const param = useParams<any>()
 	const category = param.category
 
@@ -50,19 +49,21 @@ export const Products: React.FC<ProductsProps> = (props) => {
 		})();
 	}, [category]);
 
-	return (
-		<IonPage className="products">
-			<TitleContainer>
-				<CancelButtonBox>
-					&#60;
-				</CancelButtonBox>
-				<Title>
-					{tmpTitle}
-				</Title>
-			</TitleContainer>
-			<Container>
-				Products
-			</Container>
-		</IonPage>
-	);
-}
+  return (
+    <IonPage className="products">
+      <TitleContainer>
+        <CancelButtonBox>
+          &#60;
+        </CancelButtonBox>
+        <Title>
+          {category}
+        </Title>
+      </TitleContainer>
+      <Container style={{padding: "0"}}>
+        {products.map((product) => (
+          <ProductItem key={product.name} product={product} />
+        ))}
+      </Container>
+    </IonPage>
+  );
+};
