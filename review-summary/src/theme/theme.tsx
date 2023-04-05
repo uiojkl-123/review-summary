@@ -8,3 +8,11 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 `;
+
+export const Section = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 40px;
+`;

@@ -51,7 +51,7 @@ const App: React.FC = () => (
           <Loading />
         </Route>
 
-        <Route exact path="/products">
+        <Route exact path="/products/:category">
           <Products />
         </Route>
 

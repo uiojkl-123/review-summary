@@ -2,17 +2,30 @@ import React from 'react';
 import './Button.scss';
 
 interface ButtonProps {
-    text: string;
+    children?: React.ReactNode;
+    className?: string;
     onClick?: () => void;
+    widthType?: "small";
+    radioState?: boolean;
+    setRadioState?: (state: boolean) => void;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
 
-    const { text, onClick } = props;
+    const { children, onClick, className, widthType, radioState, setRadioState } = props;
+
+    const handleOnClick = () => {
+        if (setRadioState) {
+            setRadioState(!radioState);
+        }
+        if (onClick) {
+            onClick();
+        }
+    }
 
     return (
-        <div className="button" onClick={onClick}>
-            {text}
+        <div className={"button " + className + " " + (widthType ? widthType : '')} onClick={onClick}>
+            {children}
         </div>
     );
 }

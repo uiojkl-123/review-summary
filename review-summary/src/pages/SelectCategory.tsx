@@ -7,12 +7,17 @@ import { CategoryItem } from '../components/CategoryItem';
 import { Link } from 'react-router-dom';
 
 import { Container } from '../theme/theme';
+import { RadioButton } from '../components/RadioButton';
 
 interface SelectCategoryProps {
 
 }
 
 export const SelectCategory: React.FC<SelectCategoryProps> = (props) => {
+
+	const [checkedValue, setCheckedValue] = React.useState('bluetoothEarphone');
+
+
 	return (
 		<IonPage className="selectCategory">
 			<Container>
@@ -21,16 +26,35 @@ export const SelectCategory: React.FC<SelectCategoryProps> = (props) => {
 					<div className="contentContainer">
 						<h2 className="title">카테고리를 선택해 주세요</h2>
 						<div className="categoryList">
-							<CategoryItem name="블루투스 이어폰" imgUrl='bluetoothEarphone' />
-							<CategoryItem name="휴대폰 케이스" imgUrl='phoneCase' />
-							<CategoryItem name="보조배터리" imgUrl='battery' />
-							<CategoryItem name="노트북" imgUrl='laptop' />
-							<CategoryItem name="애플워치 스트랩" imgUrl='appleWatchStrap' />
+							<form onChange={
+								(e) => {
+									//@ts-ignore
+									setCheckedValue(e.target.value);
+								}
+							}>
+								<fieldset>
+									<RadioButton name="contact" value="bluetoothEarphone" defaultChecked checkedValue={checkedValue}>
+										블루투스 이어폰
+									</RadioButton>
+									<RadioButton name="contact" value="phoneCase" checkedValue={checkedValue}>
+										휴대폰 케이스
+									</RadioButton>
+									<RadioButton name="contact" value="battery" checkedValue={checkedValue}>
+										보조배터리
+									</RadioButton>
+									<RadioButton name="contact" value="laptop" checkedValue={checkedValue}>
+										노트북
+									</RadioButton>
+									<RadioButton name="contact" value="appleWatchStrap" checkedValue={checkedValue}>
+										애플워치 스트랩
+									</RadioButton>
+								</fieldset>
+							</form>
 						</div>
 					</div>
 				</div>
 				<div className="footer">
-					<Link to='./loading'><Button text={'시작하기'} /></Link>
+					<Link to={{ pathname: '/loading', state: { category: checkedValue } }}><Button>시작하기</Button></Link>
 				</div>
 			</Container>
 		</IonPage>

@@ -12,11 +12,16 @@
             .title {}
 
             .categoryList {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
                 width: 100%;
+
+                fieldset {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    width: 100%;
+                }
             }
+
         }
 
 

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IonPage } from '@ionic/react';
 import { Container } from '../theme/theme';
 import styled from "@emotion/styled";
+import { useParams } from 'react-router';
+import { Product } from '../models/model';
+import { getProductsByCategory } from '../services/products.service';
 
 interface ProductsProps {
 }
@@ -34,19 +37,34 @@ const tmpTitle = "tmp_title_name";
 
 export const Products: React.FC<ProductsProps> = (props) => {
 
-    return (
-        <IonPage className="products">
-					<TitleContainer>
-						<CancelButtonBox>
-							&#60;
-						</CancelButtonBox>
-						<Title>
-							{tmpTitle}
-						</Title>
-					</TitleContainer>
-					<Container>
-            Products
-					</Container>
-        </IonPage>
-    );
+	const category = useParams<{ category: string }>()?.category;
+
+	const [products, setProducts] = useState<Product[]>([]);
+
+	useEffect(() => {
+		(async () => {
+			const response = await getProductsByCategory(category);
+			setProducts(response);
+			console.log(response);
+			
+		})();
+	}, [category]);
+
+
+
+	return (
+		<IonPage className="products">
+			<TitleContainer>
+				<CancelButtonBox>
+					&#60;
+				</CancelButtonBox>
+				<Title>
+					{tmpTitle}
+				</Title>
+			</TitleContainer>
+			<Container>
+				Products
+			</Container>
+		</IonPage>
+	);
 }
