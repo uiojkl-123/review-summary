@@ -13,18 +13,24 @@ height: 96px;
 margin: 0px auto;
 background: black;
 z-index: 100;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 24px;
 `;
 
 const NavbarContainer = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
-height: 100%;
+height: 28px;
+gap: 8px;
+align-items: flex-end;
 `;
 
 const LogoContainer = styled.div`
-width: 96px;
-height: 96px;
+width: auto ;
+height: 100%;
 cursor: pointer;
 `;
 
@@ -34,19 +40,16 @@ height: 100%;
 `;
 
 const TitleContainer = styled.div`
-font-size: 24px;
-font-weight: 700;
-color: white;
 margin: 0px;
 padding: 0px;
-margin-top: 32px;
-margin-left: 24px;
 `;
 
 const Title = styled.div`
-font-size: 2.3rem;
-height: 96px;
 margin: 0;
+font-size: 24px;
+line-height: 28px;
+font-weight: 600;
+color: white;
 `;
 
 export const Navbar: React.FC<NavbarProps> = (props) => {
@@ -54,12 +57,12 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
         <NavbarWrapper className="navbar">
             <NavbarContainer className="container">
                 <LogoContainer className="logo">
-                    <Logo src="assets/logo.png" alt="" />
+                    <Logo src="assets/logo_small_icon.png" alt="" />
                 </LogoContainer>
                 <TitleContainer className="title">
                     <Title>
-											RevuGenius
-										</Title>
+                        RevuGenius
+                    </Title>
                 </TitleContainer>
             </NavbarContainer>
         </NavbarWrapper>
