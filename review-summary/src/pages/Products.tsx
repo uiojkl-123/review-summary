@@ -11,6 +11,15 @@ import { getProductsByCategory } from "../services/products.service"
 interface ProductsProps {
 }
 
+const ProductContainer = styled(Container)`
+	padding: 0;
+	display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto;
+  height: calc(100vh - 40px);
+`
+
 const TitleContainer = styled.div`
 width: 100%;
 height: 40px;
@@ -59,11 +68,13 @@ export const Products: React.FC<ProductsProps> = (props) => {
           {category}
         </Title>
       </TitleContainer>
-      <Container style={{padding: "0"}}>
+      <ProductContainer>
         {products.map((product) => (
-          <ProductItem key={product.name} product={product} />
+					<>
+						<ProductItem key={product.name} product={product} />
+					</>
         ))}
-      </Container>
+      </ProductContainer>
     </IonPage>
   );
 };
