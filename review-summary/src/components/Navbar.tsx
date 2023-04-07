@@ -9,7 +9,7 @@ interface NavbarProps {
 const NavbarWrapper = styled.div`
 width: 100%;
 max-width: 480px;
-height: 96px;
+height: 64px;
 margin: 0px auto;
 background: black;
 z-index: 100;
