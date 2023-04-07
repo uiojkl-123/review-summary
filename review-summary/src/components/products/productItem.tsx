@@ -7,106 +7,106 @@ interface ProductItemProps {
 }
 
 const ItemWrapper = styled.div`
-  padding: 16px;
-  margin-bottom: 24px;
-  font-size: 1rem;
+padding: 16px;
+margin-bottom: 24px;
+font-size: 1rem;
 `;
 
 const Image = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 8px;
-  object-fit: cover;
+width: 150px;
+height: 150px;
+border-radius: 8px;
+object-fit: cover;
 `;
 
 const ProductInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 16px;
+display: flex;
+flex-direction: column;
+margin-left: 16px;
 `;
 
 const Name = styled.div`
-	height: 100%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 5px;
-	max-height: 4.2rem;
-  line-height: 1.4;
-  overflow: hidden;
-  white-space: pre-wrap;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+height: 100%;
+font-size: 1.5rem;
+font-weight: bold;
+margin-top: 5px;
+max-height: 4.2rem;
+line-height: 1.4;
+overflow: hidden;
+white-space: pre-wrap;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+text-overflow: ellipsis;
 `;
 
 const Price = styled.div`
-	height: 50%;
-	margin-top: 10%;
-	min-height: 30px;
-  font-size: 1.3rem;
-  font-weight: bold;
+height: 50%;
+margin-top: 10%;
+min-height: 30px;
+font-size: 1.3rem;
+font-weight: bold;
 `;
 
 const Rating = styled.div`
-  font-size: 1.15rem;
-  font-weight: normal;
-  color: white;
-	margin: 0;
+font-size: 1.15rem;
+font-weight: normal;
+color: white;
+margin: 0;
 `;
 
 const KeywordLabel = styled.div`
-  margin-bottom: 8px;
-	margin-top: 30px;
-	color: lightgray;
-	font-size: 1.2rem;
+margin-bottom: 8px;
+margin-top: 30px;
+color: lightgray;
+font-size: 1.2rem;
 `;
 
 const Keyword = styled.div`
-  display: inline-block;
-  background-color: white;
-  color: black;
-  border-radius: 4px;
-  padding: 4px 8px;
-  margin-right: 8px;
-	margin-bottom: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
+display: inline-block;
+background-color: white;
+color: black;
+border-radius: 4px;
+padding: 4px 8px;
+margin-right: 8px;
+margin-bottom: 8px;
+font-size: 1.1rem;
+font-weight: bold;
 `;
 
 const KeywordContainer = styled.div`
-	padding-left: 1rem;
+padding-left: 1rem;
 `;
 
 const ReviewKeywords = styled.div`
-  margin: 10px;
+margin: 10px;
 `;
 
 const ReviewSummary = styled.div`
-  font-size: 14px;
-  margin: 10px;
-  margin-bottom: 8px;
+font-size: 14px;
+margin: 10px;
+margin-bottom: 8px;
 `;
 
 const ReviewTextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  line-height: 1.6;
+display: flex;
+flex-direction: column;
+font-size: 16px;
+line-height: 1.6;
 `;
 
 const ReviewTitle = styled.span`
-  font-weight: normal;
-	font-size: 1.2rem;
-  color: lightgray;
-  white-space: nowrap;
+font-weight: normal;
+font-size: 1.2rem;
+color: lightgray;
+white-space: nowrap;
 `;
 
 const ReviewContent = styled.span`
-	font-size: 1.15rem;
-	font-weight: 600;
-  display: block;
-  padding-left: 1em;
+font-size: 1.15rem;
+font-weight: 600;
+display: block;
+padding-left: 1em;
 `;
 
 interface ReviewTextProps {
@@ -124,24 +124,24 @@ const ReviewText: React.FC<ReviewTextProps> = ({ title, content }) => {
 };
 
 const ExpandButton = styled.button`
-  background: none;
-  border: none;
-  outline: none;
-  font-weight: bold;
-  color: #0077cc;
-  cursor: pointer;
-  margin-left: auto;
-  display: flex;
-  align-items: baseline;
+background: none;
+border: none;
+outline: none;
+font-weight: bold;
+color: #0077cc;
+cursor: pointer;
+margin-left: auto;
+display: flex;
+align-items: baseline;
 `;
 
 const ExpandIcon = styled.div<{ expanded: boolean }>`
-  width: 12px;
-  height: 12px;
-  border-right: 2px solid #0077cc;
-  border-bottom: 2px solid #0077cc;
-  transform: rotate(${(props) => (props.expanded ? "45deg" : "-45deg")});
-  margin-left: 4px;
+width: 12px;
+height: 12px;
+border-right: 2px solid #0077cc;
+border-bottom: 2px solid #0077cc;
+transform: rotate(${(props) => (props.expanded ? "45deg" : "-45deg")});
+margin-left: 4px;
 `;
 
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
