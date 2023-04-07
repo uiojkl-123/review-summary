@@ -54,7 +54,7 @@ export const SelectCategory: React.FC<SelectCategoryProps> = (props) => {
 					</div>
 				</div>
 				<div className="footer">
-					<Link to={{ pathname: '/loading', state: { category: checkedValue } }}><Button>시작하기</Button></Link>
+					<Link to={{ pathname: '/loading', state: { category: checkedValue } }}><Button>리뷰 분석하기</Button></Link>
 				</div>
 			</Container>
 		</IonPage>

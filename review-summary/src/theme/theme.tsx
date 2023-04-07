@@ -7,6 +7,8 @@ height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+overflow: auto;
+gap: 160px;
 `;
 
 export const Section = styled.div`
