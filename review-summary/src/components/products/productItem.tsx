@@ -7,8 +7,11 @@ interface ProductItemProps {
 }
 
 const ItemWrapper = styled.div`
+font-size: 1rem;
+`;
+
+const ItemContainer = styled.div`
 padding: 16px;
-margin-bottom: 24px;
 font-size: 1rem;
 `;
 
@@ -27,7 +30,7 @@ margin-left: 16px;
 
 const Name = styled.div`
 height: 100%;
-font-size: 1.5rem;
+font-size: 1.4rem;
 font-weight: bold;
 margin-top: 5px;
 max-height: 4.2rem;
@@ -44,7 +47,7 @@ const Price = styled.div`
 height: 50%;
 margin-top: 10%;
 min-height: 30px;
-font-size: 1.3rem;
+font-size: 1.2rem;
 font-weight: bold;
 `;
 
@@ -57,7 +60,6 @@ margin: 0;
 
 const KeywordLabel = styled.div`
 margin-bottom: 8px;
-margin-top: 30px;
 color: lightgray;
 font-size: 1.2rem;
 `;
@@ -144,6 +146,12 @@ transform: rotate(${(props) => (props.expanded ? "45deg" : "-45deg")});
 margin-left: 4px;
 `;
 
+const Hr = styled.div`
+	height: 10px;
+	width: 100%;
+	background-color: #3d3d3d;
+`
+
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   const [expand, setExpand] = useState(false);
   const keywordList = product.keywords.split(', ').map((keyword, index) => (
@@ -151,39 +159,45 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   ));
 
   return (
-    <ItemWrapper>
-      <div style={{ display: 'flex' }}>
-        <Image src={product.imgUrl} alt={product.name} />
-        <ProductInfo>
-          <Name>{product.name}</Name>
-          <Price>{product.price}원</Price>
-          <Rating>평균 평점: <b>★{product.score}/5.0</b></Rating>
-        </ProductInfo>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <ReviewKeywords>
-            <KeywordLabel>리뷰 키워드</KeywordLabel>
-            <KeywordContainer>{keywordList}</KeywordContainer>
-          </ReviewKeywords>
-          <ReviewSummary>
-						<ReviewText title="리뷰 요약" content={product.summary} />
-          </ReviewSummary>
-          {expand && (
-            <>
-              <ReviewSummary>
-								<ReviewText title="긍정적인 평가" content={product.positive} />
-              </ReviewSummary>
-              <ReviewSummary>
-								<ReviewText title="부정적인 평가" content={product.negative} />
-              </ReviewSummary>
-            </>
-          )}
-        </div>
-        <ExpandButton onClick={() => setExpand(!expand)}>
-          <ExpandIcon expanded={expand} />
-        </ExpandButton>
-      </div>
-    </ItemWrapper>
+		<ItemWrapper>
+			<ItemContainer>
+				<div style={{ display: 'flex' }}>
+					<Image src={product.imgUrl} alt={product.name} />
+					<ProductInfo>
+						<Name>{product.name}</Name>
+						<Price>{product.price}원</Price>
+						<Rating>평균 평점: <b>★{product.score}/5.0</b></Rating>
+					</ProductInfo>
+				</div>
+			</ItemContainer>
+			<Hr />
+			<ItemContainer>
+				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+					<div>
+						<ReviewKeywords>
+							<KeywordLabel>리뷰 키워드</KeywordLabel>
+							<KeywordContainer>{keywordList}</KeywordContainer>
+						</ReviewKeywords>
+						<ReviewSummary>
+							<ReviewText title="리뷰 요약" content={product.summary} />
+						</ReviewSummary>
+						{expand && (
+							<>
+								<ReviewSummary>
+									<ReviewText title="긍정적인 평가" content={product.positive} />
+								</ReviewSummary>
+								<ReviewSummary>
+									<ReviewText title="부정적인 평가" content={product.negative} />
+								</ReviewSummary>
+							</>
+						)}
+					</div>
+					<ExpandButton onClick={() => setExpand(!expand)}>
+						<ExpandIcon expanded={expand} />
+					</ExpandButton>
+				</div>
+			</ItemContainer>
+			<Hr />
+		</ItemWrapper>
   );
 };
