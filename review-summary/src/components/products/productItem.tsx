@@ -147,9 +147,9 @@ margin-left: 4px;
 `;
 
 const Hr = styled.div`
-	height: 10px;
+	height: 1px;
 	width: 100%;
-	background-color: #3d3d3d;
+	background-color: #a8a8a8;
 `
 
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
@@ -160,6 +160,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 
   return (
 		<ItemWrapper>
+			<Hr />
 			<ItemContainer>
 				<div style={{ display: 'flex' }}>
 					<Image src={product.imgUrl} alt={product.name} />
@@ -175,19 +176,19 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 					<div>
 						<ReviewKeywords>
-							<KeywordLabel>리뷰 키워드</KeywordLabel>
+							<KeywordLabel>- 리뷰 키워드</KeywordLabel>
 							<KeywordContainer>{keywordList}</KeywordContainer>
 						</ReviewKeywords>
 						<ReviewSummary>
-							<ReviewText title="리뷰 요약" content={product.summary} />
+							<ReviewText title="- 리뷰 요약" content={product.summary} />
 						</ReviewSummary>
 						{expand && (
 							<>
 								<ReviewSummary>
-									<ReviewText title="긍정적인 평가" content={product.positive} />
+									<ReviewText title="- 긍정적인 평가" content={product.positive} />
 								</ReviewSummary>
 								<ReviewSummary>
-									<ReviewText title="부정적인 평가" content={product.negative} />
+									<ReviewText title="- 부정적인 평가" content={product.negative} />
 								</ReviewSummary>
 							</>
 						)}
