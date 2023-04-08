@@ -88,6 +88,7 @@ const ReviewSummary = styled.div`
 font-size: 14px;
 margin: 10px;
 margin-bottom: 8px;
+overflow: hidden;
 `;
 
 const ReviewTextWrapper = styled.div`
@@ -135,6 +136,7 @@ cursor: pointer;
 margin-left: auto;
 display: flex;
 align-items: baseline;
+transition-duration: 0.5s;
 `;
 
 const ExpandIcon = styled.div<{ expanded: boolean }>`
@@ -144,12 +146,14 @@ border-right: 2px solid #0077cc;
 border-bottom: 2px solid #0077cc;
 transform: rotate(${(props) => (props.expanded ? "45deg" : "-45deg")});
 margin-left: 4px;
+transition-duration: 0.5s;
 `;
 
 const Hr = styled.div`
-	height: 1px;
-	width: 100%;
-	background-color: #a8a8a8;
+height: 1px;
+width: 100%;
+background-color: #a8a8a8;
+transition-duration: 0.5s;
 `
 
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
