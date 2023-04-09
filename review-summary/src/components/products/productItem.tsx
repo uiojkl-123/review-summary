@@ -8,6 +8,7 @@ interface ProductItemProps {
 
 const ItemWrapper = styled.div`
 font-size: 1rem;
+width: 100%;
 `;
 
 const ItemContainer = styled.div`
@@ -23,45 +24,60 @@ object-fit: cover;
 `;
 
 const ProductInfo = styled.div`
-display: flex;
-flex-direction: column;
+height: 150px;
+display: grid;
+grid-template-rows: repeat(3, auto);
 margin-left: 16px;
+flex: 1;
 `;
 
 const Name = styled.div`
-height: 100%;
-font-size: 1.4rem;
-font-weight: bold;
+width: 100%;
+font-size: 1.1rem;
 margin-top: 5px;
-max-height: 4.2rem;
+max-height: 2rem;
 line-height: 1.4;
+white-space: nowrap;
 overflow: hidden;
-white-space: pre-wrap;
-display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
 text-overflow: ellipsis;
 `;
 
+const PriceScoreWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 4px;
+`;
+
 const Price = styled.div`
-height: 50%;
-margin-top: 10%;
 min-height: 30px;
 font-size: 1.2rem;
+margin-top: 10px;
 font-weight: bold;
 `;
 
 const Rating = styled.div`
 font-size: 1.15rem;
-font-weight: normal;
 color: white;
 margin: 0;
+margin-top: 35px;
+display: flex;
+flex-direction: column;
 `;
 
-const KeywordLabel = styled.div`
-margin-bottom: 8px;
+const ScoreLabel = styled.div`
+font-weight: normal;
+font-size: 0.9rem;
+margin-bottom: 10px;
 color: lightgray;
-font-size: 1.2rem;
+`;
+
+const ScoreValue = styled.span`
+font-weight: bold;
+&::before {
+	content: "★";
+	color: red;
+}
 `;
 
 const Keyword = styled.div`
@@ -77,11 +93,6 @@ font-weight: bold;
 `;
 
 const KeywordContainer = styled.div`
-padding-left: 1rem;
-`;
-
-const ReviewKeywords = styled.div`
-margin: 10px;
 `;
 
 const ReviewSummary = styled.div`
@@ -93,28 +104,30 @@ overflow: hidden;
 
 const ReviewTextWrapper = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 font-size: 16px;
 line-height: 1.6;
 `;
 
-const ReviewTitle = styled.span`
-font-weight: normal;
-font-size: 1.2rem;
+const ReviewTitle = styled.div`
+font-weight: 300;
+font-size: 1rem;
 color: lightgray;
 white-space: nowrap;
+min-width: 25%;
 `;
 
-const ReviewContent = styled.span`
+const ReviewContent = styled.div`
 font-size: 1.15rem;
 font-weight: 600;
 display: block;
-padding-left: 1em;
+padding-left: 0.5em;
+width: 100%;
 `;
 
 interface ReviewTextProps {
   title: string;
-  content: string;
+  content: any;
 }
 
 const ReviewText: React.FC<ReviewTextProps> = ({ title, content }) => {
@@ -170,8 +183,13 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 					<Image src={product.imgUrl} alt={product.name} />
 					<ProductInfo>
 						<Name>{product.name}</Name>
-						<Price>{product.price}원</Price>
-						<Rating>평균 평점: <b>★{product.score}/5.0</b></Rating>
+						<PriceScoreWrapper>
+							<Price>{product.price}원</Price>
+							<Rating>
+								<ScoreLabel>평균 평점:</ScoreLabel>
+								<ScoreValue>&nbsp;{product.score} / 5.0</ScoreValue>
+							</Rating>
+						</PriceScoreWrapper>
 					</ProductInfo>
 				</div>
 			</ItemContainer>
@@ -179,20 +197,19 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 			<ItemContainer>
 				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 					<div>
-						<ReviewKeywords>
-							<KeywordLabel>- 리뷰 키워드</KeywordLabel>
-							<KeywordContainer>{keywordList}</KeywordContainer>
-						</ReviewKeywords>
 						<ReviewSummary>
-							<ReviewText title="- 리뷰 요약" content={product.summary} />
+							<ReviewText title="리뷰 키워드" content={<KeywordContainer>{keywordList}</KeywordContainer>} />
+						</ReviewSummary>
+						<ReviewSummary>
+							<ReviewText title="리뷰 요약" content={product.summary} />
 						</ReviewSummary>
 						{expand && (
 							<>
 								<ReviewSummary>
-									<ReviewText title="- 긍정적인 평가" content={product.positive} />
+									<ReviewText title="긍정적인 평가" content={product.positive} />
 								</ReviewSummary>
 								<ReviewSummary>
-									<ReviewText title="- 부정적인 평가" content={product.negative} />
+									<ReviewText title="부정적인 평가" content={product.negative} />
 								</ReviewSummary>
 							</>
 						)}
