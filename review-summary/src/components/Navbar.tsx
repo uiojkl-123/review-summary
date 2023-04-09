@@ -32,14 +32,13 @@ align-items: flex-end;
 `;
 
 const LogoContainer = styled.div`
-width: auto ;
 height: 100%;
 cursor: pointer;
 `;
 
 const Logo = styled.img`
-width: 100%;
 height: 100%;
+width: auto;
 `;
 
 const TitleContainer = styled.div`
