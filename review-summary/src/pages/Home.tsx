@@ -19,8 +19,8 @@ export const Home: React.FC = () => {
 
         <Section>
           <div className="mainTopContainer">
-            <div className="mainImageContainer">
-              <img src="mainImage" alt="" />
+            <div className="mainImageContainer ">
+              <img src="assets/main_phone.png" alt="" />
             </div>
 
             <div className="tag">
@@ -54,7 +54,7 @@ export const Home: React.FC = () => {
           </h2>
 
           <div className="mainImageContainer">
-            <img src="mainImage" alt="" />
+            <img src="assets/main_imgbox_1.png" alt="" />
           </div>
         </Section>
 
@@ -64,7 +64,7 @@ export const Home: React.FC = () => {
           </h2>
 
           <div className="mainImageContainer">
-            <img src="mainImage" alt="" />
+            <img src="assets/main_imgbox_2.png" alt="" />
           </div>
         </Section>
 

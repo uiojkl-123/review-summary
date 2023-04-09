@@ -6,13 +6,12 @@ interface RadioButtonProps {
     name: string;
     defaultChecked?: boolean;
     disabled?: boolean;
-    imgUrl?: string;
     checkedValue?: string;
 }
 
 export const RadioButton: React.FC<RadioButtonProps> = (props) => {
 
-    const { children, value, name, defaultChecked, disabled, imgUrl, checkedValue } = props;
+    const { children, value, name, defaultChecked, disabled, checkedValue } = props;
 
     const [radioState, setRadioState] = React.useState<boolean>(false);
 
@@ -36,7 +35,7 @@ export const RadioButton: React.FC<RadioButtonProps> = (props) => {
             <div className="container">
                 <div className="imageAndNameContainer">
                     <div className="categoryImage">
-                        <img src={imgUrl} alt="" />
+                        <img src={'assets/asset_icon_'+ value + '.png'} alt="" />
                     </div>
                     <div className="categoryName"> {children}</div>
                 </div>
