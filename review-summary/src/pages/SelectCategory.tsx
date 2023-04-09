@@ -20,9 +20,10 @@ export const SelectCategory: React.FC<SelectCategoryProps> = (props) => {
 
 	return (
 		<IonPage className="selectCategory">
+			<BackBar />
 			<Container>
 				<div className="wrapper">
-					<BackBar />
+
 					<div className="contentContainer">
 						<h2 className="title">카테고리를 선택해 주세요</h2>
 						<div className="categoryList">

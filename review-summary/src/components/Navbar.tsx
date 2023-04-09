@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import './Navbar.scss';
 import styled from "@emotion/styled";
+import { BackBar } from './BackBar';
 
 interface NavbarProps {
 
@@ -70,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = (props) => {
 				</LogoContainer>
 				<TitleContainer className="title" onClick={handleLogpClick}>
 					<Title>
-							RevuGenius
+						RevuGenius
 					</Title>
 				</TitleContainer>
 			</NavbarContainer>

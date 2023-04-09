@@ -35,10 +35,14 @@ export const RadioButton: React.FC<RadioButtonProps> = (props) => {
             <div className="container">
                 <div className="imageAndNameContainer">
                     <div className="categoryImage">
-                        <img src={'assets/asset_icon_'+ value + '.png'} alt="" />
+                        <img src={'assets/asset_icon_' + value + '.png'} alt="" />
                     </div>
                     <div className="categoryName"> {children}</div>
                 </div>
+
+                <div className="checkedIcon">
+                        <img src='assets/asset_icon_select.svg' alt='' />
+                    </div>
             </div>
 
         </label>

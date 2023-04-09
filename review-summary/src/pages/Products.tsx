@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import styled from "@emotion/styled";
 import { IonPage } from '@ionic/react';
@@ -10,6 +10,7 @@ import { Product } from '../models/model';
 import { ProductItem } from '../components/products/productItem';
 import { getProductsByCategory } from "../services/products.service"
 import { SortOptions } from '../components/products/sort';
+import { BackBar } from '../components/BackBar';
 
 interface ProductsProps {
 }
@@ -24,13 +25,6 @@ overflow-y: auto;
 height: calc(100vh - 40px);
 `
 
-const TitleContainer = styled.div`
-width: 100%;
-height: 60px;
-background-color: #060606;
-display: flex;
-align-items: center;
-`;
 
 const SortContainer = styled.div`
 width: 100%;
@@ -41,25 +35,6 @@ align-items: center;
 justify-content: flex-end;
 `;
 
-const CancelButtonBox = styled.div`
-height: 40px;
-width: 40px;
-display: flex;
-align-items: center;
-margin-left: 15px;
-cursor: pointer;
-transition-duration: 0.5s;
-background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5l-7 7 7 7'/%3E%3C/svg%3E") no-repeat center center;
-`;
-
-
-const Title = styled.div`
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-left: -40px;
-`;
 
 const SortSelect = styled.select`
 margin-right: 15px;
@@ -96,7 +71,6 @@ export const Products: React.FC<ProductsProps> = (props) => {
 	const [products, setProducts] = useState<Product[]>([]);
 	const param = useParams<any>()
 	const category = param.category
-	const history = useHistory();
 
 	useEffect(() => {
 		(async () => {
@@ -105,10 +79,7 @@ export const Products: React.FC<ProductsProps> = (props) => {
 			console.log(response);
 		})();
 	}, [category]);
-	
-	const handleCancelClick = () => {
-		history.push('/selectCategory');
-	};
+
 
 	const sortProducts = (option: SortOptions) => {
 		let sortedProducts = [...products];
@@ -131,14 +102,18 @@ export const Products: React.FC<ProductsProps> = (props) => {
 		setProducts(sortedProducts);
 	};
 
-  return (
-    <IonPage className="products">
-      <TitleContainer>
-        <CancelButtonBox onClick={handleCancelClick}/>
-        <Title>
-          {category}
-        </Title>
-      </TitleContainer>
+
+	const categoryToKorean = (category: string) => {
+		return category === 'bluetoothEarphone' ? '블루투스 이어폰' :
+			category === 'phoneCase' ? '휴대폰 케이스' :
+				category === 'battery' ? '보조배터리' :
+					category === 'laptop' ? '노트북' :
+						'애플워치 스트랩'
+	}
+
+	return (
+		<IonPage className="products">
+			<BackBar title={categoryToKorean(category)} inProduct />
 			<SortContainer>
 				<SortSelect
 					onChange={(e) => sortProducts(e.target.value as SortOptions)}
@@ -149,19 +124,19 @@ export const Products: React.FC<ProductsProps> = (props) => {
 						</option>
 					))}
 				</SortSelect>
-      </SortContainer>
-      <ProductContainer>
-			{products.length > 0 ? (
-        products.map((product) => (
-					<>
-						<ProductItem key={product.name} product={product} />
-					</>
-        ))) : 
-				(
-				<EmptyMessage>항목이 없습니다.</EmptyMessage>
-				)
-			}
-      </ProductContainer>
-    </IonPage>
-  );
+			</SortContainer>
+			<ProductContainer>
+				{products.length > 0 ? (
+					products.map((product) => (
+						<>
+							<ProductItem key={product.name} product={product} />
+						</>
+					))) :
+					(
+						<EmptyMessage>항목이 없습니다.</EmptyMessage>
+					)
+				}
+			</ProductContainer>
+		</IonPage>
+	);
 };

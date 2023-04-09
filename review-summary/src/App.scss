@@ -156,6 +156,7 @@ ion-app {
 // }
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable.css");
+
 * {
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
@@ -170,6 +171,11 @@ h2 {
 
 .alignCenter {
 	text-align: center;
+}
+
+.light {
+	font-weight: 500;
+	color: white;
 }
 
 .description {
@@ -235,6 +241,13 @@ strong {
 				font-weight: 700;
 				color: white;
 			}
+
+		}
+
+
+		.checkedIcon {
+			opacity: 0;
+			transition: .1s;
 		}
 
 	}
@@ -247,19 +260,19 @@ strong {
 		background: transparent;
 		outline: #2699FB 2px solid;
 
-		.container::after {
-			margin: 0px 8px;
-			content: "";
-			width: 24px;
-			height: 24px;
-			border-radius: 50%;
-			background: transparent;
-			border: 2px solid #2699FB;
+		.checkedIcon {
 			opacity: 1;
 		}
 	}
 }
 
-.mainTopContainer .mainImageContainer{
+.mainTopContainer .mainImageContainer {
 	max-width: 144px;
+}
+
+
+.footer {
+	position: relative;
+	bottom: 16px;
+	width: 100%;
 }

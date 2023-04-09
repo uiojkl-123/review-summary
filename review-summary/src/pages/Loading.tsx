@@ -17,13 +17,13 @@ export const Loading: React.FC<LoadingProps> = (props) => {
 
 	const category = state?.category;
 
-	console.log(category);	
+	console.log(category);
 
 	return (
 		<IonPage className="loading">
+			<BackBar />
 			<Container>
 				<div className="wrapper">
-					<BackBar />
 					<div className="contentContainer">
 						<h2 className="title">정보를 불러오고 있어요!<br />잠시만 기다려주세요.</h2>
 						<div className="loadingImage">
@@ -32,7 +32,7 @@ export const Loading: React.FC<LoadingProps> = (props) => {
 					</div>
 				</div>
 				<div className="footer">
-					<Link to={{ pathname: '/products/' + category }}> <Button />상품보기</Link>
+					<Link to={{ pathname: '/products/' + category }}> <Button>상품보기</Button></Link>
 				</div>
 			</Container>
 		</IonPage >
