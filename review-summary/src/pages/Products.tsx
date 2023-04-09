@@ -66,10 +66,11 @@ height: calc(100vh - 100px);
 width: 100%;
 `;
 
-
-
 export const Products: React.FC<ProductsProps> = (props) => {
 	const [products, setProducts] = useState<Product[]>([]);
+	const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
+	const [sortOption, setSortOption] = useState<string>(SortOptions.Default);
+
 	const param = useParams<any>()
 	const category = param.category
 
@@ -77,32 +78,33 @@ export const Products: React.FC<ProductsProps> = (props) => {
 		(async () => {
 			const response = await getProductsByCategory(category);
 			setProducts(response);
-			console.log(response);
 		})();
 	}, [category]);
 
+	function parsePrice(priceStr: string) {
+		return parseInt(priceStr.replace(',', ''), 10);
+	}
+	
+	function parseScore(scoreStr: string) {
+		return parseFloat(scoreStr);
+	}
 
-	const sortProducts = (option: SortOptions) => {
-		let sortedProducts = [...products];
-		switch (option) {
-			case SortOptions.PriceAsc:
-				sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-				break;
-			case SortOptions.PriceDesc:
-				sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-				break;
-			case SortOptions.ScoreAsc:
-				sortedProducts.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
-				break;
-			case SortOptions.ScoreDesc:
-				sortedProducts.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
-				break;
-			default:
-				break;
+	useEffect(() => {
+		if (sortOption === "Default") {
+			setSortedProducts(products);
+		} else {
+			let newSortedProducts = [...products];
+			if (sortOption === "PriceAsc")
+				newSortedProducts.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+			else if (sortOption === "PriceDesc")
+				newSortedProducts.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+			else if (sortOption === "ScoreAsc")
+				newSortedProducts.sort((a, b) => parseScore(a.score) - parseScore(b.score));
+			else if (sortOption === "ScoreDesc")
+				newSortedProducts.sort((a, b) => parseScore(b.score) - parseScore(a.score));
+			setSortedProducts(newSortedProducts);
 		}
-		setProducts(sortedProducts);
-	};
-
+	}, [sortOption, products]);
 
 	const categoryToKorean = (category: string) => {
 		return category === 'bluetoothEarphone' ? '블루투스 이어폰' :
@@ -117,7 +119,7 @@ export const Products: React.FC<ProductsProps> = (props) => {
 			<BackBar title={categoryToKorean(category)} inProduct />
 			<SortContainer>
 				<SortSelect
-					onChange={(e) => sortProducts(e.target.value as SortOptions)}
+					onChange={(e) => setSortOption(e.target.value as SortOptions)}
 				>
 					{Object.entries(SortOptions).map(([key, value]) => (
 						<option key={key} value={key}>
@@ -127,11 +129,9 @@ export const Products: React.FC<ProductsProps> = (props) => {
 				</SortSelect>
 			</SortContainer>
 			<ProductContainer>
-				{products.length > 0 ? (
-					products.map((product) => (
-						<>
-							<ProductItem key={product.name} product={product} />
-						</>
+				{sortedProducts.length > 0 ? (
+					sortedProducts.map((sortedProduct) => (
+						<ProductItem key={sortedProduct.name} product={sortedProduct} />
 					))) :
 					(
 						<EmptyMessage>항목이 없습니다.</EmptyMessage>

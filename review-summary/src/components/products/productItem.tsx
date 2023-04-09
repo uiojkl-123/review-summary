@@ -86,6 +86,7 @@ min-height: 30px;
 font-size: 1.2rem;
 margin-top: 10px;
 font-weight: bold;
+color: #ff4343;
 `;
 
 const Rating = styled.div`
@@ -256,6 +257,9 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 								</ReviewSummary>
 								<ReviewSummary>
 									<ReviewText title="부정적인 평가" content={product.negative} />
+								</ReviewSummary>
+								<ReviewSummary>
+									<ReviewText title="최종 분석" content={product.analysis} />
 								</ReviewSummary>
 							</>
 						)}

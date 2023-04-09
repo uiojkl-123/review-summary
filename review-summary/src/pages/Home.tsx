@@ -35,21 +35,18 @@ export const Home: React.FC = () => {
               <img src="assets/main_phone.png" alt="" />
             </div>
             <div className="tag">
-              챗 GPT 땡땡땡, 앱 이름
+							챗gpt 기반 리뷰지니어스
             </div>
             <div className="mainTitleContainer">
               <h2 className="alignCenter" >
                 <strong>AI 기반 리뷰 분석</strong>으로<br />
                 빠른 쇼핑을 도와드려요
               </h2>
-              <div className="description">
-                앱에 대한 설명을 간략하게 한줄로 추가설명합니다.
-              </div>
             </div>
           </div>
           <Link to="selectCategory">
             <Button widthType='small'>
-              앱 이름 시작하기
+						리뷰 지니어스 시작하기
             </Button>
           </Link>
         </Section>
@@ -80,7 +77,7 @@ export const Home: React.FC = () => {
 
           <Link to="selectCategory">
             <Button widthType='small'>
-              앱 이름 시작하기
+							리뷰 지니어스 시작하기
             </Button>
           </Link>
         </Section>
