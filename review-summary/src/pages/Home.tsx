@@ -10,8 +10,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 overflow-y: auto;
+overflow-x: hidden;
 padding-bottom: 0px;
-
 `;
 
 export const Home: React.FC = () => {

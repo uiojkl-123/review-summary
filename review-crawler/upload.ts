@@ -1,18 +1,4 @@
-import { doc, setDoc } from "firebase/firestore"
-import { db } from "./firebase"
 
-export const upload = async (category: string, productName: string, productLink: string) => {
-    try {
-        await setDoc(doc(db, "category", category, "products", productName), {
-            productName,
-            productLink
-        })
-    } catch (e) {
-        console.log(e)
-    }
-
-
-}
 
 interface Product {
     imgUrl: string;
@@ -26,7 +12,7 @@ interface Product {
     negative: string;
     analysis: string;
 
-    url?: string;
+    url: string;
 }
 
 
@@ -177,29 +163,6 @@ const appleWatchStrap: Product[] = [{
 }
 ]
 
-const wow = {
-    bluetoothEarphone: `
-    // 삼성전자 갤럭시 버즈2 프로 SM-R510,https://cr.shopping.naver.com/adcr.nhn?x=h%2BMxksSPZggyhokFet3V%2Bv%2F%2F%2Fw%3D%3Ds2zJEduYEuEB1T%2BpNAxkIiXCQBy%2Bon9E88NSK8UBXmgNYR8p2%2BCB2z%2Bg3UYEK0lVxysh%2FmR1uIKqS%2FBqKVTLbYNM4dfaGkGP9gqr6mKsHT2oTUjNyNiUjjL9L%2F3HaLNowHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCfgpei%2FKaF%2FEVSUs9sQ7N91%2B9Ve451caZaurnPu%2FKRrzunMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHBf3wXxHtpqXVA1TWM7DJMBrsogkw0vEBVZiFX9aTl0B%2BYnTpLBgb2Sn8vnu71ut%2Bqv8zCgXrXTwdX%2BAYrLcHcLdSWh9EcRAN4G8kvAaz7ShS13L%2FQM%2BCZuq6rpKOfI%2BgwhTAPOH0yYSvlzphUJRBIprZkHn5ixF%2FBJdHPjkthssy0OZyLikGtYvyCsQlTYwrC%2FNBPpV9deVRz%2FlGZfjzztI1zxPoTTr%2BqYVQvwK%2FrkJv4YGjJCSIW1IvBxXT1wG94QfkytJ2KfrSwdVHMaghygDfkLIyuldBS3f8m8e6nLmkbc3JLYpcanHDEQPEU2fIQ%3D%3D&nvMid=34108100618&catId=50002334
-Apple 에어팟 프로 2세대 (MQD83KH/A),https://cr.shopping.naver.com/adcr.nhn?x=cBUZNa1kb4ibPhw5nbbD%2Fv%2F%2F%2Fw%3D%3Dss7MMN%2BkSb2%2FWawGlqgyxYjQJkXzjm4jW9Vi%2FDFo71%2BpMXDVQIfR7povrDDUwPe8PvjiZVMCQ2dr27U6QLNO1EM1GrnjQ3l8eJAvL6ChHcgWtut8hRANgPyL9fxEqSvL62h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlFTCdSwC1WIMbPihx1s5D%2Fx444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgV2wk7dcZE2QiawVTwCBene5iAntKmqDGw%2FScr%2BO%2Fn%2F0Ydttpd%2FeGdUo8GFKs7ozEFyzZSQ3cVHgWzaWokt4AwYdqZdrcgc11lkWQyKAuMz8BHNOS04mwbf2sLSii8Aqp92ZUHWH3Sy7z5wHyef%2BehNcHEeeZk1uNf3BCjix1MAFVlaH2AbLvpBHaYxODaW5KauxrKWTz401FOLgVq5UrKDXdRBtM8TsP5%2B8B%2BzM%2B3ZFHT9vTxuIXVwoPszuw84fDBmwLkdyq3WnSS%2BjomAeFvGlXaOIRCeNLDr7CGJOaKh5LZpwR2bqZ0umqjBbn%2ByEDg%3D%3D&nvMid=34563199618&catId=50002334
-Apple 에어팟 프로 2세대 (MQD83KH/A),https://cr.shopping.naver.com/adcr.nhn?x=19AkzCTIySh%2BPs%2FS%2BPzHx%2F%2F%2F%2Fw%3D%3Ds%2FhICdcs3BCwC8pch7%2Bnxpg9jQc%2BDWLV%2F0xkKKXinvMR5HzST%2Bvrf7AAuvSWiBZ7zQea07KFk51eDmUWSd2C7sApqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbt7aJIeLYUGpVwhiluHuYDQz16bg6UHLjACcTW4mkggUqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVJA0AHtHNApBmvw%2Bcrq%2BhgHiuhFf%2BMwq%2B6KJnC5odiYLArNDSbHU%2FS0YkYGoebcIPCz1Gy0DVrM1ATlv6PV7gNKD%2FDwTprq5Z9qsRwIB8qsiSrGiurM74EaOV%2BVwtR51snkraozn36IU53N30VLo48u6Zz0cGOU8MDxBzAjhXvGXTgUvbXcZOxJOKT%2FvexsWBnLUqigmaar8OPJriyOMxwGUVuVowT8H43LXQ8QEyclsXzW0QKRuzcD6WMcLhSquo9uwP8vVnM%2BxFO9j8%2BhBBj3eM4oKvOsYZkEKT%2FVccOP0i8PREhL5jWWo0nOhXh2YQA%3D%3D&nvMid=34925507621&catId=50002334
-// 삼성전자 갤럭시 버즈2 SM-R177,https://cr.shopping.naver.com/adcr.nhn?x=Hj0GQKla1iKwET8VzAjnyP%2F%2F%2Fw%3D%3Ds%2BSms7kmXKhZCj%2FnXPrDcZySswDWL3caVWd8iOo%2FEAOJSS6a08ssJNiKcweJeFss5FdxJ%2Bd%2F0xUnZ5m6ZMxPthQpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbsr3B6brrzSkBu0EqJCBsGa1YyiIAN%2BYdInuQUbybX5FKg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVPHFwxCtWIIrNeUo7JDVixJdvsRsX1vfWdNspgkRY7ItArNDSbHU%2FS0YkYGoebcIPOWqmjH2ywlZi%2Fplj1uVC%2FDYGVlwOV0T2t%2F1h8HtM3%2FUSrGiurM74EaOV%2BVwtR51smKo4vocv9G8BUaw2xLy62aOnHabfhR2mgK8MMbydPTVy0OZyLikGtYvyCsQlTYwrAQV9IhG3W9K5isduvB8aiBYm9JbPNm3Bi1of7Z3C6wVQh2atsvoh%2FQ2HnQRxYfioLxtNBImYRApa0adFAeAbmCYXV1lmgFUrkG46h9qGDDwJXSFlseqJb%2BD9y1uadTE7g%3D%3D&nvMid=28555335556&catId=50002334
-Apple 에어팟 3세대 맥세이프 충전 케이스 모델 (MME73KH/A),https://cr.shopping.naver.com/adcr.nhn?x=lPYfJclP5tz7HPrqeFt5E%2F%2F%2F%2Fw%3D%3DsctRDBCc8XYdsYbXIuoQdfMfajAANEos08uxgEOoqdo%2BY9pgEhfoQYrQNyTTOyqehyVRcq3eKahqNdLV76qHDqwpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbtyl0%2BOkS9U2DtFOKPwQB69PWtGiteeiuxCaxfVu%2Fcbuqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVE1S%2B1xT1RByiqfq7sXxztfzs6SpmOcWw%2FEsTzQOcF1WArNDSbHU%2FS0YkYGoebcIPA4%2F11Bf%2Fsrphoz5%2BzhKhfQ3OSF5IXOFcGNSvYs0ljsxSrGiurM74EaOV%2BVwtR51smUZA3XxIO1aEhOufSQJgx%2FqUu09VnfE%2BPUn%2FPoHzOy6y8RGMPlr41BYOPsq6cA35pX4AN38rzkpe0bQjROBpxL1o0M6fRXPaU09SCnS6Zs7HcAbbdHFaCLpMPYR%2Flbz05wGLitbpxwRlgcGIqjL8BjCbGjSaUIlbWsc5iOExL2f8tCn4W6BMAjnm6mplduDLNkCnLZSenfmQEo7f3ZB5L4Nt6ILgHaPWkLkHW077J4W&nvMid=29413009627&catId=50002334
-QCY T13APP,https://cr.shopping.naver.com/adcr.nhn?x=pullrGx2fiKBpPPMQI%2BTpf%2F%2F%2Fw%3D%3DspchnAEZIUgdtsZ%2FABXqiWFeWcujiaitgdRyJcnqGrrb1pv4Uz4%2BD7pX3ZIOhSdJS9WwLTg214V9VQpbCMc7TqApqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbsY2cvy9O%2FqBAjzsCQF%2BLkn9ts8nroYwkmaI9O%2F7mxW1qg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVBrgBB%2BRjOuRlsnd%2FTqHlEwxeo%2F5yOUKXdjaPn2UrG7nArNDSbHU%2FS0YkYGoebcIPKGbCgF%2FXS%2FWnyQqvwnaphCRiFuVUKB%2BKz1JpKHSiKfhSrGiurM74EaOV%2BVwtR51sts30Tu2tjil8bRvGueb8MAB8S3HaVSbU6Bx0U7Eiv%2BnPsGEjeUoBlLsW8i3et2ojoP3%2BIQJh7%2BNx7cXPWD3AH9%2B20UPz5pE6meqerLXJCYce8k8olHzEuSTYhqtlzHZPGU4uCjkToMEWS16aBzeGtk%3D&nvMid=28473903554&catId=50002334
-QCY T13 ANC,https://cr.shopping.naver.com/adcr.nhn?x=3qRvhi33uBReOD5lOo7Tkf%2F%2F%2Fw%3D%3DsN1OvMY9jprE%2Fz3rYU9GxD8L9Ll0VyRvedjndImJVadE%2FGcKwdxDZ7bX2KPRv9abtyKk8XiFCS1%2FtBE4Kj9NzMwpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbuMpsrzIiQM0e0kJDyXDTGwoORS9XmYIGvs5MxOehw8UKg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVB8hhfi3H6m9VJFtyx6TDWS4ejJQ7cJ4nY%2FuX%2FjnLTuVArNDSbHU%2FS0YkYGoebcIPEorZjkkAUdNiMuhHwXCzlZNtMloOEuDdpZ9YwqZh3HRSrGiurM74EaOV%2BVwtR51snmSPQ9u6VllJozP0zBIV8taIkCeyXNd17zuWwrL4NhZhF1fGTWd1tYkdX4Qd4G8HYDzHUU4dq6Zw8WAUheXi2B5Io6FPgLaz7p5TcIaRl2d5wmZf66fqc9NSSoKnyahLJyBkNiYD2cS5RJHkpejHxI%3D&nvMid=38222443623&catId=50002334
-Apple 에어팟 2세대 유선충전 모델 (MV7N2KH/A),https://cr.shopping.naver.com/adcr.nhn?x=gLp5vdtSWnc9uY3EgPlpWv%2F%2F%2Fw%3D%3DsBx5NCWxyzB2C9idO7x5T01RbfIoG1LxOLQtU%2FsqROjT011mdjCmyM4LFTD19kMeV8fYKot%2F3D%2BtO%2FRcyuFcZcdM4dfaGkGP9gqr6mKsHT2oTUjNyNiUjjL9L%2F3HaLNowHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCdwOg5dL0PjquXW6AWXgTKNlre9HqdzdIwmuGubgWdSIenMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHBf3wXxHtpqXVA1TWM7DJMBueqmz%2F751CAfQxLwr0i5g%2BYnTpLBgb2Sn8vnu71ut%2Bg09o71ScNZgAjbapovXx%2BRg2%2FMEXoTqm%2BS%2FTSCf1R8mS13L%2FQM%2BCZuq6rpKOfI%2BgzOWnuYj6PPsRmule3OmeRGPpICZ4JV3lZWqEf8A9k%2BB6INJn%2B6vWuHbbdQAvF3mFhsgYW0dH7C%2FbkI6s2nkHcbnFJbNL1ohmM8rma7uUhFBwmkKyL4v%2FZSvU8Oj0sWF8181tECkbs3A%2BljHC4UqrqNoZKXGNAM0DBvpPxuzDJwNY39eOtCWBSutjaGQp6UOeYvD0RIS%2BY1lqNJzoV4dmEA%3D&nvMid=18622086330&catId=50002334
-삼성전자 갤럭시 버즈 라이브 SM-R180,https://cr.shopping.naver.com/adcr.nhn?x=QK3EKAilJAvpWLJKEVUUY%2F%2F%2F%2Fw%3D%3DsaQQu%2FjE5gzZ0T0PyUIJ9e7FzOLrsmg0h%2FjdMUWPaKzfyn1MTcfJiFt9r2B0RI3ZWCNpF1uq0zOeHZWhqHHmYIwpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbu0%2B%2FKGuZewGxS96fErxsHXnY%2FDt4Byayn0jTQxTdgeP6g%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVE1S%2B1xT1RByiqfq7sXxzte%2FXVkqbetr59pCv2%2BXfJo8ArNDSbHU%2FS0YkYGoebcIPMp%2FhYmhtjMq2KZ%2Bj5HE0VVNgYyyKQopA%2BxvrTI4T102SrGiurM74EaOV%2BVwtR51sgGJa5IyW9cQ32EMIsfsPFEw8ZPG59gTFBMSRMrljAke%2BuawfN0zKDZ9tvWvKMcNAxss3gyRjf0v7QlvWLg0aiJyguKbvBZAgjVOPYVrmoZxZGiqzfMkYHifkUP%2B8HSXTHQuQPHdfxBpbbO8x0VVjYaeGdj9lkfASi8OM3DZdy6xaSaZTsUu2pirA9az%2FK%2B%2Bs8fWVZ6vRKi%2F5buFehsUiNw%3D&nvMid=23702664490&catId=50002334
-// 애프터샥 샥즈 오픈런 프로 S810,https://cr.shopping.naver.com/adcr.nhn?x=mJ51eA8sOLntlOwzxQKuJv%2F%2F%2Fw%3D%3DsmAsQmRopxjOzV%2B0P3Nff30GuIWOPpegpVihLUTveH0YGq7oSyToEGvF0OglObZ54fzPrxQBtBWYlppBn4Rj0HgpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbuUW5H2zHGSX6XHXLpqjdTI30iqF0t%2BvVKJwmE1BqrYh6g%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVBrgBB%2BRjOuRlsnd%2FTqHlExpKHogplKAKHOpL4CTvJ4MArNDSbHU%2FS0YkYGoebcIPPvmW%2Fv4wjLHPnUK3o0kyctdq5yyRV6nHBJ7%2B7BkSc5XSrGiurM74EaOV%2BVwtR51souopT4bF7vypQ3p3YxhXi276cJCuWhxBOxpOn7zArQDuwP9L0j7YvHB2OKNn2rLcDcWcDTEAna4svWUDg1GTQqvjZtZfeQ%2Bsf5gVe0BghZDeJ26R9TtMPll%2BLXuLl0Ul0C1Gedfk3%2FKy8heMaDc%2BUna5bSY0T1s0lMURSOlWdDHpfCjQTTDsASjlKIoyTvnQA%3D%3D&nvMid=31349749626&catId=50002334
-Apple 에어팟 3세대 라이트닝 충전 케이스 모델 (MPNY3KH/A),https://cr.shopping.naver.com/adcr.nhn?x=eLoPqTI%2Be3Lm62k6HS6Ocv%2F%2F%2Fw%3D%3DsZLITz%2Fj6EDl%2BEaLl444iDe%2BgxJG8H7cFSeBt3UdHEdoZNp%2FWK%2FBXt3EKiSS5o8NMTJLxMmFGkYSQtFNvi5CcRwpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbuld5C%2BRhExmqEDWDdOnkZXDok9CePzHNAETwWbggE6Lag%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVAMVUXe34gkbFSfhLtfIYa5Enl7ZiHp8pMS3e36bpmwjArNDSbHU%2FS0YkYGoebcIPAX%2Bypp4lHxFfFADGWnMFvI%2Besjx8qv6hxeWuspj7%2BQ4SrGiurM74EaOV%2BVwtR51smUZA3XxIO1aEhOufSQJgx%2FA8ekU4xHwYJSfM%2BW5Yct6y8RGMPlr41BYOPsq6cA35sO3UvHWVHdNy0DceImUCdL1o0M6fRXPaU09SCnS6Zs7jPEZFxffltXzogzM1PAaEEFSWYX5y4qhiw8FHNIHkuXCbGjSaUIlbWsc5iOExL2f51xJ9cR0bmWSDtj%2BfWoexEKHMoAs%2BroHUhGdf4z%2BbaAH%2Fu6qS%2B6u3uJCp%2FO6oMc9&nvMid=35326957618&catId=50002334
-// 삼성전자 JBL TUNE230NC,https://cr.shopping.naver.com/adcr.nhn?x=Sk3vckEkjj2LYaM0Xog9F%2F%2F%2F%2Fw%3D%3DsgPPENb6Mn%2BeiyRw10ZrGcebL0Gkc%2Fw1asvNe0hbrDWxhYiJbWtk8v4aDXqUrBCbg1q%2FoGBDdbO6jKHRdhxmw%2FgpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbvaKcPCjOWD%2FFGdGRSypJhcDok9CePzHNAETwWbggE6Lag%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVBrgBB%2BRjOuRlsnd%2FTqHlEwHPPKdII%2FCyxH70RQXpiX8ArNDSbHU%2FS0YkYGoebcIPInM1mDopW%2FiiSZFr0Zi%2Fb23RfzfBGhTwjyOgNsfMaGUSrGiurM74EaOV%2BVwtR51sofLhe5H3eVulLCWBYFjd2XLQ5nIuKQa1i%2FIKxCVNjCs%2BX9E2t0U50bBl6feZWMK41ib0ls82bcGLWh%2FtncLrBV7N0%2BKs0gSFTdhwMrBXaDkRTp8hAJngnHT%2FpudWeeyVAN%2BQsjK6V0FLd%2Fybx7qcuaRtzcktilxqccMRA8RTZ8h&nvMid=31804560618&catId=50002334
-// 애프터샥 샥즈 오픈런 S803,https://cr.shopping.naver.com/adcr.nhn?x=K4EVn8rFqqJJZ45y9gsaQ%2F%2F%2F%2Fw%3D%3DsSrQ7qWiDo2ePHsATk59yDpocVmpOMwlCIIbN1hKsNtpAG6J1OKziXxAg5mO%2FD8iaEW5zzsQp3Df7NVDBTc5TjNM4dfaGkGP9gqr6mKsHT2oTUjNyNiUjjL9L%2F3HaLNowHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCdiOmEnFBAJDZVZ89oOAfKLwi6sjh0PMeA%2BDgo8f4MjUunMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHBf3wXxHtpqXVA1TWM7DJMDPvgHYR%2FmG9o2EB8FnCgWQ%2BYnTpLBgb2Sn8vnu71ut%2Bqv8zCgXrXTwdX%2BAYrLcHcJsUTAlPPXkwQxtNMyh%2FyVuS13L%2FQM%2BCZuq6rpKOfI%2Bg2%2FyOKq0IuMsbRP4KBvwMOOYDED%2F8pJSp1BVhbtGew8Uu4tDqsIdpExaj2RyasaBHM7soBZkVVpPgBJDGeC1NM2AQT95aqKOzYpI6ecUSfsYezdPirNIEhU3YcDKwV2g5GSH7pkkVC5n%2BezTZxiAGloDfkLIyuldBS3f8m8e6nLmkbc3JLYpcanHDEQPEU2fIQ%3D%3D&nvMid=30451078626&catId=50002334
-애플 에어팟 프로 2세대 에어팟프로2 국내정품 MQD83KH/A 당일배송,https://cr.shopping.naver.com/adcr.nhn?x=pMcwa4BoOomfJu%2FXYRQbk%2F%2F%2F%2Fw%3D%3DsGJ6j8fLnvsggVavaaL4DraDmN%2BDBpkmoXL%2Fi1ssgtbuxA0PlNoPpLGET1Jq8AciNKjj311ffYeaEa2cMWljF8wpqVBENkvk%2Fr3M%2Bf8Rq21S6bWht5mIXi0PLdh6xf36DrFRN%2BLM1yJAr78kyjmQeuVavFoQZioHQNBzgV6NBWA7OfZHPztgRNbWSvxinHeM9lL58Xlqpw3%2BXNvphxuqeMq1Cqyjs5LbuT1envBA0qxvBz7%2BORHa%2BX777%2F5U82WuFWUPMCsUZQYxV%2FGrGvGjY3vbuY00sseOzf9Lo59ppb%2FiYeq%2Bz0Z0rwbQ7MffGPmxiMrpfQ8W09VYqBSSjvbUiMVnUcqEq4HBDKkwCG%2FWKnQ0SRpcK0VvMmFvGoIEiLzeW%2BGiFa2XxLLGv%2BQzPUXU5Xd2ZUHWH3Sy7z5wHyef%2BehOb7dQ8CswMJtvMshw4oEl0o2qYAZzLFmuJTRT5TF7te9pQSVZQ6OdoDZzLhRndxcFYmmYU8RTHxEqWSH0aqZU2E74%2BCl2d5FDN%2BIkqid%2F0mnqohx%2BWfYSE3dGwgzs1ZSILnJYF1qDL20SiO%2B5B%2FrIz9Je%2FW6bY1xJPyIJa5eXRce%2FNUhkkLvvuCNjd%2Fr0AudOBAI%2F9sQRO2Am9a%2BRTB%2Fq9pfCjQTTDsASjlKIoyTvnQA%3D%3D&nvMid=84913794097&catId=50002334
-QCY HT05,https://cr.shopping.naver.com/adcr.nhn?x=fcspyiJGqTUbQdBB2qTAbP%2F%2F%2Fw%3D%3DscSSQM6s0WUzDqcOQd16idfxfvYFaQFD5n2IDxZQhPjXsmeRDMyJk0PZb0%2FPCRY8aY4cHR28aDRK1PpIKJfb0rM1GrnjQ3l8eJAvL6ChHcgWtut8hRANgPyL9fxEqSvL62h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlGEEBHTF%2F5Rz3wMVd9wBW2ePuQC%2BrOSNgTvoBIgkvkpkKUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgWn06PEdiYpvyF%2BR3rSPDmSr9hSXVIVIkQ42CxckQ5OTYdttpd%2FeGdUo8GFKs7ozEBpRAMKI4PkUrh%2B%2BaaQmVljv5gPElYYf90KhL6iaZuLv5LmKDPyJI3k0n6cPOqUaB4i%2FnFH%2BG%2BsTAZpNIdnHUr4xhdukYQCIhdCHkhfxOpekBb4vSTgb63KXPqjHfH7b6ZvfrQJd09kelQ7HvPjqYWPuTVSVOjFJ5KLRTFBNLKm6jTTf4OzeMBF1D1oCUXOhCS2acEdm6mdLpqowW5%2FshA4%3D&nvMid=33560948620&catId=50002334
-엠지텍 이어프리 G5,https://cr.shopping.naver.com/adcr.nhn?x=4zjMFQJA%2Fy5ahz23au3jNf%2F%2F%2Fw%3D%3DsnL1kuLXQ78meO1l8iX2iTKSQY5qwCWr%2F%2FVWkVWdU4UrhJJWNecbCNsIoHv8KCtxE5HJ9JlIME4vBxvKskr0qMM1GrnjQ3l8eJAvL6ChHcgWtut8hRANgPyL9fxEqSvL62h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlFd%2BZp7MgDu0rPdyLi9lTmgxtU6UAHbedKYkoIBiPZxNaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgWHbBlisNnPIbfKqq144G2UXhVYpyi0G4KwL2sjFKhK4Ydttpd%2FeGdUo8GFKs7ozEK6p1HBCxzwgWa37zv20oxSrdHBtoXAsJcY93TQfc8wBBHNOS04mwbf2sLSii8Aqp%2FsnfzzsHUFNYOpnRACY7N27A%2F0vSPti8cHY4o2fastwNR9YckG3qJlOhPEo5dgb1Ru9tQCoJfudbPhkUYJbDyl4nbpH1O0w%2BWX4te4uXRSX9PCxVD8LNc98YodbxQwwuvKalATZrXeY5u5tiFLbFNml8KNBNMOwBKOUoijJO%2BdA&nvMid=27214296522&catId=50002334
-LG전자 톤플러스 HBS-PL5,https://cr.shopping.naver.com/adcr.nhn?x=Woe8c7Xgg7%2FHQsVqvTrbvP%2F%2F%2Fw%3D%3Ds5%2BdLnsp4inDYzKlU6xZrdWThcNU%2F94yuDjGZN7nFh9ZE5dKwOMTleY1JnaHOjonKYSXW2a01Zb%2BH1%2FIFqMT6Z9M4dfaGkGP9gqr6mKsHT2oTUjNyNiUjjL9L%2F3HaLNowHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCcv5uhlcVPV3BxTe5OM1%2BpecAGG0Zt%2FVGiFHZ%2FqJnxmaOnMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHBf3wXxHtpqXVA1TWM7DJMCSyQaA89kVVAXpAIlROYom%2BYnTpLBgb2Sn8vnu71ut%2BkpfHrVUgMkYqki4cbUF1OSr7HFTg%2Bs4t7A1fdDyY0qBS13L%2FQM%2BCZuq6rpKOfI%2Bg7aO%2Blw6b%2F%2BxWBL06vl0WU%2FOFbgBM14elHhIl0RtArkvCHqa%2Bk4Jfe83FmkWo%2BOVnPAmPLqFPnZaR7igQVT70u6%2FhgaMkJIhbUi8HFdPXAb3mM7lso0sDDreO9T7wtOAhG9TZjqEQTAbFzUBl8432wsZPQdlwDfle51IC5%2B3EtWg&nvMid=20966833707&catId=50002334
-QCY AilyPods APP T20,https://cr.shopping.naver.com/adcr.nhn?x=vOjW3LXrG1N9q%2BFx3bjJP%2F%2F%2F%2Fw%3D%3Ds2qp9DuPgfJgbzylfLIPy9pkrUiPkvcUezsKhAbGK%2FLm7WUZwHIO%2FNagz0KQ%2FDD1FgRuzgOHPT2Wi0sxilKH0yc1GrnjQ3l8eJAvL6ChHcgWtut8hRANgPyL9fxEqSvL62h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlEEfDHHfqWTXzrqa%2FytPakG444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgXA%2F81s%2FtbLiM64R1CtXvszicpeQ0o8gt8iTuAHKS9axYdttpd%2FeGdUo8GFKs7ozEGK0c2MsQutSxJngX%2BvpyWwXIS8XKzWFt%2FKBGQZHZvfN0VUPuWm9hgEJVqfQDM%2B5EPdoXRq9L8WDqRnhox8PMIPyNHyBUXwWVD2ki0TxnNzydQQDH4F9W3WU0R7ofAvKHYL3hs1Y3P3oGV6jGhSZJtJ4nbpH1O0w%2BWX4te4uXRSXFNQ9Wv%2FNNy8snMEcxvSqUZc98uQzEdzlOH5wUxb8yICl8KNBNMOwBKOUoijJO%2BdA&nvMid=34649314618&catId=50002334
-QCY T13,https://cr.shopping.naver.com/adcr.nhn?x=eyn31hp61UQdenFis1sgx%2F%2F%2F%2Fw%3D%3Dsxrlm4%2B1UOqlwQoBoNXQMAKHza9Pv0r1JVzI1kmSPOjKi6oBYhFTpTf%2BbTKm2OZCuHbMBj%2FII4u5%2F53b0jHvWrs1GrnjQ3l8eJAvL6ChHcgWtut8hRANgPyL9fxEqSvL62h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlGsb6hFyG1SsPNtw96coXs5aCtiiDDUN6Js61BMosdxSaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgchlBvSxSGvUxy9lfMRCNqtpdlFTIfspcrztZEj6%2BzS9Ydttpd%2FeGdUo8GFKs7ozECDm%2BYnbZ56n28wqHq2%2B%2BNdj72Z%2BEkHwp8J2j6aEGBRK0eJsRaz4drYSEelqJ%2Be8h%2FmANFJSfZV98ARoy6T0pWWYB%2B0iTWiD8ZjU7Kbe2OIiyEpMu6UATL4sVS3GeIj39nQuQPHdfxBpbbO8x0VVjYY1VcG7HihW67zEbfEYtpwahOhVRqyyWAtTWGOpWR2aJl2%2B%2FxyXlCSAWzA7%2BLQj8t8%3D&nvMid=27698150524&catId=50002334
-피에스이벤처스 PENTON 펜톤 TSX 다이아팟,https://cr.shopping.naver.com/adcr.nhn?x=gJ6fzvxYdOJfUT9ub4Zk9f%2F%2F%2Fw%3D%3DsiA6Sx2bYHIg2%2BOWkNvp7JNt6VbMq9ipPFgbRh48oikW%2BaPMyN4hy9yMm%2BcCL3UWsxVyNFYRXTsFLy4EN58RCr9M4dfaGkGP9gqr6mKsHT2oTUjNyNiUjjL9L%2F3HaLNowHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCcgZvYxXE%2FwCsCZQAJaep1YqQetMh%2F6EBN9ePIDoC%2ByQ%2BnMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHBf3wXxHtpqXVA1TWM7DJMBNq4zOly2XSeGdWf1ZiAUy%2BYnTpLBgb2Sn8vnu71ut%2BkpfHrVUgMkYqki4cbUF1OTtSni7mrLXnUwWGqWfePsDS13L%2FQM%2BCZuq6rpKOfI%2BgylZSmwygQlh%2FKRELrY0%2FJEMoQb4Tih14tHiTt93zT9RzhW4ATNeHpR4SJdEbQK5L%2FweLbuibzfTpjUHdmuiiCNWj0Tq5MqPx1IypyDKL6OYv4YGjJCSIW1IvBxXT1wG91wyWDeCX88ihaqJ1onU8W1vU2Y6hEEwGxc1AZfON9sLGT0HZcA35XudSAuftxLVoA%3D%3D&nvMid=21311163787&catId=50002334`}
-
 
 const bluetoothEarphone: Product[] = [{
     imgUrl: 'https://shopping-phinf.pstatic.net/main_2370266/23702664490.20200825144312.jpg?type=f640',
@@ -279,115 +242,400 @@ const bluetoothEarphone: Product[] = [{
 }
 ]
 
+const wowowo = {
+    battery: `
+    // 로랜텍 맥세이프 갤럭시 아이폰 고속 무선충전 보조배터리,https://cr.shopping.naver.com/adcr.nhn?x=u4dTdIcaAZCOkPjnWZhjEv%2F%2F%2Fw%3D%3DsrDqpYWUySu20inVNV4AlNvfzV4T8%2FU4hLY3lGvl4ayPQnTxenI2qJ0oVfSRfcqpej%2BKec1JmTfmWonYY6%2BJILpFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlGrBsUdFUStkEt3hHDA2W6i444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgUu%2Fc5aTzkqDV1sam5jsof7CxFSWkQpNasJIl9F0jTHxYdttpd%2FeGdUo8GFKs7ozEOFF%2Fv%2FX7zsa5R4B5qqVskUdqZdrcgc11lkWQyKAuMz8sPOfdzkfq%2BKsVKCdbkop2q4SmTKjstdmhNmZoCtKCNfMiEOnZ6ePFGraSYTQFQLK6j8GNqxB5K6zZvPZzWAMgA1RGCcmv2NDBGYQHej6g1IGjrdcETVU1IRXVqLHp5J2JB5c5wguFwNp%2BhG0vaLSVM%2FZ930ontY8kNMDqaapLymb360CXdPZHpUOx7z46mFjSC%2FMR59on1gE8fMGd9BuNPKehH3MQFaPlIJ3q2RTvbw2zPMCkm4PubjmafyqpRFX&nvMid=37574599618&catId=50004603
+// 아이엠듀 아이폰 무선 보조배터리 8핀 일체형 C타입 충전형 5000mAh,https://cr.shopping.naver.com/adcr.nhn?x=NcDLJQZ4vxa7ZTa%2BYoH5yv%2F%2F%2Fw%3D%3DsUe29nUnhsUkJdQKommSaOlcvdNt2T6HYDDQejIfD0dbsWJKuwSC9TkNQ8UHWpjtxMu6LPp%2F5iOWHfJ%2FXLI%2FfyJFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlE40ecsaJYQV%2BHRjAttU8mm444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgf%2B%2FIrUc3ky02AFDJgr8iDwy1ftDb0yWAt8VFV8ygcVNYdttpd%2FeGdUo8GFKs7ozEE4bynFbr84Ydcu1Md0SffwXIS8XKzWFt%2FKBGQZHZvfNBHNOS04mwbf2sLSii8Aqp3%2FVziFX9%2BaPnX7EicuTk85mVEEoHz7UhhbeKj7ti5GnN25wVA%2BVr2sl6V9IBiu%2BbVdmexWws1Lb2tx%2BJqTrN5l4Jh8tyJ0iEp70RI3VvQ48u9rC68bTIFqz3qHuaQTRvUb4T45GXbauGD8gzLa5t%2BSD9%2FiECYe%2Fjce3Fz1g9wB%2FDmbhZ1mZ2WDP1%2B8Zb3YzVjP6DTPGrVUxUrCPZ2%2FNMLJlOLgo5E6DBFktemgc3hrZ&nvMid=36926564618&catId=50004603
+// 모디스 일체형 미니 도킹형 보조배터리 5000mAh (8핀),https://cr.shopping.naver.com/adcr.nhn?x=dCi4nefClAZJYx2z%2F%2BZaNf%2F%2F%2Fw%3D%3DsfaOFUEDAIaUxEzdokHPgBJDtIF0MbsEOGIrBJO5zJTOvymWuHNEPQQDPq43Welgu6u1D%2FxRB%2BZwF8Fx3d54tHZFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlGmeMfd%2BDlbv9i%2FjAeeEi0%2FHZ%2F0L7A5AXoAJ%2FpRmJ5kzKUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgUY3Uh00%2FhSAgFgNSoYx%2B1xEy3FXIst9%2FsiKCQuo1ctBYdttpd%2FeGdUo8GFKs7ozEDCSDIpqHJKElsqC7WXh6jjdS%2B6Jk2zgzdwhTH%2F0J6XFBHNOS04mwbf2sLSii8Aqp4mb%2FahpwWRZNi%2FMd58CnzmOzmWuHstOS6825nnbqt7wg6XFxzftMqMS9NTDpvgsHH%2FSdQRpZaKEAR8OSs7u00K72sLrxtMgWrPeoe5pBNG9WifndpyvxfiaLfsyeWQyUV81tECkbs3A%2BljHC4UqrqPbsD%2FL1ZzPsRTvY%2FPoQQY9lcyxQkMD2rSd1ycr8zSku4vD0RIS%2BY1lqNJzoV4dmEA%3D&nvMid=36468865619&catId=50004603
+// 삼성전자 삼성 EB-P3400,https://cr.shopping.naver.com/adcr.nhn?x=Bc9s1XVdLEwFb2SRWaSaSP%2F%2F%2Fw%3D%3Dsb4oFnWkEjjTPXjjRvJ4NbtuJthjLHDyJKzuWbJ16h2hGzlw8DJW3017vy4VyvUlyIt7nMidXut%2F7m7Z0IyrbpZFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlFybQy6DNqG2qJtMd9DqG2LHZ%2F0L7A5AXoAJ%2FpRmJ5kzKUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgQoT57NHyZzRTPzXpncy1W6YgCgLBIsBRwoghpCYLtq3Ydttpd%2FeGdUo8GFKs7ozEBYKe2mSJXdo7cQmCdfdM%2Bi%2B9NArK%2FhUFevuuYWKhvUK29rsSAOg5QdHVq8jNmgCszEAPiqosmLd6Y70OLCyB3JCUOAnRBu3SjYdQFl80Fcu9PfoAXUeNJIsRcYEndAPA181tECkbs3A%2BljHC4UqrqPArki%2B%2B5cFDIENk4r4hAi3Y1H8SrUzSX70zQ8kSdOD04vD0RIS%2BY1lqNJzoV4dmEA%3D&nvMid=37823873619&catId=50004603
+엑티몬 일체형 미니 아이폰 도킹형 보조배터리 5000mAh 8핀,https://cr.shopping.naver.com/adcr.nhn?x=HcZvQvYp6ld%2BXWe8mREFqv%2F%2F%2Fw%3D%3DsVR%2BHgiqQhBO%2Fj%2BTVeetGsHQfGyqgrb%2BUappBvPilHDJ%2BGtET%2F0V6ctmkxAmvNfKluwU4j2gearn2k9iCJiyvo6u68IXB3Mbs6ud2I9MFsJB4ZQBVX2P4poHrLvxQNVBby7WsjvL6fGBruqRzbSMBoQdLXoybizBOVFY0bnGAXBu6WQfr5%2F4cO6XdjOsQm1a9uY4LABOkCiUop%2BEZuQ%2FV8tvnA1gWG%2BKmJv%2FzUC%2FjaxNr6kdrp7BvT8OlwZ7P37Yy6oMQF6MRO%2BtJpLVJNTPTAxQMu3Y7zcuPFIaOL7fGlGruiujgm6zTaceqnBTvBCzyOSvuTcGfUpTBbRjtiFyJGm4Vvu7wq2B6g8D3w2cl2KA1Ga53TaLV62NyaQ0%2FknZYmlgxC7%2FsH8qDBkTDA4B7kIw5A5TE%2FZJZxg%2BEzjESHA3PlE2KIJcvDWdo2ic9xCeWjs5lrh7LTkuvNuZ526re8IOlxcc37TKjEvTUw6b4LBzHONLvHIuTrQc9feaCvHWbX1fNaoMZLqImr%2B4dZeH4xpPxIwM8zzBsoiUW%2FzpP8y4UNYG4xi%2BWTtqlWPMvIU4Bid4dtJZe0T4zKI6wvGMx7gqKZQYsfKcxVwpjOzR9%2BbCLw9ESEvmNZajSc6FeHZhA&nvMid=83780662447&catId=50004603
+리큐엠 20W 고속충전 LCD잔량표시 20000mAh대용량 보조배터리 QP2000A,https://cr.shopping.naver.com/adcr.nhn?x=CK5YtwxLpvYVCdGeXoREgf%2F%2F%2Fw%3D%3DsoyWLeBrwWi4SJ2tsFImeklJmJmjqV5OKSRti4ptxQfIr%2FfU0LdKV3DEOgHCzb9ylh4hwqZUWE%2FUOK4chSlo0gJFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZhNAWEw0JCsb7LJXBJqKWV9015zgK%2BP5r4ZCysDfiDpUGlQHI7ZThoq6PMk9YFSYkvoPPA7SiNtOp%2FZWA0mDtH6uKWQN4b7WstTXVRp4V%2Fd2Kx7G3krbJiQXzryuwwOqJPbSKz%2FZUE180p7rf1R6zHts%2F6e2EaP7vRDgesIKEHFMOmiP%2BqKvyRFMJB2EbgwitYdttpd%2FeGdUo8GFKs7ozEKyIm0B%2F8%2BrbvzNPNG6DRWxvcbaX07HwbtPwlDa2TMFY%2Fec3WftN80ecV2nHccYn700tKXNQgbWESZBrtQvS3nRz6%2F2pqB3rTNVf%2BeciyhM4RKhcJHhKVhhgcr%2BQw9RqApXU%2B6UkHzH52EksAZ0yegssa98DG3duTcoxjb2F3tvT%2FaYbh7NOsR%2FeX0tpcWXiNJhzx10oJc6lsPiRXrQAlNLSNocZkSHIJwl3YavYgr4RXUDazupwqLAppW2%2Bx9FHe9AnutqK9EmFBI5fSUNDgpWYXV1lmgFUrkG46h9qGDDwJXSFlseqJb%2BD9y1uadTE7g%3D%3D&nvMid=83603589898&catId=50004603
+리큐엠 20W 고속충전 LCD잔량표시 10000mAh 미니 보조배터리 QP1000A,https://cr.shopping.naver.com/adcr.nhn?x=SfViKsFU4A7ByEZ0Ij%2BivP%2F%2F%2Fw%3D%3Dslrd1JR5SWVyqa6JRa9540ty%2FGJlOwg9nLCX9W5WZEsYP6cv1Q6TM6li9ZYaQqLZlbUOLn16vZubteGhvkTU86ZFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZhNAWEw0JCsb7LJXBJqKWV9015zgK%2BP5r4ZCysDfiDpVy3lvBzlrqjYtK69lRpj97NVgWlpKJ4G8hx2GgV9hYI6uKWQN4b7WstTXVRp4V%2Fd2Kx7G3krbJiQXzryuwwOqJPbSKz%2FZUE180p7rf1R6zHmNVGIvbzTC2y%2B1UiKaJw%2B9k59onjiQSlPOX93t4qFyUYdttpd%2FeGdUo8GFKs7ozEPG4QVty%2FpXRlDYZFUxZJeuMyURnuR%2B0CMWyt3b0SQ0k%2Fec3WftN80ecV2nHccYn700tKXNQgbWESZBrtQvS3nRz6%2F2pqB3rTNVf%2BeciyhM4OHxbLG%2Fc7q703slMCVrf7mZUQSgfPtSGFt4qPu2LkafEzB5Dou7xJzxy9ZDZqpbBtCLDt30xuEdWdw8JrXyBWFhU1tCpbjCt%2FuG3eI4WE2fUrnEaxSrKZUqG8kQjRTWMZEvk4DI7MgOIgkUQxJ1iX7cb54hYbnJIFKxbI3l7KumcgZDYmA9nEuUSR5KXox8S&nvMid=84997200996&catId=50004603
+// 삼성전자 삼성 25W PD 보조배터리 20000mAh EB-P5300,https://cr.shopping.naver.com/adcr.nhn?x=otBEiNTFCgMZw0GSdT688f%2F%2F%2Fw%3D%3DsYXOZxBZfVSVw26pkdspCEG0L8qHuSwMEb59wTpF1FDjG2OG5wB6cIgMglc1scEc7yVwIlaCVoMhjc7ARzTMCKJFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlHrLjNgAcTj4K%2BtXrXAPei8xtU6UAHbedKYkoIBiPZxNaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgYyci6MbU5Cg3soTvV1iZUVXOYV6brAGlBf70HJn5Rf0Ydttpd%2FeGdUo8GFKs7ozEIkVGmHXZUll8Ztiu8n7nfpHuAwEZMC2fZIeq5qxAvGdNifbjq9lwtRIpr4isW5NV2EzH4cp9Doq220L2e8i6advcgm%2BSIyZYncSyGIdJcBIK2Fhwp4Qwiv3abmi0w6TCbi0snhZd2ivxPQ9alJmPdtjr4w5dGf7ZdeeXrGsSCFcXzW0QKRuzcD6WMcLhSquo2hkpcY0AzQMG%2Bk%2FG7MMnA13UI5Qrmx14TIWjyLT6OeCi8PREhL5jWWo0nOhXh2YQA%3D%3D&nvMid=24277349522&catId=50004603
+// 디지지 QC3.0 2세대 듀얼 고속충전 보조배터리 10000mAh,https://cr.shopping.naver.com/adcr.nhn?x=o09Rn9JjVNzFN8CBRkwfVf%2F%2F%2Fw%3D%3DscFCb3hYS0oy%2BbbdUVcUQKzpJ9im0qJ3j3ZHmEr%2BLole%2FdXLm2C24fV%2BtpyVAt0LDlKlkf9PqEa%2BKGRLukrbxBOt9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbv1u2hSNtBCfGAoHDNb1zyXDok9CePzHNAETwWbggE6Lag%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVJdts%2BCjiwqb4SJeUhwx%2Br30FdS54BUfZ%2BoY09vUmp9kArNDSbHU%2FS0YkYGoebcIPJUW4oN5soou1DL4LhEYLFltcTNtvAx129aCRNgIu2BLSrGiurM74EaOV%2BVwtR51st5MyXs5KCCAps%2Bnof%2BbDoeYOfnA39aMyh79l601MdGzDVEYJya%2FY0MEZhAd6PqDUgOuphSrJa4taMHZNH0QRofwdW4fhQAuSM3Snu5RVyv4VRM3avg%2FXgLJkmWwG6soKPyjJA30XPLBcw%2B9hZoFIsC%2FhgaMkJIhbUi8HFdPXAb3KTuoAOKXgWBqMQSvwYcuAQN%2BQsjK6V0FLd%2Fybx7qcuaRtzcktilxqccMRA8RTZ8h&nvMid=30890745618&catId=50004603
+샤오미보조배터리 10000 7세대 초고속충전 대용량 PD 삼성 갤럭시 아이폰 호환,https://cr.shopping.naver.com/adcr.nhn?x=LEfam0pd7l3BATX%2FSe1V%2FP%2F%2F%2Fw%3D%3Ds%2Br4YxKYV%2BeD6SvbkhhAMRxPN36%2BMhMrCQJ1fs7FPKWx85knb0hCVrLLk%2BcPPM9Avw1L9%2BRqUxPPWr5%2BZBBUmWKu68IXB3Mbs6ud2I9MFsJB4ZQBVX2P4poHrLvxQNVBby7WsjvL6fGBruqRzbSMBoQdLXoybizBOVFY0bnGAXBt%2F%2FFI1Aarva2X%2Fm5kQi%2FWnBNHIb4kCdsT%2BPv3G8V6lGtvnA1gWG%2BKmJv%2FzUC%2FjaxNr6kdrp7BvT8OlwZ7P37Yy6oMQF6MRO%2BtJpLVJNTPTAxQMu3Y7zcuPFIaOL7fGlGp6AWx%2BT3zzyqCakaHufB6nHPCjt%2Ff2C7f8wMlp06E1D24Vvu7wq2B6g8D3w2cl2KC3SphsfecSK8Y1bALK5Gx8DyH%2BkHRAbjky74FiJjgmz9xydBiyCUtFR89%2BPSzGwkk9Doq4e3KYSa5OFfgZuSdVQ8z%2B1t%2FZ6Rh4%2BeT%2FHiRwE2NbsZdHYXjvjWyPUxomLCEHn2XP%2BKL2XXFtKNvUsWNMpFCSeWlQMzx2Pu5IY7g%2By7dfvP2ZUIocnzOV42TYF370MOOBsTm1ApcJ16H9AvPzycHVt2jucqgIWOwXgyzgI785kjjj1%2Bjq5jdmyHKN1WV0ostk6iestEzHks%2BbaZaqS2j7B8ZSFpnTTV1j0%2FwRajbM8wKSbg%2B5uOZp%2FKqlEVc%3D&nvMid=85240159154&catId=50004603
+// P&G 보조배터리 미니 듀얼 (PG-PB02),https://cr.shopping.naver.com/adcr.nhn?x=tnquURdwRkr3ydPhOfXAp%2F%2F%2F%2Fw%3D%3DskV4VqWW%2BCTdIialaS9N5mfCD5jEfo9eMaQIqypsaPyI3gWxk1CnOz742olFdro%2FA%2FsiMZntZ8jyyPCiYU5b77ut9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2Fbv%2FywuKZigBUIqdqqWeAVpolbpatnomk6Kx9I5wrXuMrqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVPvXba8oKI4hmDf4o71oImYeBwmuA4k0jma17zzli59JArNDSbHU%2FS0YkYGoebcIPBWmfklvF33T0WYc5NHXm4kGmLhiiSN9S9eAr3I3c7zqSrGiurM74EaOV%2BVwtR51sv3zLTrRbdmmHSh6U5m%2FLgv9IP4fPzjl64dnlQzhT3BlxdnkxB%2FlQkCRzBPH5oTkGOESfa53XXRGlJKT21SOGWvkq%2ByY108yREXdNGlm9SRvgPMdRTh2rpnDxYBSF5eLYLwz9z2Nvv3kQj0iQnUiJQx8cXWgPmmWcW8%2B881j9aVeydernZaUu010afASgJ4ZplaRsOtQUnaEEbxBoHxZXOc%3D&nvMid=36143336619&catId=50004603
+코딩 맥파워 아이폰 고속 무선 충전 미니 맥세이프 보조배터리 5000mAh KMPB05,https://cr.shopping.naver.com/adcr.nhn?x=gNpabb1XL4JHDj4fb08t%2BP%2F%2F%2Fw%3D%3DsaYcmflwy%2B9sMLOK2sc1Z4wVzSbjvqZtzHATXYY6skHrZuP%2BHLbDSTWuVmo7p0OdS0XRYdf03FqVK0Y34hSTBvKu68IXB3Mbs6ud2I9MFsJB4ZQBVX2P4poHrLvxQNVBbHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCctYKLU3jj%2FpXc7pdDS%2Fl78iT9Rnzn7TLYdBnBNwwRoTenMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHP%2FIz4Q1DZxQQ3DGVyfnT8UOJsP4FLh3XPv7nWF7vHLT%2BYnTpLBgb2Sn8vnu71ut%2BnLOzMeNgX3hl5cZj%2FAvvNAxh7vDHZJCTE5Z5bOz1rSTS13L%2FQM%2BCZuq6rpKOfI%2Bg8GleQa2UzpRI7xxvThlYCTWDoIQZFDLnaQsvMTyXHcgCuHxUYkOff3%2BVojnTWVoyj9pVHgeNwH37w51e0%2FPZ3pZTFnEXFgJeRKos78q0V1JFZyRtNfA7zfHOZvWa2GHiaOuInwfQ1XmfH35WvRpRXbfse%2Fz9nkRc1dvrnq7mzu%2FNUhXArHpggCt%2Fgxmbx7Tc8bRP2y9RV%2BtIVExmDLjxTQ2MsKNM6jZdDQoyZ21LE9IWr%2FdkQ8L90xDysWT53FS48fWVZ6vRKi%2F5buFehsUiNw%3D&nvMid=37530998618&catId=50004603
+프라임큐 일체형 도킹형 미니 보조배터리 5000mAh C타입,https://cr.shopping.naver.com/adcr.nhn?x=GdjZTf8Q4Heftl3JcmQKpv%2F%2F%2Fw%3D%3DsHwta1aw4x4MKK18P8iRvLvo7oAvyKAgOZaCtBQi%2BrXUSgbNvR7Eu3ySdNuh0ATe6nBamLX9LHbxEpLf34r6Gy%2Bt9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfrFRN%2BLM1yJAr78kyjmQeuVavFoQZioHQNBzgV6NBWA41D52kfil6j%2BqXyXqaV3jc6PNkury6sn3f9QTmuu1Asa1Cqyjs5LbuT1envBA0qxvBz7%2BORHa%2BX777%2F5U82WuFWUPMCsUZQYxV%2FGrGvGjY3oQ60wOg%2FdXp4GdwWDOsOoOaXOGObOYHaMfkiLbRvZbiMrpfQ8W09VYqBSSjvbUiMRvi040GY9gfrgXGwSVN8kj83lgUP6tn7ch3gwRy9e%2BHUd3b3BclXC1rIBZBjKEhk14cn0mmlEv1ma%2BrINTiaSaAp7vVnvXRaSB51HbwJxOBZlRBKB8%2B1IYW3io%2B7YuRp3U3vChPr0XYob%2FgMTvbSMTOzB%2F6M%2BroW%2BwFV4GPeWJni4FqyaOHmGIcnrFzhbioxa3i9uawYIxdyii9tBx%2BBoyMz8W5I1%2BNM2sa0ErQurifHSMly7x0Tcojd%2FB2BWOQS%2FSxCg%2FtXl3Z1ELG6%2Bblxr7H1lWer0Sov%2BW7hXobFIjc&nvMid=85835646918&catId=50004603
+// 샤오미 P05ZM,https://cr.shopping.naver.com/adcr.nhn?x=OKIwNGksPIrd1ae5%2BaZS2P%2F%2F%2Fw%3D%3DsR5DOo9kRPg%2B9AqKo6ahfzE%2B0vMAFPu77iY9hDfFPRLwo4wLp4cJSQYuM2aZLLZPdnWevtgsNGbqzfY5jCuLjy%2Bt9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbswrQjnwDYeD%2Fe%2BgJKvT6Oyz16bg6UHLjACcTW4mkggUqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVGEzGincV9xf3u3v%2BJZYAVAkeSH%2BSxBoXzNJNbqaZL%2B1ArNDSbHU%2FS0YkYGoebcIPBWmfklvF33T0WYc5NHXm4lX18bRgouUqHMpLFGsInipSrGiurM74EaOV%2BVwtR51sspova%2BHgTopLQ40iVvWD9jj8exjrrrH1FfvSr3eDhAhz11gPQ2XfQC08xob3wnHSV81tECkbs3A%2BljHC4UqrqNiGIzOSre%2F3P7FABbCFF%2BIi84yCG7RobvJOOzxb%2Bkx7GU4uCjkToMEWS16aBzeGtk%3D&nvMid=36143331621&catId=50004603
+1+1 일체형 무선 도킹형 미니 5000mAh 보조배터리 C타입,https://cr.shopping.naver.com/adcr.nhn?x=5LF%2F8%2B4T2TFdr2BvtGDAOv%2F%2F%2Fw%3D%3Ds1H%2BrqPFIPmXcKxAUzrfamAqNuUoXh2yDyPYDrAy19cHKDqqxKBC0l5ExfI6XrL%2FTL9pnGjTki1L%2Fm%2FMAXLOkKZFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZhNAWEw0JCsb7LJXBJqKWV9015zgK%2BP5r4ZCysDfiDpX8HZApFPzZvqXOCuo82GSRbFmrQTRVOsX%2Bz0EhBTiytKuKWQN4b7WstTXVRp4V%2Fd2Kx7G3krbJiQXzryuwwOqJPbSKz%2FZUE180p7rf1R6zHklRl1%2FTfxrRm0FqlQOtI19l03%2FsrzYIMLd9%2FZAA8Ip5Ydttpd%2FeGdUo8GFKs7ozENeb4wXBvU20BWDBomgCQ4t8CSkoItM0torsf4p1RxJCONAHhwNiAzHocSXmA16NJqjtx0d%2BoCKrvWjQYq96RZ2kT9WMCURrJR49vqpLYqv%2FRJsr7O4vNPcTKWDowfP6wqxmYyCdrsJbBQy%2BrqXNb5uTsENNtZl98mhBM1dbqEyjzSpXcB5UROTdzJGTnqR40sQxvIVWYkgu1o5rGrbsSqahO8NRIpAglhTSXAuX8VZ%2FhjbdkClZouCoPJJTfmFfoW9TZjqEQTAbFzUBl8432wsZPQdlwDfle51IC5%2B3EtWg&nvMid=84925757373&catId=50004603
+아이워크 DBL4500,https://cr.shopping.naver.com/adcr.nhn?x=Qi8APZ%2BAAD3fckX82nNeeP%2F%2F%2Fw%3D%3DswJbV7CL70TMk7CAHnYd38nabYnQoOKpFUpk6vkpYAazF8m%2F0DJ8FW1i7MycVtcrCcSDUo3haRreOC2hSeof%2BM5FLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlFYsRM2fiXuD6AdbUkPY3pWxtU6UAHbedKYkoIBiPZxNaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgTOQwyI3rt9vi7SpsSAuAiPf66r7BIfIRVE1hCgyDDS5Ydttpd%2FeGdUo8GFKs7ozEPDyVJFlo4mNgAW2XdBZ%2BlFiaSl7XXY5KJPkF99nxqYwEjuYjg%2B0IQjPL6QLLArD388K02lSTOQ%2Bw5BPBdWIEjTxJ4afTtgYhGKo3TZRw9wuuNnuNEWjzNK2ZCzHq2alYBNDsCGU2hOir8IbNjWs9nP%2FD%2FKmmJNTQhTmgrOm5%2BiFpkvikkFUxOs8SMi%2BNmKJPovD0RIS%2BY1lqNJzoV4dmEA%3D&nvMid=24122263522&catId=50004603
+// 모디스 듀얼 10000 보조배터리 RPD-10000,https://cr.shopping.naver.com/adcr.nhn?x=4v6UsAUdjesWcyXyIwVI8f%2F%2F%2Fw%3D%3Ds7CBoz9LLPIr%2BRNbmAF7hq%2FngaiixuJTCh9xowIpiKxvzNBsjgvcEwXBL79huV9k80zUUC9GftYakAjGj1McVT%2Bt9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbtZLTNpOxKa6STUnSHpvbEaCOzlf3YQDWkz4V3VwILLbag%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVI21tcMqFAViVM2dqgmNZAXsTUabd1S5htxd%2BhAROZX0ArNDSbHU%2FS0YkYGoebcIPFmggwuCP9vlHdyu25WyW4Iq3MO96WZe19ZJYAtss%2F8jSrGiurM74EaOV%2BVwtR51sjLRpkQW4VNS8QLEVPvA98pkJjH1HQupWfGuyCiMNlw65GFD%2F5zNEb8PqU5RX%2FNj7bvawuvG0yBas96h7mkE0b3BlWSu1qFNt%2BwvN3ZPQiPhXzW0QKRuzcD6WMcLhSquo4x254GBkRg26Zf0ClCmFKJuhYGlnq8v1VOHGVvmYZ6tZTi4KOROgwRZLXpoHN4a2Q%3D%3D&nvMid=32418233620&catId=50004603
+// 미니덕트 맥세이프 미니 무선 보조배터리 mi200DT,https://cr.shopping.naver.com/adcr.nhn?x=ZinDiff%2BhgvINVNluF5XrP%2F%2F%2Fw%3D%3DsCuBV3aS7rA%2FpsO9KS2McGIRvt4W4m6rh1JXHvvszGH%2BmZyFEKGbU77MPpkRr1za5lC7rkWqjFczjjPSyTrNMfpFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlH%2BVFcoaS%2BR2grLERFGYmlt444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgUcPRJZi7x8jVVMUKKBMLpz4I1Sy5mIDRe5cVwtPKGbWYdttpd%2FeGdUo8GFKs7ozEElhv5JeC%2BlUtcpeIDAxb1YqOYmhWz8whXh1mmD4oZFesPOfdzkfq%2BKsVKCdbkop2trtYimrUU0Bi2Pk7QyqxDaJAp1OEtrJrlICeUTfiIZ%2F1zb42EYK5O6%2FVPnS%2BHALl8onPc0iSeg6P%2Fq78N6duKJy3eiVWi1jIgt76lw6StLSelHfNTsGppMlQO6wtZ4PTHQuQPHdfxBpbbO8x0VVjYbnIm%2FdA0o%2BSLv8moRSbq8QIiFO6%2BITngwtGJBj%2BHHte12%2B%2FxyXlCSAWzA7%2BLQj8t8%3D&nvMid=36463335618&catId=50004603
+아이폰 보조배터리 미니 무선 일체형 도킹형 MON-P-MINI5000 8핀,https://cr.shopping.naver.com/adcr.nhn?x=QRo30YExt%2FuNmrJCJW62A%2F%2F%2F%2Fw%3D%3DsetY0PIutQS2j2VFyHzG8Eit8cboBe%2Fpk6ibvnKLDpdeH2jwiFPyjmCUQWDGN%2BrO65u0v8RJSK5%2B180cdWeS2CKu68IXB3Mbs6ud2I9MFsJB4ZQBVX2P4poHrLvxQNVBby7WsjvL6fGBruqRzbSMBoQdLXoybizBOVFY0bnGAXBv4D6369vHRN%2Femd6XtWNS7%2BtG2Umd3%2FUvTqY0LBlYcItvnA1gWG%2BKmJv%2FzUC%2FjaxNr6kdrp7BvT8OlwZ7P37Yy6oMQF6MRO%2BtJpLVJNTPTAxQMu3Y7zcuPFIaOL7fGlGpkD%2F4W7%2BaeTdna7fFTIYr5%2BzRtdiEZRuNI%2FFFU6nQ4Am4Vvu7wq2B6g8D3w2cl2KCK5i4rh4Zf59M22rcxUBO5mBr3q%2BROfLpCp6CYDtou3gGHJSGGKT%2FVeX0ExqeSh4h%2FxKyQvOHb3uQfxuyQG3XfUjasGIXgedOti8eJIt55ckN14gg%2FbvbH5hFHcX3nqh4xmvgsgYWqLUkVHqIY1tlfCWohrq7FevfjIpdVpBKgSehKj01fjwdw8OaExWkVO1zSNocZkSHIJwl3YavYgr4RgW5vWUsa3S6SSld2Ka5zIad9ahztlI5s%2B%2FLH1YMBJ%2BIDfkLIyuldBS3f8m8e6nLmkbc3JLYpcanHDEQPEU2fIQ%3D%3D&nvMid=83136548663&catId=50004603
+// 삼성전자 삼성 EB-U3300,https://cr.shopping.naver.com/adcr.nhn?x=K%2FjgimXp1YQ%2F7M8hAmgbZ%2F%2F%2F%2Fw%3D%3DsHWOlYwk%2F%2FOuA5P4naSOxqE8Xo0dWKxYkdDHRQB3kUC8Z3Hg9PUNOjYGe9g018piRNATB70oqFYW10REhY%2FzDxet9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbvRup50QPFRtFU0Nns%2BX5vUe79QBSAwGXnEdl6BtQkosqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVF32kWW3AZ9n51%2BfpOpNvW9I03Gt8tDHN5dHSqHnU85tArNDSbHU%2FS0YkYGoebcIPCLB6oYSccrhiI9tyHuTlqJg%2BhT9LrdwsBwS26sP7OCcSrGiurM74EaOV%2BVwtR51smSqKhn%2B%2BSxfnAS7U7RFoPlSMM4TvvLV%2BGVN9k%2BvxTFuMuLb5eFdgvhO2snvCkBVX3IV2opseDat9kj4nQx2VNG5Vxyh7ERc9oqa7bflHfw3OUJ40VAQqT8yuq0%2FT5fe2JhdXWWaAVSuQbjqH2oYMPAldIWWx6olv4P3LW5p1MTu&nvMid=22603952755&catId=50004603,`,
+}
+
 const battery: Product[] = [
     {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: 'https://shopping-phinf.pstatic.net/main_3614333/36143336619.20230215114154.jpg?type=f640',
+        name: 'P&G 보조배터리 미니 듀얼 (PG-PB02)',
+        price: '29,900',
+        score: '4.5',
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: '편리함, 실용성, 품질',
+        summary: '편리하고 실용적인 제품. 품질이 우수하고 효과적인 제품. 가격에 비해 탁월한 성능의 제품.',
+        positive: '휴대하기 편리하고 작은 크기가 탁월한 제품. 효과적으로 사용할 수 있어 실용성이 높음.',
+        negative: '특별한 단점 없음. 다만 가격이 다소 높을 수 있음.',
+        analysis: 'P&G 보조보건용품 미니 더블릴은 편리하고 실용적인 제품으로 품질이 우수하며 효과적인 성능을 가진 제품이다.',
+        url: 'https://search.shopping.naver.com/catalog/36143336619?&NaPm=ct%3Dlg90hvjc%7Cci%3Dc40b8832c18ad6362e1a279cf7a0955d38daf3fd%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Db25b0653f2fe4fc3d5ed3ea6a23f0c3544ec6353'
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: 'https://shopping-phinf.pstatic.net/main_3089074/30890745618.20230119105438.jpg?type=f640',
+        name: '디지지 QC3.0 2세대 듀얼 고속충전 보조배터리 10000mAh',
+        price: '18,900',
+        score: '4.7',
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: '저렴한 가격, 빠른 충전, 휴대성, 고속 충전, 작은 크기',
+        summary: '1. 가격이 저렴하고 온라인에서 구매해서 만족함. 2. 빠른 충전 속도로 구매했던 것에 만족함. 3. 휴대하기 편한 슬림한 사이즈로 매일 사용 중.',
+        positive: '가격이 저렴하고 빠른 충전 속도가 좋음.',
+        negative: '충전케이블에 젠더가 빠져 있어 아쉬움.',
+        analysis: '이 제품은 가격이 저렴하고 빠른 충전 속도로 사용자들에게 만족스러운 성능을 제공하고 있습니다. 휴대하기 편한 슬림한 사이즈로 매일 사용하기에 편리하며, 고속 충전 기능이 있어 급속 충전이 필요한 상황에서 유용하게 사용될 수 있습니다. 다만, 충전케이블에 젠더가 빠져 있어 사용자들 중 일부는 아쉬움을 표현하고 있습니다. 그러나 전반적으로 가성비가 좋고 성능이 우수한 제품으로 판단됩니다.',
+        url: 'https://search.shopping.naver.com/catalog/30890745618?&NaPm=ct%3Dlg90jp4g%7Cci%3Df4b21fcd4e0b1515ac50b502f78e4083a66430eb%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D14c95b89d011c46a6df9ff7d405edd2f710fe74c'
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: 'https://shopping-phinf.pstatic.net/main_3757459/37574599618.20230201143747.jpg?type=f640',
+        name: '로랜텍 맥세이프 갤럭시 아이폰 고속 무선충전 보조배터리',
+        price: '27,500',
+        score: '4.9',
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: '가벼움, 휴대성, 무선충전',
+        summary: '10000암페어 치고 가볍고 휴대성이 좋음. 2) 무선충전이 잘 되어 편리함. 3) 발열이 조금 있지만 충전 속도가 빠름.',
+        positive: '휴대성이 뛰어나고 무선충전이 편리하게 잘 되어 편리함.',
+        negative: '발열이 조금 있으나 충전 속도가 빠르기 때문에 무리하지 않음.',
+        analysis: '로랜텍 맥세이프 갤럭시 무선충전기는 가볍고 휴대성이 뛰어나며 무선충전이 편리하게 잘 되는 것이 장점이다. 발열이 조금 있을 수 있지만 충전 속도가 빠르기 때문에 크게 불편하지 않다. 이 제품을 선택하면 휴대성과 편리한 무선충전을 즐길 수 있을 것이다.',
+        url: 'https://search.shopping.naver.com/catalog/37574599618?&NaPm=ct%3Dlg90lua8%7Cci%3Da815a12ba6fc9619317d4fca200a5f8c143533e2%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D40ec168b16100345d0550e0927f0e5fbdbc23f0a'
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: 'https://shopping-phinf.pstatic.net/main_3241823/32418233620.20221011190820.jpg?type=f640',
+        name: '모디스 듀얼 10000 보조배터리 RPD-10000',
+        price: '8,900',
+        score: '4.7',
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: '절약, 높은 품질, 효율적인 에너지 사용',
+        summary: '뛰어난 절약 기능, 고품질, 에너지 효율성',
+        positive: '에너지 절약, 높은 성능, 가치',
+        negative: '소음, 디자인, 추가 기능 부족',
+        analysis: '모디스 듀얼 10000은 뛰어난 절약 기능과 고품질로 유명하며, 에너지 효율성이 높아 사용자에게 효과적인 에너지 절약을 제공합니다. 또한 성능이 뛰어나고 가치가 높은 제품으로 평가되었습니다. 다만, 소음이 발생할 수 있고 디자인이 아쉬움이 있으며, 추가 기능이 부족할 수 있다는 점이 아쉬운 점으로 언급되었습니다.',
+        url: 'https://search.shopping.naver.com/catalog/32418233620?&NaPm=ct%3Dlg90n1hs%7Cci%3D44b12ed01d1f1a3953eec111108ae0c2a8d5a768%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D169cf165763d0f07bcaa11416c3893f4cd1b8419'
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: 'https://shopping-phinf.pstatic.net/main_3646886/36468865619.20221212152904.jpg?type=f640',
+        name: '모디스 일체형 미니 도킹형 보조배터리 5000mAh (8핀)',
+        price: '7,900',
+        score: '4.8',
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: '컴팩트, 휴대성, 빠른충전',
+        summary: `모디스 일체형 미니 도킹형 보조배터리는 컴팩트한 크기로 휴대성이 좋다.
+        빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있다.`,
+        positive: `모디스 일체형 미니 도킹형 보조배터리의 크기가 작아 휴대하기 편리하다.
+        빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있다는 점이 편리하다.`,
+        negative: `휴대폰을 완전히 충전시키는데 한번에 충분한 용량이 아닐 수 있다.
+        USB-C 포트가 없어 최신 모델의 휴대폰과는 호환되지 않는다.`,
+        analysis: `
+        모디스 일체형 미니 도킹형 보조배터리는 컴팩트한 크기와 빠른 충전 속도로 휴대폰 사용 중 배터리 부족 시에 편리하게 사용할 수 있는 제품이다.
+       크기가 작아 휴대하기 편리하며, 빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있어 많은 사람들에게 추천된다.
+       단, 휴대폰을 완전히 충전시키는데 한번에 충분한 용량이 아니거나, USB-C 포트가 없어 최신 모델의 휴대폰과는 호환되지 않는다는 점이 단점으로 언급되었다. 그러나 전반적으로 모디스 일체형 미니 도킹형 보조배터리는 휴대성과 빠른 충전 속도로 사용자들의 구매 판단을 높일 수 있는 제품으로 평가된다.`,
+        url: 'https://search.shopping.naver.com/catalog/36468865619?&NaPm=ct%3Dlg90obsg%7Cci%3D88af597386264b7df20178512906f5f7144ff889%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Da0ce7b888aaaed9ea43c6f088c18e895bd7151b5'
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: 'https://shopping-phinf.pstatic.net/main_3646333/36463335618.20221220174204.jpg?type=f640',
+        name: '미니덕트 맥세이프 미니 무선 보조배터리 mi200DT',
+        price: '36,600',
+        score: '4.7',
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: '캠핑, 레져, 배터리 부족, 유선 보조배터리, 고속충전, 유무선 패스스루, 사용 편리',
+        summary: `- 캠핑, 레져를 자주 다니는데 배터리가 부족해서 유선 보조배터리를 들고다녔지만 미니덕트 맥세이프 무선 배터리를 구매하게 되었다. 작은 크기이지만 고속충전이 되고 유무선 패스스루 기능이 있어 폰과 배터리를 동시에 충전할 수 있어 편리하다. 잘 사용할 것 같다.`,
+        positive: `- 작은 크기지만 고속충전 가능- 유무선 패스스루 기능이 편리- 폰과 배터리를 동시에 충전 가능- 사용이 편리하다`,
+        negative: `- 기존의 유선 보조배터리와 비교했을 때 케이블이 불편하다`,
+        analysis: `- 미니덕트 맥세이프 무선 배터리는 캠핑이나 레저 활동 시 배터리 부족 문제를 해결해주는 제품으로 평가됨 - 작은 크기에도 높은 충전 성능과 유무선 패스스루 기능이 편리하게 사용자에게 제공됨 - 다양한 긍정적인 리뷰로 사용자의 구매 판단에 도움을 줌`,
+        url: 'https://search.shopping.naver.com/catalog/36463335618?&NaPm=ct%3Dlg90r1s8%7Cci%3D4f80002d7b3f9dc1ab46f4b9d30d5635bc437a36%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Ddf9607b137129166413e00add07904d0f17b4acb'
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: `https://shopping-phinf.pstatic.net/main_2427734/24277349522.20200925112604.jpg?type=f640`,
+        name: `삼성전자 삼성 25W PD 보조배터리 20000mAh EB-P5300`,
+        price: `50,f980`,
+        score: `4.8`,
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: `빠른 충전, 용량 큼, 다용도`,
+        summary: `택배가 빨리 왔고, 충전 속도가 빠르며 용량이 큼`,
+        positive: `"충전 속도 빠르고 용량 크다", "다양한 용도로 활용 가능", "디자인이 편리하다”`,
+        negative: `충전이 조금 느리고, 크기가 크고 무겁다`,
+        analysis: `삼성 25W PD 보조배터리 20000mAh EB-P5300은 택배가 빨리 도착하고, 충전 속도가 빠르며 용량이 크다는 긍정적인 리뷰가 많았습니다. 하지만 충전이 조금 느리고, 크기가 크고 무겁다는 단점이 있었습니다. 이 제품은 충전이 빠르고 용량이 크다는 장점을 갖고 있어 구매를 고려할 수 있습니다.`,
+        url: `https://cr.shopping.naver.com/adcr.nhn?x=otBEiNTFCgMZw0GSdT688f%2F%2F%2Fw%3D%3DsYXOZxBZfVSVw26pkdspCEG0L8qHuSwMEb59wTpF1FDjG2OG5wB6cIgMglc1scEc7yVwIlaCVoMhjc7ARzTMCKJFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlHrLjNgAcTj4K%2BtXrXAPei8xtU6UAHbedKYkoIBiPZxNaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgYyci6MbU5Cg3soTvV1iZUVXOYV6brAGlBf70HJn5Rf0Ydttpd%2FeGdUo8GFKs7ozEIkVGmHXZUll8Ztiu8n7nfpHuAwEZMC2fZIeq5qxAvGdNifbjq9lwtRIpr4isW5NV2EzH4cp9Doq220L2e8i6advcgm%2BSIyZYncSyGIdJcBIK2Fhwp4Qwiv3abmi0w6TCbi0snhZd2ivxPQ9alJmPdtjr4w5dGf7ZdeeXrGsSCFcXzW0QKRuzcD6WMcLhSquo2hkpcY0AzQMG%2Bk%2FG7MMnA13UI5Qrmx14TIWjyLT6OeCi8PREhL5jWWo0nOhXh2YQA%3D%3D&nvMid=24277349522&catId=50004603`
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3782387/37823873619.20230209142851.jpg?type=f640`,
+        name: `삼성전자 삼성 EB-P3400`,
+        price: `30,260`,
+        score: `4.8`,
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: `가볍고, 충전속도, 디자인`,
+        summary: `가볍고 좋은 충전속도, 예쁜 디자인, 만족하는 사용 경험`,
+        positive: `가볍고 충전이 잘 되며 예쁜 디자인이 만족스러움`,
+        negative: `없음`,
+        analysis: `구매 결정에 도움되는 가볍고 빠른 충전 속도, 예쁜 디자인이 사용자의 만족도를 높임. 데이터 없음으로부터 불만점이 없는 제품으로 평가됨.`,
+        url: `https://search.shopping.naver.com/catalog/37823873619?&NaPm=ct%3Dlg90udds%7Cci%3Dc703c57dc1ec518ef26d02af13cbe6d0188d292f%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Df36768f8e0fad3b1857b5c25a80e726bb29b99fa`
     }, {
-        imgUrl: '',
-        name: '',
-        price: '',
-        score: '',
+        imgUrl: `https://shopping-phinf.pstatic.net/main_2260395/22603952755.20200424104249.jpg?type=f640`,
+        name: `삼성전자 삼성 EB-U3300`,
+        price: `48,320`,
+        score: `4.8`,
 
-        keywords: '',
-        summary: '',
-        positive: '',
-        negative: '',
-        analysis: '',
-        url: ''
+        keywords: `무게, 무선충전, 발열`,
+        summary: `배터리 무게 묵직, 무선충전 편리, 발열 심함`,
+        positive: `무게 가볍고 편리, 무선충전 용이, 다양한 사용 가능`,
+        negative: `발열이 심하고 무게가 무거움, 발열이 높음, 무선충전 시 발열 주의`,
+        analysis: `무게와 무선충전의 편리함이 큰 장점, 발열이 아쉬운 점으로 언급됨`,
+        url: `https://search.shopping.naver.com/catalog/22603952755?&NaPm=ct%3Dlg90vpzs%7Cci%3Daf6945558553feafe50b8cd259334e8a02f29d03%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D0e496e464c1a6c10a84fcd2f476ff5ce196d9871`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3614333/36143331621.20221128150322.jpg?type=f640`,
+        name: `샤오미 P05ZM`,
+        price: `35,210`,
+        score: `4.7`,
+
+        keywords: `무선충전, 발열, 중국제품`,
+        summary: `- 무선 충전이 편리하고 발열이 적음 - 중국 제품이라 안내책자가 중국어로만 되어 있음`,
+        positive: `무선 충전이 바로 시작되는 점이 매우 편리하다는 평이 있음. 발열이 적은 것도 장점으로 언급됨.`,
+        negative: `제품이 완전 중국 제품이라 안내책자가 중국어로만 되어 있어서 불편함을 느낀 평이 있음.`,
+        analysis: `샤오미 P05ZM의 무선 충전 기능이 편리하다는 평이 많았으며, 발열이 적다는 것도 긍정적인 평이 있음. 하지만 안내책자가 중국어로만 되어 있어서 불편함을 느낀 평도 있음. 전반적으로는 샤오미 P05ZM이 무선 충전을 원하는 사용자에게 좋은 선택일 수 있다는 결론을 도출할 수 있음.`,
+        url: `https://search.shopping.naver.com/catalog/36143331621?&NaPm=ct%3Dlg90xi1c%7Cci%3Dcd04a3175864eb32217c19e9dba8950e7abf1185%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Dc4f0d94381bb069f212398d6f5d517bc49826028`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3692656/36926564618.20230102171707.jpg?type=f640`,
+        name: `아이엠듀 아이폰 무선 보조배터리 8핀 일체형 C타입 충전형 5000mAh`,
+        price: `12,900`,
+        score: `4.8`,
+
+        keywords: `무선, 휴대성, 충전속도`,
+        summary: `요즘 무선 보조배터리를 많이 사용하고 있으며, 충전 속도가 빠르고 휴대하기에도 편리하며, 디자인도 깔끔하고 유용한 제품이라는 내용이 대부분입니다. `,
+        positive: `충전 속도가 빠르고, 휴대하기에도 편리하며, 디자인도 깔끔하고 가격 대비 가성비가 좋다는 내용이 대부분입니다.`,
+        negative: `잃어버릴 위험이 있으며, 제품 크기가 작은 만큼 용량이 부족하다는 내용이 일부 있습니다. `,
+        analysis: `대부분의 사용자들은 충전 속도가 빠르고 휴대하기 적합하며, 가격 대비 가성비가 좋다는 이유로 만족하는 것으로 보입니다. 그러나 일부 사용자들은 제품의 크기가 작은 만큼 용량이 부족하고, 잃어버리기 쉽다는 점을 지적합니다. 따라서 이 제품은 휴대성이 중요한 사용자들에게 적합하며, 충분한 용량이 필요한 사용자들은 다른 제품을 고려해야 할 것입니다.`,
+        url: `https://search.shopping.naver.com/catalog/36926564618?&NaPm=ct%3Dlg90yj2o%7Cci%3D24cfefbab9c6d93e2187c2e5ccb88884124fdd15%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D44bb51666c55252f8885a6e621b924d7dd946d2c`
     }
 
+]
+
+const laptop: Product[] = [
+
+    {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_2610184/26101847522.20220705135838.jpg?type=f640`,
+        name: `Apple 맥북 에어 2020년형 M1 256G 스페이스 그레이 (MGN63KH_A)`,
+        price: `1,248,990`,
+        score: `4.9`,
+
+        keywords: `선물용, 화질, 음질`,
+        summary: `"선물증정식 후 언박싱 했을 때 맥북에어의 영롱함, 키보드의 촉감도 가볍고, 무엇보다 발열이 심하지 않음"`,
+        positive: `"선물증정식 후 언박싱 했을 때 맥북에어의 영롱함, 키보드의 촉감도 가볍고, 무엇보다 발열이 심하지 않음"`,
+        negative: `"추가구매해야하는 제품들에 대한 비용이 부담스러웠으며, 사용방법이 익숙하지 않아 처음에는 어려움을 겪는 경우가 있음"`,
+        analysis: `"맥북은 선물용으로도 좋고, 화질과 음질이 우수하여 영상 시청에 적합함. 또한, 성능과 디자인 면에서도 높은 수준을 유지하며 발열도 적은 편이라는 것이 장점임. 부가적인 제품을 추가로 구매해야 하는 비용이 있지만, 총합적으로 가격 대비 성능이 우수한 제품임을 알 수 있음."`,
+        url: `https://search.shopping.naver.com/catalog/26101847522?&NaPm=ct%3Dlg911p9s%7Cci%3Dd3a7b4afda3bb311b39b631ef809ca8f0bd850b2%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D603686283bb573c04143c4928168105576ddaf42`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3730924/37309241618.20230119110257.jpg?type=f640`,
+        name: `LG전자 LG그램 15ZD90R-GX56K`,
+        price: `1,448,900`,
+        score: `5`,
+
+        keywords: `디자인, 성능, 가벼움`,
+        summary: `긍정적인 리뷰 10개, 부정적인 리뷰 없음`,
+        positive: `디자인이 멋지고 슬림하며 가벼워서 이동하기 편리하다. 성능이 좋고 가성비가 높다.`,
+        negative: `없음`,
+        analysis: `LG전자 그램 노트북은 멋진 디자인과 성능, 가벼움이라는 장점을 가지고 있으며, 가성비도 높은 제품으로 나타났습니다. 부정적인 리뷰가 없어서 이 제품을 구매하는 것이 좋은 선택일 것입니다.`,
+        url: `https://search.shopping.naver.com/catalog/37309241618?&NaPm=ct%3Dlg913p14%7Cci%3De223b9d0b917c0acc3f231ffdff34d857e062d38%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D4ca76ec7ff9140dc3e82b82359640d03339b66b5`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3877929/38779299618.20230320111643.jpg?type=f640`,
+        name: `LG전자 LG그램 15ZD90RT-GX5BK`,
+        price: `1,458,420`,
+        score: `5`,
+
+        keywords: `초경량, 가볍다, OLED`,
+        summary: `1) 무게가 가볍고 이동성이 좋다. 2) OLED 디스플레이가 매우 선명하다. 3) 타입-C 포트가 부족하다.`,
+        positive: `무게가 가볍고 이동성이 좋다. OLED 디스플레이가 매우 선명하고 가격도 저렴하다.`,
+        negative: `타입-C 포트가 부족하다.`,
+        analysis: `LG 그램 2023는 가볍고 이동성이 좋아서 출장이나 외근할 때 매우 편리하다. OLED 디스플레이의 선명한 화질로 이미지나 동영상 재생도 끊김없이 원활하다. 하지만, 타입-C 포트가 부족한 점이 아쉽다. 전반적으로, 무게와 이동성, OLED 디스플레이의 화질 등을 고려하면 가격대비 매우 좋은 제품이다.`,
+        url: `https://search.shopping.naver.com/catalog/38779299618?&NaPm=ct%3Dlg914vgw%7Cci%3Dd7cf4f324827a38b0fba092653eca27ef11fb7db%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D23899409ea97726942468aa891d417321cb78f9b`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3665213/36652131618.20221220175059.jpg?type=f640`,
+        name: `LG전자 LG그램 15ZD95Q-GX56K`,
+        price: `1,336,310`,
+        score: `4.9`,
+
+        keywords: `경량, 성능, 디자인`,
+        summary: `1) 경량한 노트북이지만 성능이 좋다 2) 디자인이 깔끔하고 이쁘다 3) 가격이 저렴하다`,
+        positive: `경량이지만 성능이 좋고 디자인도 이쁘며 가격도 저렴한 노트북`,
+        negative: `부족한 사양이나 단점은 없었다.`,
+        analysis: `LG 그램 15는 경량한 노트북이지만 강력한 성능과 깔끔하고 이쁜 디자인, 저렴한 가격으로 구매할 수 있는 노트북입니다. 리뷰어들은 이 노트북의 가벼운 무게와 높은 성능을 칭찬하고, 디자인이 깔끔하고 이쁘다는 것에 대해 동의했습니다. 부족한 사양이나 단점은 없었다는 리뷰어의 평가는 이 노트북의 전반적인 만족도를 대변합니다. 이러한 리뷰들은 구매자들이 LG 그램 15를 구매할 때 강력한 구매 동기를 제공할 것입니다.`,
+        url: `https://cr.shopping.naver.com/adcr.nhn?x=kWBoEmzvR2x5ub8FGSlm%2Ff%2F%2F%2Fw%3D%3DsYV0eT4bN%2FoBRrnjeG%2BjA%2B9B3KtGm7NYJsnjoC39aEYNzBoHH3EWaFCq96UhMNkjNYzF%2FpIx6n3NHAFJsEjDSPwlmK2MLbeWyDjmGoYtsdoEit%2BGJh4nBl7gHz2%2FqBK%2BO2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlEd8oBfV79Ba0yJAzh7NnPt444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgQ7wqxl38U%2BR8CNScEBVbwILtyftJqSIFvqdWy2QaraRYdttpd%2FeGdUo8GFKs7ozECmcW7oZeXnX8tFT2A3NTaoOvNGp6838z2wP4UgDR4ptAFA1vxdUmAlxKSTnn%2F0ASBeIJsWPxs1TdvuostmXxBtdHtP%2B6FLcNfNg1WBwx3MlWWcRrYR9UAC856PVFLsgvWuCYvkbQ43lJWV0CC%2F9nluLVfXgf6SrhjdcSr6DIiZJfJs6k7PyUo8P33WTn1hHDPRRs2Tl2LVXyNQxua0eKL%2B8W5ZcIQelmZyeNm2jwJKZ&nvMid=36652131618&catId=50000151`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3143707/31437074618.20220323151008.jpg?type=f640`,
+        name: `LG전자 LG그램 16ZD90Q-EX56K`,
+        price: `1,429,840`,
+        score: `4.9`,
+
+        keywords: `가벼움, 고사양, 화질`,
+        summary: `1. 12세대 그램은 이전 모델에 비해 성능이 향상되었고, 가벼움과 화질이 매력적입니다.
+        2. 그램을 사용하는 이유로는 보안 잠금장치와 16:10 비율 화면, 그리고 고해상도를 지원하는 것이 중요합니다.
+        3. 지문인식 기능이 빠진 것이 아쉽고, 가격은 높지만 전반적으로 적극 추천할 만한 제품입니다.`,
+        positive: `성능이 업그레이드 되었고, 가벼움과 화질이 매력적입니다.
+        보안 잠금장치, 16:10 비율 화면, 고해상도 지원이 가능하며, 외장형 모델로 발열 문제가 개선되었습니다.
+        12세대 그램은 이전 모델 대비 성능이 뛰어나며, 최신 기능들이 추가되어 있습니다.`,
+        negative: `지문인식 기능이 빠져 있어 아쉽습니다.
+        랜덤 액세스 메모리(RAM) 파티션이 없어 랜잡이 약간 어렵습니다.
+        가격이 다소 높다는 점이 아쉽습니다.`,
+        analysis: `LG 그램 12세대는 이전 모델 대비 성능이 향상되었으며, 가벼움과 화질이 매력적인 제품입니다. 보안 잠금장치와 16:10 비율 화면, 그리고 고해상도를 지원하는 것이 중요한 사용자들에게 적합합니다. 지문인식 기능이 빠진 것이 아쉽지만, 전반적으로 적극 추천할 만한 제품입니다. 다만, 가격이 다소 높다는 점과 랜덤 액세스 메모리(RAM) 파티션이 없어 랜잡이 어렵다는 점이 아쉬운 부분입니다.`,
+        url: `https://search.shopping.naver.com/catalog/31437074618?&NaPm=ct%3Dlg91b4s0%7Cci%3D9d47614418ba8a7c64c70795edab54bbe553e956%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3De409221723c950630cf38e337bf6f36f14c75433`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3309824/33098241618.20220623130416.jpg?type=f640`,
+        name: `삼성전자 갤럭시북2 NT550XED-K78A`,
+        price: `1,099,000`,
+        score: `4.9`,
+
+        keywords: `성능, 스펙, 가격`,
+        summary: `1. 인텔 i7 12세대로 빠른 성능을 자랑합니다. 2. 스펙이 좋은 대신 저렴한 가격을 가지고 있습니다. 3. 무게가 가벼워 휴대성이 좋습니다.`,
+        positive: `1. 인텔 i7 12세대의 빠른 성능에 만족합니다. 2. 높은 스펙을 가지면서도 저렴한 가격에 구매할 수 있어 좋습니다. 3. 노트북 무게가 가볍고 휴대성이 좋습니다.`,
+        negative: `부정적인 리뷰가 없습니다.`,
+        analysis: `이 제품은 인텔 i7 12세대로 빠른 성능을 자랑하며 높은 스펙을 가지면서도 저렴한 가격을 가지고 있어 매우 인기가 있는 제품입니다. 무게도 가벼워 휴대성이 좋아 일상적인 사용이나 이동이 많은 사용자들에게 추천할 만한 제품입니다.`,
+        url: `https://cr.shopping.naver.com/adcr.nhn?x=uYAYs5dWgLAoIjMRjEfthv%2F%2F%2Fw%3D%3DsnygayCB7L8fPGuOz081arRFznRF%2FyRoeQCTLo2Z8Dh1mA43oU3RlErPN5Ey0z9XPGl92oOJcx6g4Xru20Dfs089FyfPvGcdI8xic0trqcAsSSBK6FJ233joiz4onjJS8RsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbsDGeQ4%2FJ89WS6SX1CImDgXDok9CePzHNAETwWbggE6Lag%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVNjCAO2jQ6ATVkXZFR0ZCTCDTC1NXsGxaQUPC6E6vNWMArNDSbHU%2FS0YkYGoebcIPJjtJZASAIsiotp8xWG7nXdA0anlnaOwLeEIghVynRAYSrGiurM74EaOV%2BVwtR51soZtvcnw7GD4z3OHmKXP53ryNHyBUXwWVD2ki0TxnNzyzmlgfQGHWYHAscqhy7UTqXPCzQkQbFrmJ3hcai4sLvB0LkDx3X8QaW2zvMdFVY2GQj5LCOBE7am2Lk1fm7QqzM2PeVDCMa5u%2FQ6TcxGoOG9dvv8cl5QkgFswO%2Fi0I%2FLf&nvMid=33098241618&catId=50000151`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3291735/32917357618.20220613145834.jpg?type=f640`,
+        name: `삼성전자 갤럭시북2 NT550XEZ-A38A`,
+        price: `599,000`,
+        score: `4.9`,
+
+        keywords: `성능, 디자인, 가격`,
+        summary: `1) 가성비 좋은 노트북 2) 성능이 충분함 3) 디자인이 심플하고 깔끔`,
+        positive: `1) 가성비가 좋음 2) 충분한 성능 3) 심플하고 깔끔한 디자인`,
+        negative: `이동성이나 무게가 무거운 것이 단점`,
+        analysis: `삼성의 높은 품질과 합리적인 가격, 충분한 성능, 심플하고 깔끔한 디자인으로 가성비 좋은 노트북으로 추천할 수 있음. 이동성이나 무게가 무거운 것이 단점이지만, 대부분의 사용자들은 집에서 사용하기 때문에 큰 문제가 되지 않을 것임.`,
+        url: `https://search.shopping.naver.com/catalog/32917357618?&NaPm=ct%3Dlg91dsgg%7Cci%3Debe086e492050140f7e8694fc5584cb30ab6fa4d%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D67ae202d7fbda818119afaa109b28ed06637cad7`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3638483/36384837618.20221208180035.jpg?type=f640`,
+        name: `삼성전자 갤럭시북2 NT750XEV-G51A`,
+        price: `999,000`,
+        score: `4.9`,
+
+        keywords: `성능, 가성비, 디자인`,
+        summary: `1) 가성비 좋은 노트북 2) 성능도 좋고 디자인도 마음에 들어요 3) 소음이 조금 있지만 무난합니다`,
+        positive: `1) 가성비 좋음 2) 성능 우수 3) 디자인이 마음에 듬`,
+        negative: `소음이 조금 있음`,
+        analysis: `갤럭시북2는 가성비가 높은 제품으로, 성능과 디자인 모두 만족스럽습니다. 다만, 소음이 조금 있으니 참고하시면 됩니다. 전반적으로 이 제품은 추천할만한 노트북입니다.`,
+        url: `https://search.shopping.naver.com/catalog/36384837618?&NaPm=ct%3Dlg91evt4%7Cci%3D50a731dc8b6057f452f3c022c7cdd1095e4932bf%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Dbd5099c8aa56741036dd1e6679a494945fa24a66`
+    }, {
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3265534/32655347621.20220530172227.jpg?type=f640`,
+        name: `삼성전자 갤럭시북2 NT750XEW-A51A`,
+        price: `997,000`,
+        score: `4.8`,
+
+        keywords: `디자인, 성능, 가격`,
+        summary: `1. 디자인이 깔끔하고 가벼워서 선택함 2. 성능이 좋고 가격도 합리적 3. 팬 소음이 크다는 점이 아쉬움`,
+        positive: `- 디자인이 깔끔하고 가벼움 - 성능이 좋음 - 가격이 합리적`,
+        negative: `- 팬 소음이 큼`,
+        analysis: `갤럭시북2는 깔끔한 디자인과 가벼운 무게, 좋은 성능, 합리적인 가격으로 구매자들에게 좋은 평가를 받고 있습니다. 하지만, 팬 소음이 크다는 점이 아쉬움으로 언급되었습니다. 디자인과 가격, 성능을 중요시하는 구매자들에게 강력하게 추천할 수 있는 제품입니다.`,
+        url: `https://search.shopping.naver.com/catalog/32655347621?&NaPm=ct%3Dlg91fxm8%7Cci%3D0be869152433c6dd55a48bd2e466680d911807bb%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Dc6873bd89d9bebc0deced62d76426523ee7cbaa3f`
+    }
+]
+
+const phoneCase: Product[] = [
+    {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }, {
+        imgUrl: ``,
+        name: ``,
+        price: ``,
+        score: ``,
+
+        keywords: ``,
+        summary: ``,
+        positive: ``,
+        negative: ``,
+        analysis: ``,
+        url: ``
+    }
 ]

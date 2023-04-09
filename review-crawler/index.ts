@@ -18,6 +18,16 @@ const uploadData = async () => {
 }
 
 
+export const upload = async (product: Product) => {
+    try {
+        await addDoc(collection(db, "category", "appleWatchStrap", "products"), {
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+
 
 export { };
 
