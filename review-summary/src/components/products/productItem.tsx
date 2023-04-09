@@ -8,13 +8,45 @@ interface ProductItemProps {
 
 const ItemWrapper = styled.div`
 font-size: 1rem;
-width: 100%;
+color: white;
+margin: 0px;
 `;
 
 const ItemContainer = styled.div`
 padding: 16px;
 font-size: 1rem;
 `;
+
+const ImageLinkWrapper = styled.a`
+position: relative;
+display: inline-block;
+
+&:hover {
+	cursor: pointer;
+}
+
+&::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 300;
+	transition-duration: 0.3s;
+}
+
+&:hover::after {
+	content: "클릭하여 상품 보기";
+	background-color: rgba(0, 0, 0, 0.7);
+}
+`;
+
 
 const Image = styled.img`
 width: 150px;
@@ -82,14 +114,19 @@ font-weight: bold;
 
 const Keyword = styled.div`
 display: inline-block;
-background-color: white;
+background-color: rgba(255,255,255,0.8);
 color: black;
-border-radius: 4px;
-padding: 4px 8px;
+border-radius: 2px;
+padding: 2px 4px;
 margin-right: 8px;
 margin-bottom: 8px;
-font-size: 1.1rem;
+font-size: 0.9rem;
 font-weight: bold;
+transition-duration: 0.3s;
+
+&:hover {
+	background-color: rgba(255,255,255,0.5);
+}
 `;
 
 const KeywordContainer = styled.div`
@@ -111,17 +148,16 @@ line-height: 1.6;
 
 const ReviewTitle = styled.div`
 font-weight: 300;
-font-size: 1rem;
+font-size: 0.9rem;
 color: lightgray;
 white-space: nowrap;
 min-width: 25%;
 `;
 
 const ReviewContent = styled.div`
-font-size: 1.15rem;
+font-size: 1rem;
 font-weight: 600;
 display: block;
-padding-left: 0.5em;
 width: 100%;
 `;
 
@@ -150,6 +186,10 @@ margin-left: auto;
 display: flex;
 align-items: baseline;
 transition-duration: 0.5s;
+
+&:hover {
+	color: #8ed0ff;
+}
 `;
 
 const ExpandIcon = styled.div<{ expanded: boolean }>`
@@ -160,6 +200,11 @@ border-bottom: 2px solid #0077cc;
 transform: rotate(${(props) => (props.expanded ? "45deg" : "-45deg")});
 margin-left: 4px;
 transition-duration: 0.5s;
+
+&:hover {
+	border-right: 2px solid #8ed0ff;
+	border-bottom: 2px solid #8ed0ff;
+}
 `;
 
 const Hr = styled.div`
@@ -177,10 +222,11 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 
   return (
 		<ItemWrapper>
-			<Hr />
 			<ItemContainer>
 				<div style={{ display: 'flex' }}>
-					<Image src={product.imgUrl} alt={product.name} />
+					<ImageLinkWrapper href={product.url} target="_blank" rel="noopener noreferrer">
+						<Image src={product.imgUrl} alt={product.name} />
+					</ImageLinkWrapper>
 					<ProductInfo>
 						<Name>{product.name}</Name>
 						<PriceScoreWrapper>
@@ -219,7 +265,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 					</ExpandButton>
 				</div>
 			</ItemContainer>
-			<Hr />
+			<Hr style={{ height: "15px", backgroundColor: "#555555" }}/>
 		</ItemWrapper>
   );
 };

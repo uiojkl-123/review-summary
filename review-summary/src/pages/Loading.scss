@@ -1,23 +1,24 @@
 .loading {
     .wrapper {
         height: 100%;
-
         .contentContainer {
-            margin-top: 40px;
+						margin-top: 20px;
+						margin-bottom: -20px;
             display: flex;
             flex-direction: column;
             gap: 60px;
             align-items: flex-start;
-
             .title {
-                line-height: 38px;
+							line-height: 3rem;
             }
-
-            // .loadingImage {}
-        }
-
-
+            .loadingImage {}
+					}
     }
+}
 
-
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
