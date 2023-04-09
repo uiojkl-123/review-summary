@@ -79,6 +79,19 @@ cursor: pointer;
 }
 `;
 
+const EmptyMessage = styled.div`
+font-size: 18px;
+font-weight: bold;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+height: calc(100vh - 100px);
+width: 100%;
+`;
+
+
+
 export const Products: React.FC<ProductsProps> = (props) => {
 	const [products, setProducts] = useState<Product[]>([]);
 	const param = useParams<any>()
@@ -138,11 +151,16 @@ export const Products: React.FC<ProductsProps> = (props) => {
 				</SortSelect>
       </SortContainer>
       <ProductContainer>
-        {products.map((product) => (
+			{products.length > 0 ? (
+        products.map((product) => (
 					<>
 						<ProductItem key={product.name} product={product} />
 					</>
-        ))}
+        ))) : 
+				(
+				<EmptyMessage>항목이 없습니다.</EmptyMessage>
+				)
+			}
       </ProductContainer>
     </IonPage>
   );
