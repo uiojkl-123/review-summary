@@ -1,4 +1,6 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import './Navbar.scss';
 import styled from "@emotion/styled";
 
@@ -9,7 +11,7 @@ interface NavbarProps {
 const NavbarWrapper = styled.div`
 width: 100%;
 max-width: 480px;
-height: 96px;
+height: 70;
 margin: 0px auto;
 background: black;
 z-index: 100;
@@ -42,29 +44,36 @@ height: 100%;
 const TitleContainer = styled.div`
 margin: 0px;
 padding: 0px;
+cursor: pointer;
 `;
 
 const Title = styled.div`
 margin: 0;
-font-size: 24px;
+font-size: 1.8rem;
 line-height: 28px;
-font-weight: 600;
+font-weight: 800;
 color: white;
 `;
 
 export const Navbar: React.FC<NavbarProps> = (props) => {
-    return (
-        <NavbarWrapper className="navbar">
-            <NavbarContainer className="container">
-                <LogoContainer className="logo">
-                    <Logo src="assets/logo_small_icon.png" alt="" />
-                </LogoContainer>
-                <TitleContainer className="title">
-                    <Title>
-                        RevuGenius
-                    </Title>
-                </TitleContainer>
-            </NavbarContainer>
-        </NavbarWrapper>
-    );
+	const history = useHistory();
+
+	const handleLogpClick = () => {
+		history.push('/home');
+	};
+
+	return (
+		<NavbarWrapper className="navbar">
+			<NavbarContainer className="container">
+				<LogoContainer className="logo" onClick={handleLogpClick}>
+					<Logo src="assets/logo_small_icon.png" alt="" />
+				</LogoContainer>
+				<TitleContainer className="title" onClick={handleLogpClick}>
+					<Title>
+							RevuGenius
+					</Title>
+				</TitleContainer>
+			</NavbarContainer>
+		</NavbarWrapper>
+	);
 }

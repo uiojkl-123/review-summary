@@ -1,14 +1,21 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.scss';
+import styled from '@emotion/styled';
 import { Container, Section } from '../theme/theme';
 import { Button } from '../components/Button';
 import { Link } from 'react-router-dom';
 
+const HomeContainer = styled(Container)`
+display: flex;
+flex-direction: column;
+align-items: center;
+overflow-y: auto;
+`;
 
 export const Home: React.FC = () => {
   return (
-    <IonPage class="home">
-      <Container>
+    <IonPage className="home">
+      <HomeContainer>
 
         <Section>
           <div className="mainTopContainer">
@@ -73,7 +80,7 @@ export const Home: React.FC = () => {
           </Link>
         </Section>
 
-      </Container>
+      </HomeContainer>
     </IonPage>
   );
 };
