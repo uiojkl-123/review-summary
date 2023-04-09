@@ -86,16 +86,14 @@ export const Loading: React.FC<LoadingProps> = (props) => {
       <Container>
         <div className="wrapper">
           <div className="contentContainer">
-            <h2 className="title">정보를 불러오고 있어요!<br />잠시만 기다려주세요.</h2>
-						<RippleContainer onClick={handleClick} className="ripple-container">
-							<img src="loading" alt="" />
-						</RippleContainer>
+						<h2 className="title">정보를 불러오고 있어요!<br />잠시만 기다려주세요.</h2>
+            <RippleContainer onClick={handleClick} className="ripple-container" />
           </div>
         </div>
         <div className="footer">
           <Link to={{ pathname: '/products/' + category }}>
-						<Button>상품보기</Button>
-					</Link>
+            <Button>상품보기</Button>
+          </Link>
         </div>
       </Container>
     </IonPage >

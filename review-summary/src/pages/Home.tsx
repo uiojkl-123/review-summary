@@ -10,14 +10,10 @@ display: flex;
 flex-direction: column;
 align-items: center;
 overflow-y: auto;
-overflow-x: hidden;
-padding-bottom: 0px;
+padding: 0;
 `;
 
 export const Home: React.FC = () => {
-
-
-
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
@@ -29,21 +25,18 @@ export const Home: React.FC = () => {
       alert("공유하기가 지원되지 않는 환경 입니다.")
     }
   }
-
   return (
     <IonPage className="home">
       <HomeContainer>
 
         <Section>
           <div className="mainTopContainer">
-            <div className="mainImageContainer ">
+            <div className="mainImageContainer " style={{ width: "400px" }}>
               <img src="assets/main_phone.png" alt="" />
             </div>
-
             <div className="tag">
               챗 GPT 땡땡땡, 앱 이름
             </div>
-
             <div className="mainTitleContainer">
               <h2 className="alignCenter" >
                 <strong>AI 기반 리뷰 분석</strong>으로<br />
@@ -53,24 +46,20 @@ export const Home: React.FC = () => {
                 앱에 대한 설명을 간략하게 한줄로 추가설명합니다.
               </div>
             </div>
-
           </div>
           <Link to="selectCategory">
             <Button widthType='small'>
               앱 이름 시작하기
             </Button>
           </Link>
-
         </Section>
-
 
         <Section>
           <h2 className='alignCenter'>
             상품 리뷰,<br />
             일일이 비교하기 힘드셨죠?
           </h2>
-
-          <div className="mainImageContainer">
+          <div className="mainImageContainer" style={{ width: "400px" }}>
             <img src="assets/main_imgbox_1.png" alt="" />
           </div>
         </Section>
@@ -79,8 +68,7 @@ export const Home: React.FC = () => {
           <h2 className='alignCenter'>
             AI 가 필요한 리뷰만<br />딱! 알아서 깔끔하게<br /><strong>분석하고 요약</strong>해드려요.
           </h2>
-
-          <div className="mainImageContainer">
+          <div className="mainImageContainer" style={{ width: "400px" }}>
             <img src="assets/main_imgbox_2.png" alt="" />
           </div>
         </Section>

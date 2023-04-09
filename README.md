@@ -1,14 +1,18 @@
 # 리뷰 요약 서비스 - GenAI
+<div>
+<img src="https://user-images.githubusercontent.com/35485904/230757588-6c6219d3-74d5-4b66-9958-077027339e92.png" />
+</div>
 
-GenAI 리뷰 요약 서비스는 AI를 활용하여 사용자가 온라인에서 찾을 수 있는 다양한 제품 리뷰를 요약해주는 웹 애플리케이션입니다. React와 Firebase를 사용하여 개발되었습니다.
+
+`GenAI 리뷰 요약 서비스`는 AI를 활용하여 사용자가 온라인에서 찾을 수 있는 다양한 제품 리뷰를 요약해주는 웹 애플리케이션입니다.
 
 ## 기술 스택
 
-- React
-- TypeScript
-- Firebase (Firestore, Authentication, Storage, Functions)
-- Emotion (CSS-in-JS)
-- Axios
+- `React`
+- `TypeScript`
+- `Firebase` (Firestore, Authentication, Storage, Functions)
+- `Emotion` (CSS-in-JS)
+- `Axios`
 
 ## 주요 기능
 
