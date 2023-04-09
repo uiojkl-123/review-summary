@@ -49,9 +49,9 @@ cursor: pointer;
 
 const Title = styled.div`
 margin: 0;
-font-size: 24px;
+font-size: 1.8rem;
 line-height: 28px;
-font-weight: 600;
+font-weight: 800;
 color: white;
 `;
 

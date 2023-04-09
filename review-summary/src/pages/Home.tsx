@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const Home: React.FC = () => {
   return (
-    <IonPage class="home">
+    <IonPage className="home">
       <Container>
 
         <Section>
