@@ -9,12 +9,44 @@ interface ProductItemProps {
 const ItemWrapper = styled.div`
 font-size: 1rem;
 width: 100%;
+color: white;
 `;
 
 const ItemContainer = styled.div`
 padding: 16px;
 font-size: 1rem;
 `;
+
+const ImageLinkWrapper = styled.a`
+position: relative;
+display: inline-block;
+
+&:hover {
+	cursor: pointer;
+}
+
+&::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 300;
+	transition-duration: 0.3s;
+}
+
+&:hover::after {
+	content: "클릭하여 상품 보기";
+	background-color: rgba(0, 0, 0, 0.7);
+}
+`;
+
 
 const Image = styled.img`
 width: 150px;
@@ -180,7 +212,9 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 			<Hr />
 			<ItemContainer>
 				<div style={{ display: 'flex' }}>
-					<Image src={product.imgUrl} alt={product.name} />
+					<ImageLinkWrapper href={product.url} target="_blank" rel="noopener noreferrer">
+						<Image src={product.imgUrl} alt={product.name} />
+					</ImageLinkWrapper>
 					<ProductInfo>
 						<Name>{product.name}</Name>
 						<PriceScoreWrapper>
