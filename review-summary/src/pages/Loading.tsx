@@ -7,7 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Container } from '../theme/theme';
 import styled from '@emotion/styled';
 
-interface LoadingProps {}
+interface LoadingProps { }
 
 const RippleContainer = styled.div`
 	margin: 50px;
@@ -28,7 +28,7 @@ export const Loading: React.FC<LoadingProps> = (props) => {
   const state = useLocation().state as any;
   const category = state?.category;
 
-	const triggerRipple = (x: number, y: number) => {
+  const triggerRipple = (x: number, y: number) => {
     const ripple = document.createElement('div');
     ripple.className = 'ripple';
     const diameter = 300; // You can set a fixed diameter or calculate it based on the container size
@@ -50,20 +50,20 @@ export const Loading: React.FC<LoadingProps> = (props) => {
 
     setTimeout(() => {
       ripple.remove();
-    }, 1000);
+    }, 700);
   };
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
-		const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
-		const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
-	
-		for (let i = 0; i < 3; i++) {
-			setTimeout(() => {
-				triggerRipple(x, y);
-			}, i * 150); // Adjust the delay time between each circle
-		}
-	};
-	
+    const x = e.clientX - e.currentTarget.getBoundingClientRect().left;
+    const y = e.clientY - e.currentTarget.getBoundingClientRect().top;
+
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => {
+        triggerRipple(x, y);
+      }, i * 150); // Adjust the delay time between each circle
+    }
+  };
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,11 +73,21 @@ export const Loading: React.FC<LoadingProps> = (props) => {
         const y = Math.random() * container.clientHeight;
         triggerRipple(x, y);
       }
-    }, 2000); // Adjust the interval time to your preference
+    }, 1000); // Adjust the interval time to your preference
 
     return () => {
       clearInterval(interval);
     };
+  }, []);
+
+  const [text, setText] = React.useState('정보를 불러오고 있어요!\n잠시만 기다려주세요.');
+
+  // 1s after, text Change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setText('완료되었어요!\n아래 버튼을 클릭해서\n확인해보세요!');
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -86,13 +96,13 @@ export const Loading: React.FC<LoadingProps> = (props) => {
       <Container>
         <div className="wrapper">
           <div className="contentContainer">
-						<h2 className="title">정보를 불러오고 있어요!<br />잠시만 기다려주세요.</h2>
+            <h2 className="title">{text}</h2>
             <RippleContainer onClick={handleClick} className="ripple-container" />
           </div>
         </div>
         <div className="footer">
           <Link to={{ pathname: '/products/' + category }}>
-            <Button>상품보기</Button>
+            <Button className={text === '완료되었어요!\n아래 버튼을 클릭해서\n확인해보세요!' ? '' : 'hidden'}>상품보기</Button>
           </Link>
         </div>
       </Container>

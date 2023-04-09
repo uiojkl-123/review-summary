@@ -1,6 +1,6 @@
 
 
-interface Product {
+export interface Product {
     imgUrl: string;
     name: string;
     price: string;
@@ -17,7 +17,7 @@ interface Product {
 
 
 
-const appleWatchStrap: Product[] = [{
+export const appleWatchStrap: Product[] = [{
     imgUrl: 'https://shopping-phinf.pstatic.net/main_2632399/26323997522.20210830191926.jpg?type=f640',
     name: '로랜텍 애플워치 스트랩 마그네틱 메탈 시계줄 밴드',
     price: '5,800',
@@ -164,7 +164,7 @@ const appleWatchStrap: Product[] = [{
 ]
 
 
-const bluetoothEarphone: Product[] = [{
+export const bluetoothEarphone: Product[] = [{
     imgUrl: 'https://shopping-phinf.pstatic.net/main_2370266/23702664490.20200825144312.jpg?type=f640',
     name: '삼성전자 갤럭시 버즈 라이브 SM-R180',
     price: '84,500',
@@ -266,150 +266,199 @@ const wowowo = {
 // 삼성전자 삼성 EB-U3300,https://cr.shopping.naver.com/adcr.nhn?x=K%2FjgimXp1YQ%2F7M8hAmgbZ%2F%2F%2F%2Fw%3D%3DsHWOlYwk%2F%2FOuA5P4naSOxqE8Xo0dWKxYkdDHRQB3kUC8Z3Hg9PUNOjYGe9g018piRNATB70oqFYW10REhY%2FzDxet9J6USZd6xcQ71NYdSQiZOooJBkA6JjrHwYQqO90PfRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbvRup50QPFRtFU0Nns%2BX5vUe79QBSAwGXnEdl6BtQkosqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVF32kWW3AZ9n51%2BfpOpNvW9I03Gt8tDHN5dHSqHnU85tArNDSbHU%2FS0YkYGoebcIPCLB6oYSccrhiI9tyHuTlqJg%2BhT9LrdwsBwS26sP7OCcSrGiurM74EaOV%2BVwtR51smSqKhn%2B%2BSxfnAS7U7RFoPlSMM4TvvLV%2BGVN9k%2BvxTFuMuLb5eFdgvhO2snvCkBVX3IV2opseDat9kj4nQx2VNG5Vxyh7ERc9oqa7bflHfw3OUJ40VAQqT8yuq0%2FT5fe2JhdXWWaAVSuQbjqH2oYMPAldIWWx6olv4P3LW5p1MTu&nvMid=22603952755&catId=50004603,`,
 }
 
-const battery: Product[] = [
+export const battery: Product[] = [
     {
-        imgUrl: 'https://shopping-phinf.pstatic.net/main_3614333/36143336619.20230215114154.jpg?type=f640',
-        name: 'P&G 보조배터리 미니 듀얼 (PG-PB02)',
-        price: '29,900',
-        score: '4.5',
-
-        keywords: '편리함, 실용성, 품질',
-        summary: '편리하고 실용적인 제품. 품질이 우수하고 효과적인 제품. 가격에 비해 탁월한 성능의 제품.',
-        positive: '휴대하기 편리하고 작은 크기가 탁월한 제품. 효과적으로 사용할 수 있어 실용성이 높음.',
-        negative: '특별한 단점 없음. 다만 가격이 다소 높을 수 있음.',
-        analysis: 'P&G 보조보건용품 미니 더블릴은 편리하고 실용적인 제품으로 품질이 우수하며 효과적인 성능을 가진 제품이다.',
-        url: 'https://search.shopping.naver.com/catalog/36143336619?&NaPm=ct%3Dlg90hvjc%7Cci%3Dc40b8832c18ad6362e1a279cf7a0955d38daf3fd%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Db25b0653f2fe4fc3d5ed3ea6a23f0c3544ec6353'
+        imgUrl: `https://shopping-phinf.pstatic.net/main_2721429/27214296522.20210520144404.jpg?type=f640`,
+        name: `엠지텍 이어프리 G5`,
+        price: `108,890`,
+        score: `4.6`,
+        
+        keywords: `음질, 배터리, 가볍다`,
+        summary: `음질은 프리미엄 급과 비교하면 조금 떨어짐. 배터리는 만족할 만한 수준이고 무게는 정말 가벼움. 착용감은 호불호가 갈림`,
+        positive: `가볍고 배터리 수명은 만족할 만한 수준안경착용자에게도 불편함 없음`,
+        negative: `음질이 프리미엄 급과 비교하면 조금 떨어짐. 볼륨조절 버튼 위치가 불편. 또한 착용감에서 호불호가 갈림`,
+        analysis: `엠지텍 이어프리 G5는 가볍고 배터리 수명이 만족할 만한 수준이며 안경 착용자에게도 불편함이 없지만 착용감에는 호불호가 갈린다. 하지만 음질은 프리미엄 급과 비교하면 조금 떨어지고 볼륨조절 버튼 위치가 불편할 수 있다는 점이 있으니 이 점을 고려하여 구매하면 좋을 것이다.`,
+        url: `https://search.shopping.naver.com/catalog/27214296522?&NaPm=ct%3Dlg920f9s%7Cci%3D97a2eca733fa2d9b243bc8d589067ea137e10000%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3De171863c9c34eb7820b360142a3373b60f99e698`
     }, {
-        imgUrl: 'https://shopping-phinf.pstatic.net/main_3089074/30890745618.20230119105438.jpg?type=f640',
-        name: '디지지 QC3.0 2세대 듀얼 고속충전 보조배터리 10000mAh',
-        price: '18,900',
-        score: '4.7',
-
-        keywords: '저렴한 가격, 빠른 충전, 휴대성, 고속 충전, 작은 크기',
-        summary: '1. 가격이 저렴하고 온라인에서 구매해서 만족함. 2. 빠른 충전 속도로 구매했던 것에 만족함. 3. 휴대하기 편한 슬림한 사이즈로 매일 사용 중.',
-        positive: '가격이 저렴하고 빠른 충전 속도가 좋음.',
-        negative: '충전케이블에 젠더가 빠져 있어 아쉬움.',
-        analysis: '이 제품은 가격이 저렴하고 빠른 충전 속도로 사용자들에게 만족스러운 성능을 제공하고 있습니다. 휴대하기 편한 슬림한 사이즈로 매일 사용하기에 편리하며, 고속 충전 기능이 있어 급속 충전이 필요한 상황에서 유용하게 사용될 수 있습니다. 다만, 충전케이블에 젠더가 빠져 있어 사용자들 중 일부는 아쉬움을 표현하고 있습니다. 그러나 전반적으로 가성비가 좋고 성능이 우수한 제품으로 판단됩니다.',
-        url: 'https://search.shopping.naver.com/catalog/30890745618?&NaPm=ct%3Dlg90jp4g%7Cci%3Df4b21fcd4e0b1515ac50b502f78e4083a66430eb%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D14c95b89d011c46a6df9ff7d405edd2f710fe74c'
+        imgUrl: `https://shopping-phinf.pstatic.net/main_2131116/21311163787.20200101133427.jpg?type=f640`,
+        name: `피에스이벤처스 PENTON 펜톤 TSX 다이아팟`,
+        price: `37,540`,
+        score: `4.6`,
+        
+        keywords: `음질, 가성비, 디자인`,
+        summary: `음질이 좋고 가성비가 좋은 제품. 제품을 적극 추천함.`,
+        positive: `자동페어링이 쉽고 빠름.  음질이 우수하며 디자인이 예쁨. 가격 대비 성능이 탁월함`,
+        negative: `이어폰 터치가 민감하여 살짝 스쳐도 반응함`,
+        analysis: `피에스이벤처스 PENTON 펜톤 TSX 다이아팟는 가성비가 우수한 이어폰으로, 자동페어링이 쉬워 편리하게 사용할 수 있습니다. 음질 또한 우수하며, 심플하고 예쁜 디자인으로도 인기를 끌고 있습니다. 단, 이어폰 터치가 살짝 민감해서 살짝 스쳐도 반응하는 점은 아쉬운 부분입니다. 하지만, 가격 대비 성능이 뛰어나기 때문에, 이어폰 구매를 고려하는 분들께 추천합니다.`,
+        url: `https://cr.shopping.naver.com/adcr.nhn?x=gJ6fzvxYdOJfUT9ub4Zk9f%2F%2F%2Fw%3D%3DsiA6Sx2bYHIg2%2BOWkNvp7JNt6VbMq9ipPFgbRh48oikW%2BaPMyN4hy9yMm%2BcCL3UWsxVyNFYRXTsFLy4EN58RCr9M4dfaGkGP9gqr6mKsHT2oTUjNyNiUjjL9L%2F3HaLNowHinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCcgZvYxXE%2FwCsCZQAJaep1YqQetMh%2F6EBN9ePIDoC%2ByQ%2BnMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHBf3wXxHtpqXVA1TWM7DJMBNq4zOly2XSeGdWf1ZiAUy%2BYnTpLBgb2Sn8vnu71ut%2BkpfHrVUgMkYqki4cbUF1OTtSni7mrLXnUwWGqWfePsDS13L%2FQM%2BCZuq6rpKOfI%2BgylZSmwygQlh%2FKRELrY0%2FJEMoQb4Tih14tHiTt93zT9RzhW4ATNeHpR4SJdEbQK5L%2FweLbuibzfTpjUHdmuiiCNWj0Tq5MqPx1IypyDKL6OYv4YGjJCSIW1IvBxXT1wG91wyWDeCX88ihaqJ1onU8W1vU2Y6hEEwGxc1AZfON9sLGT0HZcA35XudSAuftxLVoA%3D%3D&nvMid=21311163787&catId=50002334`
     }, {
-        imgUrl: 'https://shopping-phinf.pstatic.net/main_3757459/37574599618.20230201143747.jpg?type=f640',
-        name: '로랜텍 맥세이프 갤럭시 아이폰 고속 무선충전 보조배터리',
-        price: '27,500',
-        score: '4.9',
-
-        keywords: '가벼움, 휴대성, 무선충전',
-        summary: '10000암페어 치고 가볍고 휴대성이 좋음. 2) 무선충전이 잘 되어 편리함. 3) 발열이 조금 있지만 충전 속도가 빠름.',
-        positive: '휴대성이 뛰어나고 무선충전이 편리하게 잘 되어 편리함.',
-        negative: '발열이 조금 있으나 충전 속도가 빠르기 때문에 무리하지 않음.',
-        analysis: '로랜텍 맥세이프 갤럭시 무선충전기는 가볍고 휴대성이 뛰어나며 무선충전이 편리하게 잘 되는 것이 장점이다. 발열이 조금 있을 수 있지만 충전 속도가 빠르기 때문에 크게 불편하지 않다. 이 제품을 선택하면 휴대성과 편리한 무선충전을 즐길 수 있을 것이다.',
-        url: 'https://search.shopping.naver.com/catalog/37574599618?&NaPm=ct%3Dlg90lua8%7Cci%3Da815a12ba6fc9619317d4fca200a5f8c143533e2%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D40ec168b16100345d0550e0927f0e5fbdbc23f0a'
-    }, {
-        imgUrl: 'https://shopping-phinf.pstatic.net/main_3241823/32418233620.20221011190820.jpg?type=f640',
-        name: '모디스 듀얼 10000 보조배터리 RPD-10000',
-        price: '8,900',
-        score: '4.7',
-
-        keywords: '절약, 높은 품질, 효율적인 에너지 사용',
-        summary: '뛰어난 절약 기능, 고품질, 에너지 효율성',
-        positive: '에너지 절약, 높은 성능, 가치',
-        negative: '소음, 디자인, 추가 기능 부족',
-        analysis: '모디스 듀얼 10000은 뛰어난 절약 기능과 고품질로 유명하며, 에너지 효율성이 높아 사용자에게 효과적인 에너지 절약을 제공합니다. 또한 성능이 뛰어나고 가치가 높은 제품으로 평가되었습니다. 다만, 소음이 발생할 수 있고 디자인이 아쉬움이 있으며, 추가 기능이 부족할 수 있다는 점이 아쉬운 점으로 언급되었습니다.',
-        url: 'https://search.shopping.naver.com/catalog/32418233620?&NaPm=ct%3Dlg90n1hs%7Cci%3D44b12ed01d1f1a3953eec111108ae0c2a8d5a768%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D169cf165763d0f07bcaa11416c3893f4cd1b8419'
-    }, {
-        imgUrl: 'https://shopping-phinf.pstatic.net/main_3646886/36468865619.20221212152904.jpg?type=f640',
-        name: '모디스 일체형 미니 도킹형 보조배터리 5000mAh (8핀)',
-        price: '7,900',
-        score: '4.8',
-
-        keywords: '컴팩트, 휴대성, 빠른충전',
-        summary: `모디스 일체형 미니 도킹형 보조배터리는 컴팩트한 크기로 휴대성이 좋다.
-        빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있다.`,
-        positive: `모디스 일체형 미니 도킹형 보조배터리의 크기가 작아 휴대하기 편리하다.
-        빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있다는 점이 편리하다.`,
-        negative: `휴대폰을 완전히 충전시키는데 한번에 충분한 용량이 아닐 수 있다.
-        USB-C 포트가 없어 최신 모델의 휴대폰과는 호환되지 않는다.`,
-        analysis: `
-        모디스 일체형 미니 도킹형 보조배터리는 컴팩트한 크기와 빠른 충전 속도로 휴대폰 사용 중 배터리 부족 시에 편리하게 사용할 수 있는 제품이다.
-       크기가 작아 휴대하기 편리하며, 빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있어 많은 사람들에게 추천된다.
-       단, 휴대폰을 완전히 충전시키는데 한번에 충분한 용량이 아니거나, USB-C 포트가 없어 최신 모델의 휴대폰과는 호환되지 않는다는 점이 단점으로 언급되었다. 그러나 전반적으로 모디스 일체형 미니 도킹형 보조배터리는 휴대성과 빠른 충전 속도로 사용자들의 구매 판단을 높일 수 있는 제품으로 평가된다.`,
-        url: 'https://search.shopping.naver.com/catalog/36468865619?&NaPm=ct%3Dlg90obsg%7Cci%3D88af597386264b7df20178512906f5f7144ff889%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Da0ce7b888aaaed9ea43c6f088c18e895bd7151b5'
-    }, {
-        imgUrl: 'https://shopping-phinf.pstatic.net/main_3646333/36463335618.20221220174204.jpg?type=f640',
-        name: '미니덕트 맥세이프 미니 무선 보조배터리 mi200DT',
-        price: '36,600',
-        score: '4.7',
-
-        keywords: '캠핑, 레져, 배터리 부족, 유선 보조배터리, 고속충전, 유무선 패스스루, 사용 편리',
-        summary: `- 캠핑, 레져를 자주 다니는데 배터리가 부족해서 유선 보조배터리를 들고다녔지만 미니덕트 맥세이프 무선 배터리를 구매하게 되었다. 작은 크기이지만 고속충전이 되고 유무선 패스스루 기능이 있어 폰과 배터리를 동시에 충전할 수 있어 편리하다. 잘 사용할 것 같다.`,
-        positive: `- 작은 크기지만 고속충전 가능- 유무선 패스스루 기능이 편리- 폰과 배터리를 동시에 충전 가능- 사용이 편리하다`,
-        negative: `- 기존의 유선 보조배터리와 비교했을 때 케이블이 불편하다`,
-        analysis: `- 미니덕트 맥세이프 무선 배터리는 캠핑이나 레저 활동 시 배터리 부족 문제를 해결해주는 제품으로 평가됨 - 작은 크기에도 높은 충전 성능과 유무선 패스스루 기능이 편리하게 사용자에게 제공됨 - 다양한 긍정적인 리뷰로 사용자의 구매 판단에 도움을 줌`,
-        url: 'https://search.shopping.naver.com/catalog/36463335618?&NaPm=ct%3Dlg90r1s8%7Cci%3D4f80002d7b3f9dc1ab46f4b9d30d5635bc437a36%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Ddf9607b137129166413e00add07904d0f17b4acb'
-    }, {
-        imgUrl: `https://shopping-phinf.pstatic.net/main_2427734/24277349522.20200925112604.jpg?type=f640`,
-        name: `삼성전자 삼성 25W PD 보조배터리 20000mAh EB-P5300`,
-        price: `50,f980`,
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3532695/35326957618.20221019164120.jpg?type=f640`,
+        name: `Apple 에어팟 3세대 라이트닝 충전 케이스 모델 (MPNY3KH/A)`,
+        price: `233,100`,
         score: `4.8`,
-
-        keywords: `빠른 충전, 용량 큼, 다용도`,
-        summary: `택배가 빨리 왔고, 충전 속도가 빠르며 용량이 큼`,
-        positive: `"충전 속도 빠르고 용량 크다", "다양한 용도로 활용 가능", "디자인이 편리하다”`,
-        negative: `충전이 조금 느리고, 크기가 크고 무겁다`,
-        analysis: `삼성 25W PD 보조배터리 20000mAh EB-P5300은 택배가 빨리 도착하고, 충전 속도가 빠르며 용량이 크다는 긍정적인 리뷰가 많았습니다. 하지만 충전이 조금 느리고, 크기가 크고 무겁다는 단점이 있었습니다. 이 제품은 충전이 빠르고 용량이 크다는 장점을 갖고 있어 구매를 고려할 수 있습니다.`,
-        url: `https://cr.shopping.naver.com/adcr.nhn?x=otBEiNTFCgMZw0GSdT688f%2F%2F%2Fw%3D%3DsYXOZxBZfVSVw26pkdspCEG0L8qHuSwMEb59wTpF1FDjG2OG5wB6cIgMglc1scEc7yVwIlaCVoMhjc7ARzTMCKJFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlHrLjNgAcTj4K%2BtXrXAPei8xtU6UAHbedKYkoIBiPZxNaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgYyci6MbU5Cg3soTvV1iZUVXOYV6brAGlBf70HJn5Rf0Ydttpd%2FeGdUo8GFKs7ozEIkVGmHXZUll8Ztiu8n7nfpHuAwEZMC2fZIeq5qxAvGdNifbjq9lwtRIpr4isW5NV2EzH4cp9Doq220L2e8i6advcgm%2BSIyZYncSyGIdJcBIK2Fhwp4Qwiv3abmi0w6TCbi0snhZd2ivxPQ9alJmPdtjr4w5dGf7ZdeeXrGsSCFcXzW0QKRuzcD6WMcLhSquo2hkpcY0AzQMG%2Bk%2FG7MMnA13UI5Qrmx14TIWjyLT6OeCi8PREhL5jWWo0nOhXh2YQA%3D%3D&nvMid=24277349522&catId=50004603`
-    }, {
-        imgUrl: `https://shopping-phinf.pstatic.net/main_3782387/37823873619.20230209142851.jpg?type=f640`,
-        name: `삼성전자 삼성 EB-P3400`,
-        price: `30,260`,
-        score: `4.8`,
-
-        keywords: `가볍고, 충전속도, 디자인`,
-        summary: `가볍고 좋은 충전속도, 예쁜 디자인, 만족하는 사용 경험`,
-        positive: `가볍고 충전이 잘 되며 예쁜 디자인이 만족스러움`,
+        
+        keywords: `음질, 편안함, 가성비`,
+        summary: `에어팟 2세대와 비교해서 편안하게 착용할 수 있고, 음질이 향상된 제품. 가성비가 좋아 다른 이어폰에 비해 선택하는 것이 좋음 커널형 이어폰이 맞지 않는 사람들에게 추천`,
+        positive: `착용감이 매우 편안하다. 음질이 매우 우수하다. 가격 대비 가성비가 높다`,
         negative: `없음`,
-        analysis: `구매 결정에 도움되는 가볍고 빠른 충전 속도, 예쁜 디자인이 사용자의 만족도를 높임. 데이터 없음으로부터 불만점이 없는 제품으로 평가됨.`,
-        url: `https://search.shopping.naver.com/catalog/37823873619?&NaPm=ct%3Dlg90udds%7Cci%3Dc703c57dc1ec518ef26d02af13cbe6d0188d292f%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Df36768f8e0fad3b1857b5c25a80e726bb29b99fa`
+        analysis: `Apple 에어팟 3세대는 착용감이 좋고 음질도 우수하여 가성비가 높은 제품입니다. 커널형 이어폰이 맞지 않는 사람들에게도 추천할 수 있습니다. 만족도가 높아 다른 이어폰 대비 선택하는 것이 좋습니다.`,
+        url: `https://search.shopping.naver.com/catalog/35326957618?&NaPm=ct%3Dlg9236t4%7Cci%3Dbbcd17d757ca722b069a75eb7978afeecf8bf42c%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3De702de6a85fb4fe685a1e059bb915dce88d7f6ef`
     }, {
-        imgUrl: `https://shopping-phinf.pstatic.net/main_2260395/22603952755.20200424104249.jpg?type=f640`,
-        name: `삼성전자 삼성 EB-U3300`,
-        price: `48,320`,
+        imgUrl: `https://shopping-phinf.pstatic.net/main_3492550/34925507621.20220927171850.jpg?type=f640`,
+        name: `Apple 에어팟 프로 2세대 (MQD83KH_A)`,
+        price: `268,340`,
         score: `4.8`,
-
-        keywords: `무게, 무선충전, 발열`,
-        summary: `배터리 무게 묵직, 무선충전 편리, 발열 심함`,
-        positive: `무게 가볍고 편리, 무선충전 용이, 다양한 사용 가능`,
-        negative: `발열이 심하고 무게가 무거움, 발열이 높음, 무선충전 시 발열 주의`,
-        analysis: `무게와 무선충전의 편리함이 큰 장점, 발열이 아쉬운 점으로 언급됨`,
-        url: `https://search.shopping.naver.com/catalog/22603952755?&NaPm=ct%3Dlg90vpzs%7Cci%3Daf6945558553feafe50b8cd259334e8a02f29d03%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D0e496e464c1a6c10a84fcd2f476ff5ce196d9871`
-    }, {
-        imgUrl: `https://shopping-phinf.pstatic.net/main_3614333/36143331621.20221128150322.jpg?type=f640`,
-        name: `샤오미 P05ZM`,
-        price: `35,210`,
-        score: `4.7`,
-
-        keywords: `무선충전, 발열, 중국제품`,
-        summary: `- 무선 충전이 편리하고 발열이 적음 - 중국 제품이라 안내책자가 중국어로만 되어 있음`,
-        positive: `무선 충전이 바로 시작되는 점이 매우 편리하다는 평이 있음. 발열이 적은 것도 장점으로 언급됨.`,
-        negative: `제품이 완전 중국 제품이라 안내책자가 중국어로만 되어 있어서 불편함을 느낀 평이 있음.`,
-        analysis: `샤오미 P05ZM의 무선 충전 기능이 편리하다는 평이 많았으며, 발열이 적다는 것도 긍정적인 평이 있음. 하지만 안내책자가 중국어로만 되어 있어서 불편함을 느낀 평도 있음. 전반적으로는 샤오미 P05ZM이 무선 충전을 원하는 사용자에게 좋은 선택일 수 있다는 결론을 도출할 수 있음.`,
-        url: `https://search.shopping.naver.com/catalog/36143331621?&NaPm=ct%3Dlg90xi1c%7Cci%3Dcd04a3175864eb32217c19e9dba8950e7abf1185%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Dc4f0d94381bb069f212398d6f5d517bc49826028`
-    }, {
-        imgUrl: `https://shopping-phinf.pstatic.net/main_3692656/36926564618.20230102171707.jpg?type=f640`,
-        name: `아이엠듀 아이폰 무선 보조배터리 8핀 일체형 C타입 충전형 5000mAh`,
-        price: `12,900`,
-        score: `4.8`,
-
-        keywords: `무선, 휴대성, 충전속도`,
-        summary: `요즘 무선 보조배터리를 많이 사용하고 있으며, 충전 속도가 빠르고 휴대하기에도 편리하며, 디자인도 깔끔하고 유용한 제품이라는 내용이 대부분입니다. `,
-        positive: `충전 속도가 빠르고, 휴대하기에도 편리하며, 디자인도 깔끔하고 가격 대비 가성비가 좋다는 내용이 대부분입니다.`,
-        negative: `잃어버릴 위험이 있으며, 제품 크기가 작은 만큼 용량이 부족하다는 내용이 일부 있습니다. `,
-        analysis: `대부분의 사용자들은 충전 속도가 빠르고 휴대하기 적합하며, 가격 대비 가성비가 좋다는 이유로 만족하는 것으로 보입니다. 그러나 일부 사용자들은 제품의 크기가 작은 만큼 용량이 부족하고, 잃어버리기 쉽다는 점을 지적합니다. 따라서 이 제품은 휴대성이 중요한 사용자들에게 적합하며, 충분한 용량이 필요한 사용자들은 다른 제품을 고려해야 할 것입니다.`,
-        url: `https://search.shopping.naver.com/catalog/36926564618?&NaPm=ct%3Dlg90yj2o%7Cci%3D24cfefbab9c6d93e2187c2e5ccb88884124fdd15%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D44bb51666c55252f8885a6e621b924d7dd946d2c`
+        
+        keywords: `크기, 노이즈캔슬링, 이어팁`,
+        summary: `크기와 무게가 적당하고, 이어팁 XS 사이즈도 추가됨. 2배 더 강력해진 노이즈 캔슬링으로 주변 소음을 줄일 수 있음. 더 편리한 스와이프 음량조절과 케이스 내장형 스피커로 에어팟 찾기가 쉬워짐.`,
+        positive: `크기와 무게가 적당하고, XS 사이즈 이어팁 추가됨. 2배 더 강력해진 노이즈 캔슬링으로 주변 소음을 줄일 수 있음. 스와이프 음량조절과 에어팟 찾기가 쉬워져 더욱 편리함.`,
+        negative: `없음`,
+        analysis: `Apple 에어팟 프로 2세대는 기존 모델보다 크기와 무게가 조금 더 커졌지만, XS 사이즈 이어팁 추가로 더욱 높은 착용감을 제공합니다. 또한, 2배 더 강력해진 노이즈 캔슬링으로 주변 소음을 줄일 수 있어 노래를 들을 때 집중도가 높아지며, 스와이프 음량조절과 에어팟 찾기 등의 편리한 기능들이 추가되어 사용자 편의성이 높아졌습니다. 따라서, 이 제품은 고객들에게 높은 만족도를 제공할 것으로 예상됩니다.`,
+        url: `https://search.shopping.naver.com/catalog/34925507621?&NaPm=ct%3Dlg924fk8%7Cci%3De9d5d3e3eedd53994118c70954b51c4f97b7b8db%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D16ff33138fd44229fff76d3c18995fcd5c89f03c`
     }
+    // {
+    //     imgUrl: 'https://shopping-phinf.pstatic.net/main_3614333/36143336619.20230215114154.jpg?type=f640',
+    //     name: 'P&G 보조배터리 미니 듀얼 (PG-PB02)',
+    //     price: '29,900',
+    //     score: '4.5',
+
+    //     keywords: '편리함, 실용성, 품질',
+    //     summary: '편리하고 실용적인 제품. 품질이 우수하고 효과적인 제품. 가격에 비해 탁월한 성능의 제품.',
+    //     positive: '휴대하기 편리하고 작은 크기가 탁월한 제품. 효과적으로 사용할 수 있어 실용성이 높음.',
+    //     negative: '특별한 단점 없음. 다만 가격이 다소 높을 수 있음.',
+    //     analysis: 'P&G 보조보건용품 미니 더블릴은 편리하고 실용적인 제품으로 품질이 우수하며 효과적인 성능을 가진 제품이다.',
+    //     url: 'https://search.shopping.naver.com/catalog/36143336619?&NaPm=ct%3Dlg90hvjc%7Cci%3Dc40b8832c18ad6362e1a279cf7a0955d38daf3fd%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Db25b0653f2fe4fc3d5ed3ea6a23f0c3544ec6353'
+    // }, {
+    //     imgUrl: 'https://shopping-phinf.pstatic.net/main_3089074/30890745618.20230119105438.jpg?type=f640',
+    //     name: '디지지 QC3.0 2세대 듀얼 고속충전 보조배터리 10000mAh',
+    //     price: '18,900',
+    //     score: '4.7',
+
+    //     keywords: '저렴한 가격, 빠른 충전, 휴대성, 고속 충전, 작은 크기',
+    //     summary: '1. 가격이 저렴하고 온라인에서 구매해서 만족함. 2. 빠른 충전 속도로 구매했던 것에 만족함. 3. 휴대하기 편한 슬림한 사이즈로 매일 사용 중.',
+    //     positive: '가격이 저렴하고 빠른 충전 속도가 좋음.',
+    //     negative: '충전케이블에 젠더가 빠져 있어 아쉬움.',
+    //     analysis: '이 제품은 가격이 저렴하고 빠른 충전 속도로 사용자들에게 만족스러운 성능을 제공하고 있습니다. 휴대하기 편한 슬림한 사이즈로 매일 사용하기에 편리하며, 고속 충전 기능이 있어 급속 충전이 필요한 상황에서 유용하게 사용될 수 있습니다. 다만, 충전케이블에 젠더가 빠져 있어 사용자들 중 일부는 아쉬움을 표현하고 있습니다. 그러나 전반적으로 가성비가 좋고 성능이 우수한 제품으로 판단됩니다.',
+    //     url: 'https://search.shopping.naver.com/catalog/30890745618?&NaPm=ct%3Dlg90jp4g%7Cci%3Df4b21fcd4e0b1515ac50b502f78e4083a66430eb%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D14c95b89d011c46a6df9ff7d405edd2f710fe74c'
+    // }, {
+    //     imgUrl: 'https://shopping-phinf.pstatic.net/main_3757459/37574599618.20230201143747.jpg?type=f640',
+    //     name: '로랜텍 맥세이프 갤럭시 아이폰 고속 무선충전 보조배터리',
+    //     price: '27,500',
+    //     score: '4.9',
+
+    //     keywords: '가벼움, 휴대성, 무선충전',
+    //     summary: '10000암페어 치고 가볍고 휴대성이 좋음. 2) 무선충전이 잘 되어 편리함. 3) 발열이 조금 있지만 충전 속도가 빠름.',
+    //     positive: '휴대성이 뛰어나고 무선충전이 편리하게 잘 되어 편리함.',
+    //     negative: '발열이 조금 있으나 충전 속도가 빠르기 때문에 무리하지 않음.',
+    //     analysis: '로랜텍 맥세이프 갤럭시 무선충전기는 가볍고 휴대성이 뛰어나며 무선충전이 편리하게 잘 되는 것이 장점이다. 발열이 조금 있을 수 있지만 충전 속도가 빠르기 때문에 크게 불편하지 않다. 이 제품을 선택하면 휴대성과 편리한 무선충전을 즐길 수 있을 것이다.',
+    //     url: 'https://search.shopping.naver.com/catalog/37574599618?&NaPm=ct%3Dlg90lua8%7Cci%3Da815a12ba6fc9619317d4fca200a5f8c143533e2%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D40ec168b16100345d0550e0927f0e5fbdbc23f0a'
+    // }, {
+    //     imgUrl: 'https://shopping-phinf.pstatic.net/main_3241823/32418233620.20221011190820.jpg?type=f640',
+    //     name: '모디스 듀얼 10000 보조배터리 RPD-10000',
+    //     price: '8,900',
+    //     score: '4.7',
+
+    //     keywords: '절약, 높은 품질, 효율적인 에너지 사용',
+    //     summary: '뛰어난 절약 기능, 고품질, 에너지 효율성',
+    //     positive: '에너지 절약, 높은 성능, 가치',
+    //     negative: '소음, 디자인, 추가 기능 부족',
+    //     analysis: '모디스 듀얼 10000은 뛰어난 절약 기능과 고품질로 유명하며, 에너지 효율성이 높아 사용자에게 효과적인 에너지 절약을 제공합니다. 또한 성능이 뛰어나고 가치가 높은 제품으로 평가되었습니다. 다만, 소음이 발생할 수 있고 디자인이 아쉬움이 있으며, 추가 기능이 부족할 수 있다는 점이 아쉬운 점으로 언급되었습니다.',
+    //     url: 'https://search.shopping.naver.com/catalog/32418233620?&NaPm=ct%3Dlg90n1hs%7Cci%3D44b12ed01d1f1a3953eec111108ae0c2a8d5a768%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D169cf165763d0f07bcaa11416c3893f4cd1b8419'
+    // }, {
+    //     imgUrl: 'https://shopping-phinf.pstatic.net/main_3646886/36468865619.20221212152904.jpg?type=f640',
+    //     name: '모디스 일체형 미니 도킹형 보조배터리 5000mAh (8핀)',
+    //     price: '7,900',
+    //     score: '4.8',
+
+    //     keywords: '컴팩트, 휴대성, 빠른충전',
+    //     summary: `모디스 일체형 미니 도킹형 보조배터리는 컴팩트한 크기로 휴대성이 좋다.
+    //     빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있다.`,
+    //     positive: `모디스 일체형 미니 도킹형 보조배터리의 크기가 작아 휴대하기 편리하다.
+    //     빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있다는 점이 편리하다.`,
+    //     negative: `휴대폰을 완전히 충전시키는데 한번에 충분한 용량이 아닐 수 있다.
+    //     USB-C 포트가 없어 최신 모델의 휴대폰과는 호환되지 않는다.`,
+    //     analysis: `
+    //     모디스 일체형 미니 도킹형 보조배터리는 컴팩트한 크기와 빠른 충전 속도로 휴대폰 사용 중 배터리 부족 시에 편리하게 사용할 수 있는 제품이다.
+    //    크기가 작아 휴대하기 편리하며, 빠른 충전 속도로 휴대폰을 빠르게 충전할 수 있어 많은 사람들에게 추천된다.
+    //    단, 휴대폰을 완전히 충전시키는데 한번에 충분한 용량이 아니거나, USB-C 포트가 없어 최신 모델의 휴대폰과는 호환되지 않는다는 점이 단점으로 언급되었다. 그러나 전반적으로 모디스 일체형 미니 도킹형 보조배터리는 휴대성과 빠른 충전 속도로 사용자들의 구매 판단을 높일 수 있는 제품으로 평가된다.`,
+    //     url: 'https://search.shopping.naver.com/catalog/36468865619?&NaPm=ct%3Dlg90obsg%7Cci%3D88af597386264b7df20178512906f5f7144ff889%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Da0ce7b888aaaed9ea43c6f088c18e895bd7151b5'
+    // }, {
+    //     imgUrl: 'https://shopping-phinf.pstatic.net/main_3646333/36463335618.20221220174204.jpg?type=f640',
+    //     name: '미니덕트 맥세이프 미니 무선 보조배터리 mi200DT',
+    //     price: '36,600',
+    //     score: '4.7',
+
+    //     keywords: '캠핑, 레져, 배터리 부족, 유선 보조배터리, 고속충전, 유무선 패스스루, 사용 편리',
+    //     summary: `- 캠핑, 레져를 자주 다니는데 배터리가 부족해서 유선 보조배터리를 들고다녔지만 미니덕트 맥세이프 무선 배터리를 구매하게 되었다. 작은 크기이지만 고속충전이 되고 유무선 패스스루 기능이 있어 폰과 배터리를 동시에 충전할 수 있어 편리하다. 잘 사용할 것 같다.`,
+    //     positive: `- 작은 크기지만 고속충전 가능- 유무선 패스스루 기능이 편리- 폰과 배터리를 동시에 충전 가능- 사용이 편리하다`,
+    //     negative: `- 기존의 유선 보조배터리와 비교했을 때 케이블이 불편하다`,
+    //     analysis: `- 미니덕트 맥세이프 무선 배터리는 캠핑이나 레저 활동 시 배터리 부족 문제를 해결해주는 제품으로 평가됨 - 작은 크기에도 높은 충전 성능과 유무선 패스스루 기능이 편리하게 사용자에게 제공됨 - 다양한 긍정적인 리뷰로 사용자의 구매 판단에 도움을 줌`,
+    //     url: 'https://search.shopping.naver.com/catalog/36463335618?&NaPm=ct%3Dlg90r1s8%7Cci%3D4f80002d7b3f9dc1ab46f4b9d30d5635bc437a36%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Ddf9607b137129166413e00add07904d0f17b4acb'
+    // }, {
+    //     imgUrl: `https://shopping-phinf.pstatic.net/main_2427734/24277349522.20200925112604.jpg?type=f640`,
+    //     name: `삼성전자 삼성 25W PD 보조배터리 20000mAh EB-P5300`,
+    //     price: `50,f980`,
+    //     score: `4.8`,
+
+    //     keywords: `빠른 충전, 용량 큼, 다용도`,
+    //     summary: `택배가 빨리 왔고, 충전 속도가 빠르며 용량이 큼`,
+    //     positive: `"충전 속도 빠르고 용량 크다", "다양한 용도로 활용 가능", "디자인이 편리하다”`,
+    //     negative: `충전이 조금 느리고, 크기가 크고 무겁다`,
+    //     analysis: `삼성 25W PD 보조배터리 20000mAh EB-P5300은 택배가 빨리 도착하고, 충전 속도가 빠르며 용량이 크다는 긍정적인 리뷰가 많았습니다. 하지만 충전이 조금 느리고, 크기가 크고 무겁다는 단점이 있었습니다. 이 제품은 충전이 빠르고 용량이 크다는 장점을 갖고 있어 구매를 고려할 수 있습니다.`,
+    //     url: `https://cr.shopping.naver.com/adcr.nhn?x=otBEiNTFCgMZw0GSdT688f%2F%2F%2Fw%3D%3DsYXOZxBZfVSVw26pkdspCEG0L8qHuSwMEb59wTpF1FDjG2OG5wB6cIgMglc1scEc7yVwIlaCVoMhjc7ARzTMCKJFLf23sCR09A5IN4otf8MR4GIA5G0za%2Brp%2B4vRmViWZ2h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlHrLjNgAcTj4K%2BtXrXAPei8xtU6UAHbedKYkoIBiPZxNaUc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgYyci6MbU5Cg3soTvV1iZUVXOYV6brAGlBf70HJn5Rf0Ydttpd%2FeGdUo8GFKs7ozEIkVGmHXZUll8Ztiu8n7nfpHuAwEZMC2fZIeq5qxAvGdNifbjq9lwtRIpr4isW5NV2EzH4cp9Doq220L2e8i6advcgm%2BSIyZYncSyGIdJcBIK2Fhwp4Qwiv3abmi0w6TCbi0snhZd2ivxPQ9alJmPdtjr4w5dGf7ZdeeXrGsSCFcXzW0QKRuzcD6WMcLhSquo2hkpcY0AzQMG%2Bk%2FG7MMnA13UI5Qrmx14TIWjyLT6OeCi8PREhL5jWWo0nOhXh2YQA%3D%3D&nvMid=24277349522&catId=50004603`
+    // }, {
+    //     imgUrl: `https://shopping-phinf.pstatic.net/main_3782387/37823873619.20230209142851.jpg?type=f640`,
+    //     name: `삼성전자 삼성 EB-P3400`,
+    //     price: `30,260`,
+    //     score: `4.8`,
+
+    //     keywords: `가볍고, 충전속도, 디자인`,
+    //     summary: `가볍고 좋은 충전속도, 예쁜 디자인, 만족하는 사용 경험`,
+    //     positive: `가볍고 충전이 잘 되며 예쁜 디자인이 만족스러움`,
+    //     negative: `없음`,
+    //     analysis: `구매 결정에 도움되는 가볍고 빠른 충전 속도, 예쁜 디자인이 사용자의 만족도를 높임. 데이터 없음으로부터 불만점이 없는 제품으로 평가됨.`,
+    //     url: `https://search.shopping.naver.com/catalog/37823873619?&NaPm=ct%3Dlg90udds%7Cci%3Dc703c57dc1ec518ef26d02af13cbe6d0188d292f%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Df36768f8e0fad3b1857b5c25a80e726bb29b99fa`
+    // }, {
+    //     imgUrl: `https://shopping-phinf.pstatic.net/main_2260395/22603952755.20200424104249.jpg?type=f640`,
+    //     name: `삼성전자 삼성 EB-U3300`,
+    //     price: `48,320`,
+    //     score: `4.8`,
+
+    //     keywords: `무게, 무선충전, 발열`,
+    //     summary: `배터리 무게 묵직, 무선충전 편리, 발열 심함`,
+    //     positive: `무게 가볍고 편리, 무선충전 용이, 다양한 사용 가능`,
+    //     negative: `발열이 심하고 무게가 무거움, 발열이 높음, 무선충전 시 발열 주의`,
+    //     analysis: `무게와 무선충전의 편리함이 큰 장점, 발열이 아쉬운 점으로 언급됨`,
+    //     url: `https://search.shopping.naver.com/catalog/22603952755?&NaPm=ct%3Dlg90vpzs%7Cci%3Daf6945558553feafe50b8cd259334e8a02f29d03%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D0e496e464c1a6c10a84fcd2f476ff5ce196d9871`
+    // }, {
+    //     imgUrl: `https://shopping-phinf.pstatic.net/main_3614333/36143331621.20221128150322.jpg?type=f640`,
+    //     name: `샤오미 P05ZM`,
+    //     price: `35,210`,
+    //     score: `4.7`,
+
+    //     keywords: `무선충전, 발열, 중국제품`,
+    //     summary: `- 무선 충전이 편리하고 발열이 적음 - 중국 제품이라 안내책자가 중국어로만 되어 있음`,
+    //     positive: `무선 충전이 바로 시작되는 점이 매우 편리하다는 평이 있음. 발열이 적은 것도 장점으로 언급됨.`,
+    //     negative: `제품이 완전 중국 제품이라 안내책자가 중국어로만 되어 있어서 불편함을 느낀 평이 있음.`,
+    //     analysis: `샤오미 P05ZM의 무선 충전 기능이 편리하다는 평이 많았으며, 발열이 적다는 것도 긍정적인 평이 있음. 하지만 안내책자가 중국어로만 되어 있어서 불편함을 느낀 평도 있음. 전반적으로는 샤오미 P05ZM이 무선 충전을 원하는 사용자에게 좋은 선택일 수 있다는 결론을 도출할 수 있음.`,
+    //     url: `https://search.shopping.naver.com/catalog/36143331621?&NaPm=ct%3Dlg90xi1c%7Cci%3Dcd04a3175864eb32217c19e9dba8950e7abf1185%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Dc4f0d94381bb069f212398d6f5d517bc49826028`
+    // }, {
+    //     imgUrl: `https://shopping-phinf.pstatic.net/main_3692656/36926564618.20230102171707.jpg?type=f640`,
+    //     name: `아이엠듀 아이폰 무선 보조배터리 8핀 일체형 C타입 충전형 5000mAh`,
+    //     price: `12,900`,
+    //     score: `4.8`,
+
+    //     keywords: `무선, 휴대성, 충전속도`,
+    //     summary: `요즘 무선 보조배터리를 많이 사용하고 있으며, 충전 속도가 빠르고 휴대하기에도 편리하며, 디자인도 깔끔하고 유용한 제품이라는 내용이 대부분입니다. `,
+    //     positive: `충전 속도가 빠르고, 휴대하기에도 편리하며, 디자인도 깔끔하고 가격 대비 가성비가 좋다는 내용이 대부분입니다.`,
+    //     negative: `잃어버릴 위험이 있으며, 제품 크기가 작은 만큼 용량이 부족하다는 내용이 일부 있습니다. `,
+    //     analysis: `대부분의 사용자들은 충전 속도가 빠르고 휴대하기 적합하며, 가격 대비 가성비가 좋다는 이유로 만족하는 것으로 보입니다. 그러나 일부 사용자들은 제품의 크기가 작은 만큼 용량이 부족하고, 잃어버리기 쉽다는 점을 지적합니다. 따라서 이 제품은 휴대성이 중요한 사용자들에게 적합하며, 충분한 용량이 필요한 사용자들은 다른 제품을 고려해야 할 것입니다.`,
+    //     url: `https://search.shopping.naver.com/catalog/36926564618?&NaPm=ct%3Dlg90yj2o%7Cci%3D24cfefbab9c6d93e2187c2e5ccb88884124fdd15%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D44bb51666c55252f8885a6e621b924d7dd946d2c`
+    // }
 
 ]
 
-const laptop: Product[] = [
+export const laptop: Product[] = [
 
     {
         imgUrl: `https://shopping-phinf.pstatic.net/main_2610184/26101847522.20220705135838.jpg?type=f640`,

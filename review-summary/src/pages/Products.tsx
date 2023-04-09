@@ -23,6 +23,7 @@ flex-direction: column;
 align-items: flex-start;
 overflow-y: auto;
 height: calc(100vh - 40px);
+gap: 0px;
 `
 
 
