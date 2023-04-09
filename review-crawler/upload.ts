@@ -578,113 +578,134 @@ export const laptop: Product[] = [
 ]
 
 const phoneCase: Product[] = [
-    {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+  {
+    imgUrl:		'https://shopping-phinf.pstatic.net/main_3798480/37984805618.20230215114021.jpg?type=f640',
+    name:			'디지지 갤럭시S23울트라 슬림 에어 투명 케이스',
+    price:		'5,900',
+    score:		'4.8',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+    keywords: '슬림, 투명, 그립감',
+    summary:	'가성비 좋은 슬림 투명 케이스 / 그립감이 좋고 잘 맞아요 / 튼튼하고 내구성도 괜찮아요',
+    positive:	'슬림한 디자인으로 손에 편안하게 잡히며 투명하므로 폰의 디자인이 잘 보입니다. 내구성도 좋아서 오랫동안 사용 가능합니다.',
+    negative:	'부드러운 소재감을 원하시는 분들에게는 부적합할 수 있습니다.',
+    analysis:	'슬림한 디자인과 투명 소재로 가벼움과 투명함을 동시에 즐길 수 있는 제품입니다. 또한 내구성도 괜찮아서 오래 사용 가능합니다. 하지만 부드러운 소재를 원하시는 분들에게는 적합하지 않을 수 있습니다. 전반적으로 가성비가 좋은 제품으로 추천드립니다.',
+    url:			'https://shopping-phinf.pstatic.net/main_3798480/37984805618.20230215114021.jpg?type=f640',
+  },
+	{
+    imgUrl:		'https://shopping-phinf.pstatic.net/main_3388815/33888152619.20220805135306.jpg?type=f640',
+    name:			'로랜텍 갤럭시 Z플립4 케이스 팔레트 링 스트랩',
+    price:		'8,800',
+    score:		'4.6',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+    keywords:	'튼튼함, 링 고정, 다양한 컬러',
+    summary:	'1) 튼튼하고 링이 잘 고정됨 2) 다양한 컬러가 매력적 3) 구매를 권장함',
+    positive: '링이 튼튼하고 잘 고정되어 있어서 걱정없이 사용할 수 있음. 다양한 컬러가 있어서 선택의 폭이 넓음.',
+    negative: '없음',
+    analysis: '팔레트 링은 튼튼하고 링이 잘 고정되어 있어서 걱정 없이 사용할 수 있는 제품입니다. 또한 다양한 컬러가 있어서 선택의 폭이 넓고, 구매를 권장할 만한 제품입니다.',
+    url:			'https://cr.shopping.naver.com/adcr.nhn?x=WLXsAlcgg2rXEsMjx32CRf%2F%2F%2Fw%3D%3Dsxd9%2BVBU7trmEi3FN36LGKopEYac46ozsx94Ep5LRZuZphHs0TCFpdGMPASCf06XHBunB4NXhjslq5zvMC5uPbIjdK%2Fd%2BpBLgoZqSoQ7L9qvoSnpmX%2Bn63LdrkkAy1b7NRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbteHEKNxpM4veHnz3AMPiTalbpatnomk6Kx9I5wrXuMrqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVK9jlHxZiMLAEOhQD7AISDpIXce7stzwnnZWHTXHgctxArNDSbHU%2FS0YkYGoebcIPJ8zN%2FrtphpOYfRywVqBKpN5S78fYlKmUNFdJ8zLvQglSrGiurM74EaOV%2BVwtR51shxjfQkbbEm%2F1hXke%2FzABL9QcDjDUw6aQ0agEjwlzA5W7614pWQJaVLf6YdOBJRD1%2B7uAOqVwAzL0MbojG3oZ6HIU7CsW5MYkJnpuSjIdXSYEAQd5VpQu4%2FUVAoSq69vrcJsaNJpQiVtaxzmI4TEvZ8TP5b152VvbxCNbzCqLYed5MeicOdFlnm2d6tPVlzxQwf%2B7qpL7q7e4kKn87qgxz0%3D&nvMid=33888152619&catId=50004594',
+  },
+	{
+    imgUrl:		'https://shopping-phinf.pstatic.net/main_3744565/37445650618.20230126152852.jpg?type=f640',
+    name:			'로랜텍 갤럭시S23 케이스 림피오 카툭튀 커버',
+    price:		'4,900',
+    score:		'4.8',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+    keywords:	'튼튼함, 꼼꼼한 보호, 깔끔한 디자인',
+    summary:	'1. 투명케이스에 깨짐이 살짝 있었지만 제품 포장과 배송이 좋았다. 2. 강화유리는 쉽게 붙여지며 자국도 남지 않아서 좋았다. 3. 보호필름과 케이스가 찰떡같이 맞아서 깔끔하고 튼튼하다.',
+    positive: '1. 튼튼한 보호와 깔끔한 디자인이 매력적이다. 2. 강화유리가 쉽게 붙여지며 자국도 남지 않는다. 3. 제품 포장과 배송이 좋다.',
+    negative: '1. 투명케이스에 살짝 깨짐이 있었다. 2. 약간의 유격으로 인해 액정이 맞지 않을 수도 있다. 3. 지문인식이 강화유리 때문에 제대로 되지 않을 수도 있다.',
+    analysis: '갤럭시S23를 보호하는 필름, 강화유리, 케이스가 강력한 보호 기능과 깔끔한 디자인을 제공하며, 강화유리가 쉽게 붙여지며 자국도 남지 않아서 사용자들의 만족도가 높다. 하지만 약간의 유격으로 인해 액정이 맞지 않을 수도 있으며, 강화유리 때문에 지문인식이 잘 작동하지 않는다는 단점이 있습니다.',
+    url:			'https://cr.shopping.naver.com/adcr.nhn?x=erinfEUJppM875bMlDnXpf%2F%2F%2Fw%3D%3DswxhTHsXrbHRpLbXR0%2FIG90SymiYlh8NOuEVWaEbXlqWIZPvNhnwc9uwb6iqYEx2itlUaPLavRlzSLbGg6kx1SjDTLU5eLbkk2db77Edg4UGBFkWUoyOBxYnd7oml0w512h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlEP%2FkRTZX%2FNwhwB3iq51%2BLw444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgfjQMUw8DqnApi2fCFoCHur8DEsbAf2RwDZEaPbzPVcfYdttpd%2FeGdUo8GFKs7ozEEFWpSJjq6X3veRNK9fhRr0PXmCBzdGDqe0FRc9RRnisl3nXJkQEosLkNeApHcpceohxGM8zchNisDanKORiX5RcZvaSTpaLQEQUUOvQBIIybxLcf9Zqq6K61Af0Ag26taOuInwfQ1XmfH35WvRpRXZT4Rb64ctxEARkAK8yXExJHQQA3YmBqTNwNTRlTPoTKnidukfU7TD5Zfi17i5dFJddTbjGdpEmvMnjyvshkTiF9FGzZOXYtVfI1DG5rR4ov7xbllwhB6WZnJ42baPAkpk%3D&nvMid=37445650618&catId=50004594',
+  },
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_3744572/37445720618.20230126153113.jpg?type=f640',
+		name:			'로랜텍 갤럭시S23맥세이프 케이스 카툭튀 커버',
+		price:		'7,500',
+		score:		'4.9',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+		keywords:	'자력, 핏감, 디자인',
+		summary:	'다양한 악세사리와 궁합이 잘 맞고 핏감이 좋은 제품',
+		positive: '1. 자력이 강하고 충전이 잘 된다. 2. 디자인이 깔끔하다.',
+		negative: '강화유리의 지문인식율이 조금 떨어진다',
+		analysis: '자력이 강하고 디자인도 깔끔하며, 가성비가 좋은 제품으로 추천한다.',
+		url:			'https://cr.shopping.naver.com/adcr.nhn?x=%2BbzovbSxNT5SXOV%2F%2BQh1MP%2F%2F%2Fw%3D%3Dsj1pS4i%2B6H308%2FoEy5i%2F5Ck%2FrNY38tIx0VWs9NrhgYeJD8zZbQQFDzmOlkCtGfUnwQRmO8aqO2aVcMw9vhGrZgAogb%2BxKkeqoAqh4%2BxqdGpK7mkV0ZL7l56WEKR2kXx21HinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCdEHmzcxL%2B0SP7QQ31%2FOiAggLhMwrLK%2F2f2mMZncpqMMOnMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHLuzylBFXDlC1BMzZGZTWb6P%2FOBNGk2YDVeE3MC7GCeZ%2BYnTpLBgb2Sn8vnu71ut%2Bj%2FSNpUNi4yfikkbgqR5%2Bqla1df9%2BV8su%2BLJ4zR4IqNyS13L%2FQM%2BCZuq6rpKOfI%2Bg7dwgaROrszerI5gQyNJo7wNYiQPAeDzl6eIl%2FnbW9KBxGcBNyPmRR6ZCUgxABW3sZtbNpWnQsh5yEilGlc55vpHOXhTBcCJYYEqIjFJGNkFbdT2KQe654v4Z%2BQCW22Ill81tECkbs3A%2BljHC4UqrqN4HKmbJW6jWDRaI930vpqq7o59WSQwGTO4YuNh8DcaUovD0RIS%2BY1lqNJzoV4dmEA%3D&nvMid=37445720618&catId=50004594',
+	},
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_2998964/29989642618.20211207153525.jpg?type=f640',
+		name:			'로랜텍 갤럭시Z플립3 케이스',
+		price:		'5,900',
+		score:		'4.8',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+		keywords:	'부드러움, 고급스러움, 튼튼함',
+		summary:	'긁힘 걱정 덜어주는 부드러운 아크릴 케이스, 고급스러운 디자인, 튼튼한 제품',
+		positive:	'부드러운 손감촉, 고급스러운 디자인, 내구성이 뛰어남',
+		negative:	'끼우기 조금 힘듦, 팔레트 떨어짐, 기스 발생',
+		analysis:	'부드러운 아크릴 소재로 만들어진 고급스러운 디자인의 튼튼한 제품으로, 내구성이 뛰어나며 손감촉이 부드러운 제품이다. 다만, 케이스 끼우기가 조금 힘들어서 사용에 불편함이 있을 수 있으며, 팔레트가 떨어져 나갈 수 있어서 주의가 필요하다.',
+		url:			'https://search.shopping.naver.com/catalog/29989642618?&NaPm=ct%3Dlg92wnrk%7Cci%3Deb95864d6b41a1c878d1bcc5803a381c40758731%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3Da30ebcc20506aa64ffd47b817f11da3f612a4e8c'
+	},
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_2613618/26136180522.20210624203147.jpg?type=f640',
+		name:			'로랜텍 아이폰 12 _ 아이폰 12 프로용 림피오 투명 케이스',
+		price:		'4,900',
+		score:		'5.0',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+		keywords:	'투명, 무선충전, 보호',
+		summary:	'투명도가 높고 무선 충전도 잘 되는 범퍼 케이스',
+		positive:	'투명하고 깔끔한 디자인, 무선 충전이 잘 되는 것이 좋음',
+		negative:	'케이스가 단단해 보이지만 접히기 쉬움',
+		analysis:	'투명도가 높고 무선 충전이 잘 되어 있어서 보호와 사용성 면에서 매우 우수한 제품이다. 다만, 케이스가 단단해 보이지만 실제로는 접히기 쉬운 부분이 있다는 점이 아쉬움.',
+		url:			'https://search.shopping.naver.com/catalog/26136180522?&NaPm=ct%3Dlg92xy28%7Cci%3D80182943da2b728d163b39fd222e4e109a6619c4%7Ctr%3Dslcc%7Csn%3D95694%7Chk%3D60cc92077f89792f4abf21a8dd2c162894a0ada9'
+	},
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_3669488/36694880618.20221222113558.jpg?type=f640',
+		name:			'로랜텍 아이폰 14 맥세이프 케이스',
+		price:		'6,900',
+		score:		'4.9',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+		keywords:	'가성비, 그립감, 내구성',
+		summary:	'1) 맥세이프 케이스는 가성비가 매우 높습니다. 2) 그립감이 좋고 잘 잡힙니다. 3) 내구성도 우수합니다.',
+		positive:	'1) 가성비가 높아 구매한 것을 후회하지 않습니다. 2) 그립감이 좋아 핸드폰을 놓치지 않을 거 같습니다. 3) 내구성이 좋아 손상 없이 오랫동안 사용할 수 있을 것 같습니다.',
+		negative:	'별 다른 불만점이 없습니다.',
+		analysis:	'맥세이프 케이스는 가성비가 높아 구매를 고민하시는 분들에게 추천합니다. 그립감이 좋아 핸드폰을 잘 잡을 수 있고 내구성도 좋아 오랫동안 사용할 수 있습니다.',
+		url:			'https://cr.shopping.naver.com/adcr.nhn?x=NSLwlncdx3bIJWi0oeg%2F4v%2F%2F%2Fw%3D%3DsuOXfqOQBjYcJEEU3TiqknWatHexg%2FY6obUipFXF6NRdyfOC5pK92P3r7SNo0e2p72jbkVPDQvCw1AKA4P02YnAogb%2BxKkeqoAqh4%2BxqdGpK7mkV0ZL7l56WEKR2kXx21HinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCfdVhNOG2z6ovhMEzOcheFJgPidkxI%2FunjdCUjXw8N7VunMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHLuzylBFXDlC1BMzZGZTWb5BT7dbOhgV1wbAoYYY9%2FpH%2BYnTpLBgb2Sn8vnu71ut%2Bj%2FSNpUNi4yfikkbgqR5%2Bql491y9aOPNhab8Vl7SoKfKS13L%2FQM%2BCZuq6rpKOfI%2Bg7Ki8pELhodNcpSA7RA6KsZRu3GKCqsCwit%2BXaXbNX1%2Bbd6%2BJQXv1v0bdCCyy9OEnkc5eFMFwIlhgSoiMUkY2QUuNywjp5GP509Iz9016GfzXzW0QKRuzcD6WMcLhSquo%2FD60rso5%2BGnJ24Ogvoc5ssTESpGlA0Ds0T%2BT2%2Fm0JFCZTi4KOROgwRZLXpoHN4a2Q%3D%3D&nvMid=36694880618&catId=50004594',
+	},
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_3822456/38224567618.20230224152738.jpg?type=f640',
+		name:			'링케 갤럭시S23울트라 투명 퓨전 케이스',
+		price:		'9,800',
+		score:		'4.9',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }, {
-        imgUrl: ``,
-        name: ``,
-        price: ``,
-        score: ``,
+		keywords:	'무선충전, 가성비, 투명케이스',
+		summary:	'1) 링케 케이스는 가성비 좋은 투명케이스로, 무선충전이 가능하나 효율이 떨어질 수 있음. 2) 카메라 구멍이 약간 이상하게 위치해있어 신경쓰일 정도는 아니지만, 필름 떼는 가이드가 없어서 불편함. 3) 디자인, 가격, 가볍고 얇은 느낌 등 매력적인 점이 많으나 무선충전에 대한 기대는 조금 낮춰야 함',
+		positive:	'가성비 좋음, 투명하고 깔끔한 디자인, 가볍고 얇은 느낌',
+		negative:	'무선충전 효율 떨어질 수 있음, 필름 떼는 가이드가 없어 불편함, 카메라 구멍이 약간 이상하게 위치해있음',
+		analysis:	'링케 케이스는 가성비가 좋은 투명케이스이며, 무선충전이 가능하지만 효율이 조금 낮을 수 있음. 디자인, 가격, 가볍고 얇은 느낌 등 매력적인 점이 많으나 무선충전에 대한 기대는 조금 낮춰야 함',
+		url:			'https://cr.shopping.naver.com/adcr.nhn?x=%2FOwShEM5zHPTiO%2ByTwUsK%2F%2F%2F%2Fw%3D%3DsDi2a15xhsmr1LCPDOtVOQk6wAsVn1vlrcY10080iKJvwisKkUzqE3RTqeWdQL%2B2y2YzRjSEmQDJLe5fpF8yPOAogb%2BxKkeqoAqh4%2BxqdGpK7mkV0ZL7l56WEKR2kXx21HinNrx5sg4hc%2Bs%2BwYZL3l6Tq%2FbD2MGowZHhNOyBhpCfGU4eHA081f%2BTQ%2F3f8AfVtJLTPWETzsoDwfvInC5pcQ%2BnMLdRxrntIrQAcp2GWdCWk6v2w9jBqMGR4TTsgYaQnOgoJMFPBFPATEeqUjMSJHLuzylBFXDlC1BMzZGZTWb6jXZIVIzi6%2B8eYQ3m6B49n%2BYnTpLBgb2Sn8vnu71ut%2Bj%2FSNpUNi4yfikkbgqR5%2BqkzREAXubBmySLEmdEx1%2FF3S13L%2FQM%2BCZuq6rpKOfI%2Bg7dwgaROrszerI5gQyNJo7xxzGsiENenoybY4berr4dJMr3AVdDJICYDhjteP%2F4B7I5Do13oB2FSfCHTS9X%2F4INCqEdeYLq8BgdVgMKMC5ukctcFZpM3V5EW6t5NOvu7GHQuQPHdfxBpbbO8x0VVjYZSgjEbrqZpmjqnxtXz7xtcKCPUaW%2FkhDApMTEOhqG6l12%2B%2FxyXlCSAWzA7%2BLQj8t8%3D&nvMid=38224567618&catId=50004594',
+	},
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_3869777/38697774618.20230321102630.jpg?type=f640',
+		name:			'제로스킨 아이폰 13 MINI 스키니매트 케이스',
+		price:		'8,300',
+		score:		'4.8',
 
-        keywords: ``,
-        summary: ``,
-        positive: ``,
-        negative: ``,
-        analysis: ``,
-        url: ``
-    }
+		keywords:	'얇음, 디자인, 보호',
+		summary:	'1. 얇고 가벼워서 휴대성이 좋음. 2. 디자인이 예쁘고 아이폰 로고가 잘 어울림. 3. 보호 기능이 괜찮음.',
+		positive:	'얇고 가벼워서 휴대성이 좋고, 디자인이 예쁘며 보호 기능도 괜찮음.',
+		negative:	'없음',
+		analysis:	'제로스킨 스키니매트 케이스는 얇고 가벼워서 휴대성이 좋으며, 디자인이 예쁘고 보호 기능도 괜찮은 제품입니다.',
+		url:			'https://cr.shopping.naver.com/adcr.nhn?x=9TjjOWlA7icGJe0k%2BCT%2BMf%2F%2F%2Fw%3D%3DsOwA6f%2BQj2EwEJZKAOJdpykBgeydsXjj05KY2dV4mFpBWCfgzpPcARxHqBBnw2F0Bpp6KSgzrHSLxZMQVF8gNzzDTLU5eLbkk2db77Edg4UGBFkWUoyOBxYnd7oml0w512h%2FqNbmMd3P9tE5jamCbKQuIB8ncdehaYvLTVmrbJlHUeC5cVIsgVj0zThCE5qP6444iuXlz%2BdQ0CFqwAcOyf6Uc7oJ0GV8I0vt0%2FsC%2BQlQHs%2F2PHkpmvWjL2qy1nHubEKK%2FkpYkwP7L1JPwnXYdgSCyXah8H7DEeTO9aqhcZhyNF54iYm48HHLVB7sqF7nJYdttpd%2FeGdUo8GFKs7ozELFzYB1FyOLfbC%2BJmaMoxTMXIS8XKzWFt%2FKBGQZHZvfNBHNOS04mwbf2sLSii8Aqp3Em6S%2FZf%2B1%2Bg%2BOcwnohBOADfTO%2BM6DgyCSI06YERi7ZFqzPCPggm6Th9rtYsX70kwjIsVVjpDoBp0xWfnWVFneAGrQOb0BNn5I51fAe77ftgPMdRTh2rpnDxYBSF5eLYLaT4EFAQaG8SmWs6FWkCIYx4aU9f0bzHRQLoYH%2Bbrd4nIGQ2JgPZxLlEkeSl6MfEg%3D%3D&nvMid=38697774618&catId=50004594'
+	},
+	{
+		imgUrl:		'https://shopping-phinf.pstatic.net/main_3434792/34347924619.20220928150932.jpg?type=f640',
+		name:			'주파집 아이폰 14 프로 스탠드 클리어 케이스',
+		price:		'15,800',
+		score:		'4.8',
+
+		keywords:	'디자인, 거치대, 사용감',
+		summary:	'1) 거치대가 있어 편리하다 2) 아름다운 디자인 3) 사용감이 좋다',
+		positive:	'거치대가 편리하고 아름다운 디자인으로 만족스러움',
+		negative:	'없음',
+		analysis:	'크리스탈스톤 아이폰 케이스는 거치대가 있어 편리하고 아름다운 디자인으로 많은 사용자들에게 만족스러운 제품이다. 부정적인 리뷰가 없어 높은 만족도를 가지고 있다. 디자인, 사용감 등의 면에서 구매를 고민하고 있는 소비자들에게 추천할 만한 제품이다.',
+		url:			'https://cr.shopping.naver.com/adcr.nhn?x=3MPiA94%2BRhdmlQFZ9YnSVf%2F%2F%2Fw%3D%3DszueALZ0UUu7x9Uo2B3N30BreiIMGzl1aIrrQtBAvqPs3T1l31WhPdjr63NeHuYqLiH72uSZJOzXYmLFkywMWaYjdK%2Fd%2BpBLgoZqSoQ7L9qvoSnpmX%2Bn63LdrkkAy1b7NRsCh5GS%2BklokEzA%2FJ0VszxCGSQdcrj%2BZJHLmJxgT%2FbsSpvjk7ejx%2FhDKeyn8v2%2BXlbpatnomk6Kx9I5wrXuMrqg%2BxArVq%2FBrPJKx2LY27KIQhkkHXK4%2FmSRy5icYE%2F27H6nXvxvhE2NIIN9%2Fg4xyVPF14eiNyXXRSuXWYIRYM7cSl7IzrRfxxW5%2F2NDqL4UXArNDSbHU%2FS0YkYGoebcIPH%2FVoUduVQBnUqmDvkX43YfegWGiKhOt0EDd6OWIDwoSSrGiurM74EaOV%2BVwtR51svipR0br5Qm05oo4Zk0JxeBawiInnG82RRuvVnTd%2FDjn4%2BjveY3Um111J%2FM1tl1UYSNQBZp0Gu9%2FM1QCtLlhVTwVqDTF%2BnjNaOc5JEmfoK9xhyyfPbIprXNFAlHcQK1fP5vfrQJd09kelQ7HvPjqYWP81PjGxwdzibZkHx26yIUjsOdVi2OWRhFs1Fe7srGWmi2acEdm6mdLpqowW5%2FshA4%3D&nvMid=34347924619&catId=50004594',
+	}
 ]
